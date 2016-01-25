@@ -108,6 +108,7 @@ while not crashed:
     screen,rect,button,m,i, crashed= StartScreen(screenlist,rectlist,menulist,m,i,crashed,punch_sound)
     screen_update(screen, rect)
     glove_update(button,m)                                   #hier word button meegegeven aan glove_update
+
     # small_glove(navi)
     pygame.display.update()
     clock.tick(60)
