@@ -4,7 +4,7 @@ import time
 
 pygame.init()
 
-size = width, height = 700, 620
+size = width, height = 700, 650
 tile = 0
 white = (255, 255, 255)
 
@@ -16,20 +16,20 @@ startup_screen = pygame.image.load("images/startscherm2.png")
 startup_screen_rect = startup_screen.get_rect()                 #start at top left
 rules_screen = pygame.image.load("images/rules.png")
 rules_screen_rect = startup_screen.get_rect()
-play_screen = pygame.image.load("images/speelveld.png")
-play_screen_rect = play_screen.get_rect()
+character_screen = pygame.image.load("images/playermenu.png")
+character_screen_rect = character_screen.get_rect()
 gloveImg = pygame.image.load("images/handschoen.png")
 punch_sound = pygame.mixer.music.load("sounds/punch_sound.mp3")
 # gloveSmall = pygame.image.load("images/red_handschoen.png")
 
 
-screenlist = [startup_screen, rules_screen, play_screen]
+screenlist = [startup_screen, rules_screen, character_screen]
 m = 0
 
 
 s_rect = startup_screen_rect
 r_rect = rules_screen_rect
-p_rect = play_screen_rect
+p_rect = character_screen_rect
 rectlist = [s_rect, r_rect, p_rect]
 
 remove = x, y = -100, - 100
@@ -98,7 +98,11 @@ def StartScreen(screenlist,rectlist,menulist,m,i,crashed,punch_sound):
                 if event.key == pygame.K_BACKSPACE:
                     m = 0
                     button = menulist[1]
-
+        if m == 2:   #rules
+            size = width, height = 700, 750
+            gameDisplay = pygame.display.set_mode(size)
+            screen = screenlist[m]
+            rect = rectlist[m]
 
     return screen,rect,button,m,i, crashed
 
