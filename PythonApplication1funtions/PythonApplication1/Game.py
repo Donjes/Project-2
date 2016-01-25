@@ -9,7 +9,7 @@ tile = 0
 white = (255, 255, 255)
 
 gameDisplay = pygame.display.set_mode((width,height))
-pygame.display.set_caption('MovingGlove')
+pygame.display.set_caption('Survivor')
 clock = pygame.time.Clock()
 
 startup_screen = pygame.image.load("images/startscherm2.png")
@@ -40,12 +40,13 @@ navi = (-100,-100) #1Ruben speler kleine handschoen word buiten beeld neer gezet
 
 crashed = False
 
-menulist = [start, rules, exit, remove] #lijst van de buttons
+menulist = [start, rules, exit] #lijst van de buttons
 i = 0                           #startwaarde = start
             #index van de lijst
 
-def glove_update(button):                   #geeft handschoen.png weer
-    gameDisplay.blit(gloveImg,(button))
+def glove_update(button,m):                   #geeft handschoen.png weer
+    if m ==0:
+        gameDisplay.blit(gloveImg,(button))
 
 # def small_glove(navi):                  #3Ruben handschoen over board functie
 #     gameDisplay.blit(gloveSmall,navi)
@@ -67,7 +68,7 @@ def StartScreen(screenlist,rectlist,menulist,m,i,crashed,punch_sound):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 sound_play(punch_sound)
-        if m == 0:
+        if m == 0:      #start
             screen = screenlist[m]
             rect = rectlist[m]
             if event.type == pygame.KEYDOWN:    #als er een key wordt ingedrukt
@@ -88,29 +89,25 @@ def StartScreen(screenlist,rectlist,menulist,m,i,crashed,punch_sound):
                 if i == 0 and event.key == pygame.K_SPACE:
                     m = 2
 
-        if m == 1:
+        if m == 1:   #rules
             size = width, height = 700, 650
             gameDisplay = pygame.display.set_mode(size)
             screen = screenlist[m]
             rect = rectlist[m]
-            button = menulist[3]
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_BACKSPACE:
                     m = 0
                     button = menulist[1]
-        if m == 2:
-            screen = screenlist[m]
-            rect = rectlist[m]
-            button = menulist[3]
+
 
     return screen,rect,button,m,i, crashed
 
 while not crashed:
 
     gameDisplay.fill(white)  #startscherm.png linksboven weergegeven
-    screen,rect,button,m,i, crashed = StartScreen(screenlist,rectlist,menulist,m,i,crashed,punch_sound)
+    screen,rect,button,m,i, crashed= StartScreen(screenlist,rectlist,menulist,m,i,crashed,punch_sound)
     screen_update(screen, rect)
-    glove_update(button)                                   #hier word button meegegeven aan glove_update
+    glove_update(button,m)                                   #hier word button meegegeven aan glove_update
     # small_glove(navi)
     pygame.display.update()
     clock.tick(60)
