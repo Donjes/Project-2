@@ -5,7 +5,7 @@ import time
 pygame.init()
 
 size = width, height = 700, 620
-
+tile = 0
 white = (255, 255, 255)
 
 gameDisplay = pygame.display.set_mode((width,height))
@@ -20,7 +20,7 @@ play_screen = pygame.image.load("images/speelveld.png")
 play_screen_rect = play_screen.get_rect()
 gloveImg = pygame.image.load("images/handschoen.png")
 punch_sound = pygame.mixer.music.load("sounds/punch_sound.mp3")
-
+# gloveSmall = pygame.image.load("images/red_handschoen.png")
 
 
 screenlist = [startup_screen, rules_screen, play_screen]
@@ -36,6 +36,7 @@ remove = x, y = -100, - 100
 start = x, y = 70, 150 #coordinates glove --> start
 rules = x, y = 70, 250 #coordinates glove --> rules
 exit = x, y = 350, 520 #coordinates glove --> exit
+navi = (-100,-100) #1Ruben speler kleine handschoen word buiten beeld neer gezet
 
 crashed = False
 
@@ -45,6 +46,9 @@ i = 0                           #startwaarde = start
 
 def glove_update(button):                   #geeft handschoen.png weer
     gameDisplay.blit(gloveImg,(button))
+
+# def small_glove(navi):                  #3Ruben handschoen over board functie
+#     gameDisplay.blit(gloveSmall,navi)
 
 def screen_update(screen,rect):
     gameDisplay.blit(screen,(rect))
@@ -107,6 +111,7 @@ while not crashed:
     screen,rect,button,m,i, crashed = StartScreen(screenlist,rectlist,menulist,m,i,crashed,punch_sound)
     screen_update(screen, rect)
     glove_update(button)                                   #hier word button meegegeven aan glove_update
+    # small_glove(navi)
     pygame.display.update()
     clock.tick(60)
 
