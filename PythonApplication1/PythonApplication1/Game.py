@@ -1,6 +1,6 @@
 ﻿import pygame
 import time
-from Node import *
+#from Node import *
 
 pygame.init()
 
