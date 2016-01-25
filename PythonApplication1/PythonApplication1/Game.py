@@ -1,11 +1,11 @@
 ﻿import pygame
 import time
-from Node import *
+#from Node import *
 
 pygame.init()
 
 size = width, height = 700, 620
-
+tile = 0
 white = (255, 255, 255)
 
 gameDisplay = pygame.display.set_mode((width,height))
@@ -20,7 +20,7 @@ play_screen = pygame.image.load("images/speelveld.png")
 play_screen_rect = play_screen.get_rect()
 gloveImg = pygame.image.load("images/handschoen.png")
 punch_sound = pygame.mixer.music.load("sounds/punch_sound.mp3")
-
+gloveSmall = pygame.image.load("images/red_handschoen.png")
 
 
 screenlist = [startup_screen, rules_screen, play_screen]
@@ -36,6 +36,7 @@ remove = x, y = -100, - 100
 start = x, y = 70, 150 #coordinates glove --> start
 rules = x, y = 70, 250 #coordinates glove --> rules
 exit = x, y = 350, 520 #coordinates glove --> exit
+navi = (-100,-100) #1Ruben speler kleine handschoen word buiten beeld neer gezet
 
 crashed = False
 
@@ -45,6 +46,9 @@ button = menulist[i]            #index van de lijst
 
 def glove_update(button):                   #geeft handschoen.png weer
     gameDisplay.blit(gloveImg,(button))
+
+def small_glove(navi):                  #3Ruben handschoen over board functie
+    gameDisplay.blit(gloveSmall,navi)
 
 def screen_update(screen,rect):
     gameDisplay.blit(screen,(rect))
@@ -93,10 +97,24 @@ while not crashed:
                     m = 0
                     button = menulist[1]
         if m == 2:
-            screen = screenlist[m]
-            rect = rectlist[m]
-            button = menulist[3]            
-
+#2 Ruben heeft hier navigatie voor board ingevoerd
+     
+             screen = screenlist[m]
+             rect = rectlist[m]
+             button = menulist[3]          
+            
+             
+             navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20),(472,20),(520,20),(575,20)]
+             
+             if event.type == pygame.KEYDOWN:  
+                    if event.key == pygame.K_DOWN: 
+                        tile += 1  
+                        navi = navigate[tile%11]
+                                                  
+                    if event.key == pygame.K_UP:   
+                        tile -= 1   
+                        navi = navigate[tile%11]     
+#2 tot hier
 
         print(event)
 
@@ -107,6 +125,7 @@ while not crashed:
     #sound_play(punch_sound)
     screen_update(screen, rect)
     glove_update(button)                                   #hier word button meegegeven aan glove_update
+    small_glove(navi)
     pygame.display.update()
     clock.tick(60)
 
