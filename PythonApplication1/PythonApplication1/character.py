@@ -3,17 +3,17 @@ class Character:
         self.card = characterCard(eye1,eye2,eye3,eye4,eye5,eye6)
         self.hitPoints = 100
         self.conditionPoints = 15
-        self.SavePosition = None #Optional for a saving option
+        self.savePosition = None #Optional for a saving option
         self.texture = texture
 
 class characterCard:
     def __init__(self,attack1,attack2,attack3,attack4,attack5,attack6):
-        self.Dice1 = attack1
-        self.Dice2 = attack2
-        self.Dice3 = attack3
-        self.Dice4 = attack4
-        self.Dice5 = attack5
-        self.Dice6 = attack6
+        self.dice1 = attack1
+        self.dice2 = attack2
+        self.dice3 = attack3
+        self.dice4 = attack4
+        self.dice5 = attack5
+        self.dice6 = attack6
 
 TerryCrews = Character(10, 15, 25, 30, 20, 10, TerryCrews.png)
 JasonStatham = Character(10, 11, 19, 21, 23, 26, JasonStatham.png)
