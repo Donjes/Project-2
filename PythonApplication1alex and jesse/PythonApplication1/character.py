@@ -15,11 +15,11 @@ class characterCard:
         self.dice5 = attack5
         self.dice6 = attack6
 
-TerryCrews = Character(10, 15, 25, 30, 20, 10, "TerryCrews.png")
-JasonStatham = Character(10, 11, 19, 21, 23, 26, "JasonStatham.png")
-WesleySniper = Character(30, 14, 14, 20, 18, 14, "WesleySniper.png")
-JetRi = Character(10, 30, 12, 25, 10, 23, "JetRi.png")
-StevenSeagal = Character(27, 15, 12, 11, 25, 20, "StevenSeagal.png")
-SuperMario = Character(10, 10, 30, 30, 15, 15, "SuperMario.png")
-JackieChan = Character(20, 25, 5, 25, 20, 15, "JackieChan.png")
-ChackNorris = Character(10, 26, 25, 24, 24, 1, "ChackNorris.png")
+TerryCrews = Character(10, 15, 25, 30, 20, 10, "images/TerryCrews.png")
+JasonStatham = Character(10, 11, 19, 21, 23, 26, "images/JasonStatham.png")
+WesleySniper = Character(30, 14, 14, 20, 18, 14, "images/WesleySniper.png")
+JetRi = Character(10, 30, 12, 25, 10, 23, "images/JetRi.png")
+StevenSeagal = Character(27, 15, 12, 11, 25, 20, "images/StevenSeagal.png")
+SuperMario = Character(10, 10, 30, 30, 15, 15, "images/SuperMario.png")
+JackieChan = Character(20, 25, 5, 25, 20, 15, "images/JackieChan.png")
+ChackNorris = Character(10, 26, 25, 24, 24, 1, "images/ChackNorris.png")
