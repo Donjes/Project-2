@@ -22,19 +22,39 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
+    <Compile Include="character.py" />
+    <Compile Include="Dice.py" />
     <Compile Include="Game.py" />
+    <Compile Include="Gametile.py" />
     <Compile Include="Node.py" />
   </ItemGroup>
   <ItemGroup>
+    <Folder Include=".idea\" />
     <Folder Include="images\" />
     <Folder Include="sounds\" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include=".idea\misc.xml" />
+    <Content Include=".idea\modules.xml" />
+    <Content Include=".idea\PythonApplication1.iml" />
+    <Content Include=".idea\vcs.xml" />
+    <Content Include=".idea\workspace.xml" />
+    <Content Include="images\blue_handschoen.png" />
+    <Content Include="images\Dice1.png" />
+    <Content Include="images\Dice2.png" />
+    <Content Include="images\Dice3.png" />
+    <Content Include="images\Dice4.png" />
+    <Content Include="images\Dice5.png" />
+    <Content Include="images\Dice6.png" />
+    <Content Include="images\green_handschoen.png" />
     <Content Include="images\handschoen.png" />
+    <Content Include="images\playermenu.png" />
+    <Content Include="images\red_handschoen.png" />
     <Content Include="images\rules.png" />
     <Content Include="images\speelveld.png" />
     <Content Include="images\startscherm.png" />
     <Content Include="images\startscherm2.png" />
+    <Content Include="images\yellow_handschoen.png" />
     <Content Include="sounds\punch_sound.mp3" />
   </ItemGroup>
   <PropertyGroup>
