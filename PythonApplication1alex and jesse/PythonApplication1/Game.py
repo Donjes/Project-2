@@ -92,11 +92,13 @@ def StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashe
                     screen_index = 1
                 if menu_index == 0 and event.key == pygame.K_SPACE:
                     screen_index = 2
+                    start = x,y= 100,650
+                    rules = x,y= 200,650
+                    exit = x,y= 300,650
+                    menulist = [start,rules,exit]
 
 
         if screen_index == 1:   #rules
-            size = width, height = 700, 650
-            gameDisplay = pygame.display.set_mode(size)
             screen = screenlist[screen_index]
             rect = rectlist[screen_index]
             if event.type == pygame.KEYDOWN:
@@ -107,7 +109,7 @@ def StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashe
     return screen, rect, button, screen_index, menu_index, crashed
 
 
-def PlayerScreen(screenlist, rectlist,crashed):
+def PlayerScreen(screenlist, rectlist,crashed, button,menulist):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             crashed = True                  #programma sluit af met rode X
@@ -115,7 +117,12 @@ def PlayerScreen(screenlist, rectlist,crashed):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 sound_play(punch_sound)
-    return screenlist,rectlist,crashed
+    size = width, height = 750, 780
+    gameDisplay = pygame.display.set_mode(size)
+
+    return screenlist,rectlist,crashed, button
+
+
 while not crashed:
     gameDisplay.fill(white)  #startscherm.png linksboven weergegeven
     if screen_index == 0 or screen_index == 1:
@@ -124,7 +131,7 @@ while not crashed:
         screen_update(screen, rect)
         glove_update(button, screen_index)                                   #hier word button meegegeven aan glove_update
     elif screen_index == 2:
-        screen, rect ,crashed= PlayerScreen(character_screen,character_screen_rect,crashed)
+        screen, rect ,crashed, button = PlayerScreen(character_screen,character_screen_rect,crashed, button,menulist)
         screen_update(screen, rect)
         glove_update(button, screen_index)
     # small_glove(navi)
