@@ -43,7 +43,7 @@ menulist = [start, rules, exit] #lijst van de buttons
 menu_index = 0                           #startwaarde = start
             #index van de lijst
 functionslist = [0, 1]
-f = 0   #functionslist index
+functions_index = 0   #functionslist index
 
 def glove_update(button,m):                   #geeft handschoen.png weer
     if m == 0:           #standard vector
@@ -58,7 +58,7 @@ def screen_update(screen,rect):
 def sound_play(punch_sound):
     pygame.mixer.music.play(0)
 
-def StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashed, punch_sound):
+def StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashed, punch_sound, functions_index):
     rect = rectlist[screen_index]
     screen = screenlist[screen_index]
     button = menulist[menu_index]
@@ -89,7 +89,7 @@ def StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashe
                     screen_index = 1
                 if menu_index == 0 and event.key == pygame.K_SPACE:
                     screen_index = 2
-                    f += 1
+                    functions_index += 1
 
         if screen_index == 1:   #rules
             size = width, height = 700, 650
@@ -101,15 +101,15 @@ def StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashe
                     screen_index = 0
                     button = menulist[1]
 
-    return screen, rect, button, screen_index, menu_index, crashed
+    return screen, rect, button, screen_index, menu_index, crashed, functions_index
 
 while not crashed:
     
     
 
     gameDisplay.fill(white)  #startscherm.png linksboven weergegeven
-    screen, rect, button, screen_index, menu_index, crashed= StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashed, punch_sound)
-    if f == 0:
+    screen, rect, button, screen_index, menu_index, crashed, functions_index= StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashed, punch_sound, functions_index)
+    if functions_index == 0:
         screen_update(screen, rect)
     glove_update(button, screen_index)                                   #hier word button meegegeven aan glove_update
 
