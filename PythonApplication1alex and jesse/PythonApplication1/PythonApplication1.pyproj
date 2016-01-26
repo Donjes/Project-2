@@ -22,7 +22,7 @@
     <EnableUnmanagedDebugging>false</EnableUnmanagedDebugging>
   </PropertyGroup>
   <ItemGroup>
-    <Compile Include="character.py" />
+    <Compile Include="Character.py" />
     <Compile Include="Dice.py" />
     <Compile Include="Game.py" />
     <Compile Include="Gametile.py" />
@@ -48,12 +48,19 @@
     <Content Include="images\Dice6.png" />
     <Content Include="images\green_handschoen.png" />
     <Content Include="images\handschoen.png" />
+    <Content Include="images\JackieChan.png" />
+    <Content Include="images\JasonStatham.png" />
+    <Content Include="images\JetRi.png" />
     <Content Include="images\playermenu.png" />
     <Content Include="images\red_handschoen.png" />
     <Content Include="images\rules.png" />
     <Content Include="images\speelveld.png" />
     <Content Include="images\startscherm.png" />
     <Content Include="images\startscherm2.png" />
+    <Content Include="images\StevenSeagal.png" />
+    <Content Include="images\SuperMario.png" />
+    <Content Include="images\TerryCrews.png" />
+    <Content Include="images\WesleySniper.png" />
     <Content Include="images\yellow_handschoen.png" />
     <Content Include="sounds\punch_sound.mp3" />
   </ItemGroup>
