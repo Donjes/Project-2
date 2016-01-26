@@ -45,7 +45,7 @@ i = 0                           #startwaarde = start
             #index van de lijst
 
 def glove_update(button,m):                   #geeft handschoen.png weer
-    if m ==0:           #standard vector
+    if m == 0:           #standard vector
         gameDisplay.blit(gloveImg,(button))
 
 # def small_glove(navi):                  #3Ruben handschoen over board functie
