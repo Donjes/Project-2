@@ -47,8 +47,10 @@ menu_index = 0                           #startwaarde = start
             #index van de lijst
 
 
-def glove_update(button,m):                   #geeft handschoen.png weer
-    if m == 0:           #standard vector
+def glove_update(button, screen_index):                   #geeft handschoen.png weer
+    if screen_index == 0:           #standard vector
+        gameDisplay.blit(big_glove,(button))
+    elif screen_index == 2:
         gameDisplay.blit(big_glove,(button))
 
 # def small_glove(navi):                  #3Ruben handschoen over board functie
@@ -124,7 +126,7 @@ while not crashed:
     elif screen_index == 2:
         screen, rect ,crashed= PlayerScreen(character_screen,character_screen_rect,crashed)
         screen_update(screen, rect)
-    #     glove_update(button, screen_index)
+        glove_update(button, screen_index)
     # small_glove(navi)
     pygame.display.update()
     clock.tick(60)
