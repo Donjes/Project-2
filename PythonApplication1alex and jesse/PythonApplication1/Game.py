@@ -103,7 +103,8 @@ def StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashe
 
     return screen, rect, button, screen_index, menu_index, crashed, functions_index
 
-# def Playerscreen:
+
+#def PlayerScreen():
 
 while not crashed:
     gameDisplay.fill(white)  #startscherm.png linksboven weergegeven
@@ -114,6 +115,7 @@ while not crashed:
         glove_update(button, screen_index)                                   #hier word button meegegeven aan glove_update
     # elif screen_index == 2:
     #     PlayerScreen
+
     # small_glove(navi)
     pygame.display.update()
     clock.tick(60)
