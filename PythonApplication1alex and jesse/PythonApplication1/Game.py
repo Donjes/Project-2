@@ -15,9 +15,12 @@ clock = pygame.time.Clock()
 startup_screen = pygame.image.load("images/startscherm2.png")
 rules_screen = pygame.image.load("images/rules.png")
 character_screen = pygame.image.load("images/playermenu.png")
-gloveImg = pygame.image.load("images/handschoen.png")
 punch_sound = pygame.mixer.music.load("sounds/punch_sound.mp3")
-# gloveSmall = pygame.image.load("images/red_handschoen.png")
+big_glove = pygame.image.load("images/handschoen.png")
+red_glove = pygame.image.load("images/red_handschoen.png")
+green_glove = pygame.image.load("images/green_handschoen.png")
+yellow_glove = pygame.image.load("images/yellow_handschoen.png")
+blue_glove = pygame.image.load("images/blue_handschoen.png")
 
 startup_screen_rect = startup_screen.get_rect()                 #start at top left
 rules_screen_rect = startup_screen.get_rect()
@@ -46,7 +49,7 @@ menu_index = 0                           #startwaarde = start
 
 def glove_update(button,m):                   #geeft handschoen.png weer
     if m == 0:           #standard vector
-        gameDisplay.blit(gloveImg,(button))
+        gameDisplay.blit(big_glove,(button))
 
 # def small_glove(navi):                  #3Ruben handschoen over board functie
 #     gameDisplay.blit(gloveSmall,navi)
