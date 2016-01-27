@@ -39,7 +39,7 @@ start = x, y = 70, 150 #coordinates glove --> start
 rules = x, y = 70, 250 #coordinates glove --> rules
 exit = x, y = 350, 520 #coordinates glove --> exit
 navi = (-100,-100) #1Ruben speler kleine handschoen word buiten beeld neer gezet
-
+character_index = 0
 crashed = False
 
 
@@ -130,7 +130,7 @@ def RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b):#b =
                     button = menulist[1]
     return screen, rect, screen_index, menu_index, crashed
         
-def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
+def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index,character_index):
     start = x, y = 0, 650
     rules = x, y = 225, 650
     exit = x, y = 450, 650
@@ -143,7 +143,7 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
     Wesley = x,y = 500, 130
     Terry = x,y = 500, 130
     characterlist = [ Jet, Mario, Chack,  Jackie,  Jason, Steven, Wesley, Terry]
-    character_index = 0
+
     char_button = characterlist[character_index]
     menulist = [start, rules, exit] #lijst van de buttons
     button = menulist[menu_index]
@@ -172,18 +172,18 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
 
             if event.key == pygame.K_DOWN:
                 character_index += 1
-                if character_index > 8:
+                if character_index > 7:
                     character_index = 0
             if event.key == pygame.K_UP:
                 character_index -= 1
                 if character_index < 0:
-                    character_index = 8
+                    character_index = 7
     b = 2
 
     size = width, height = 750, 780
     gameDisplay = pygame.display.set_mode(size)
 
-    return screen, rect, crashed, button, menu_index, screen_index, b, char_button
+    return screen, rect, crashed, button, menu_index, screen_index, b, char_button, character_index
 
 
 while not crashed:
@@ -199,8 +199,8 @@ while not crashed:
         screen_update(screen, rect)
         glove_update(button, screen_index)
     elif screen_index == 2:#character
-        screen, rect ,crashed, button, menu_index, screen_index, b, char_button = \
-        PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index)
+        screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index = \
+        PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index,character_index)
         screen_update(screen, rect)
         glove_update(button, screen_index)
         character_glove(char_button)
