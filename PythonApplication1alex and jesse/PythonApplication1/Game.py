@@ -52,11 +52,11 @@ def glove_update(button, screen_index):                   #geeft handschoen.png 
         gameDisplay.blit(big_glove,(button))
     elif screen_index == 2:
         gameDisplay.blit(big_glove,(button))
-        char_button = button
-        gameDisplay.blit(red_glove,(char_button))
 
-# def small_glove(navi):                  #3Ruben handschoen over board functie
-#     gameDisplay.blit(gloveSmall,navi)
+
+
+def character_glove(char_button):
+    gameDisplay.blit(red_glove,(char_button))
 
 def screen_update(screen,rect):
     gameDisplay.blit(screen,(rect))
@@ -101,7 +101,7 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_s
                 if menu_index == 0 and event.key == pygame.K_SPACE:
                     screen_index = 2
     b = 0
-    return screen, rect, button, screen_index, menu_index, crashed,b
+    return screen, rect, button, screen_index, menu_index, crashed, b
 
 def RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b):#b = ref van backspace screen
         
@@ -134,15 +134,15 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
     start = x, y = 0, 650
     rules = x, y = 225, 650
     exit = x, y = 450, 650
-    Terry = x,y = 400, 50
-    Jason = x,y = 400, 90
-    Wesley = x,y = 400, 130
-    Jet = x,y = 400, 170
-    Steven = x,y = 500, 50 
-    Mario = x,y = 500, 90
-    Jackie = x,y = 500, 130
-    Chack = x,y = 500, 130
-    characterlist = [Terry, Jason, Wesley, Jet, Steven, Mario, Jackie, Chack]
+    Jet = x,y = 450, 100
+    Mario = x,y = 400, 90
+    Chack = x,y = 400, 130
+    Jackie = x,y = 400, 170
+    Jason = x,y = 500, 50
+    Steven = x,y = 500, 90
+    Wesley = x,y = 500, 130
+    Terry = x,y = 500, 130
+    characterlist = [ Jet, Mario, Chack,  Jackie,  Jason, Steven, Wesley, Terry]
     character_index = 0
     char_button = characterlist[character_index]
     menulist = [start, rules, exit] #lijst van de buttons
@@ -169,6 +169,7 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
                 screen_index = 1
             #if menu_index == 0 and event.key == pygame.K_SPACE:
                 #screen_index == 0
+
             if event.key == pygame.K_DOWN:
                 character_index += 1
                 if character_index > 8:
@@ -187,22 +188,22 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
 
 while not crashed:
     gameDisplay.fill(white)  #startscherm.png linksboven weergegeven
-    if screen_index == 0:
+    if screen_index == 0:#start
         screen, rect, button, screen_index, menu_index, crashed, b = \
         StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound)
         screen_update(screen, rect)
         glove_update(button, screen_index)                         #hier word button meegegeven aan glove_update
-    elif screen_index == 1:
+    elif screen_index == 1:#rules
         screen, rect,screen_index, menu_index, crashed = \
         RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b)
         screen_update(screen, rect)
         glove_update(button, screen_index)
-    elif screen_index == 2:
+    elif screen_index == 2:#character
         screen, rect ,crashed, button, menu_index, screen_index, b, char_button = \
         PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index)
         screen_update(screen, rect)
-        glove_update(button, screen_index,)
-    # small_glove(navi)
+        glove_update(button, screen_index)
+        character_glove(char_button)
     pygame.display.update()
     clock.tick(60)
 
