@@ -42,7 +42,7 @@ navi = (-100,-100) #1Ruben speler kleine handschoen word buiten beeld neer gezet
 
 crashed = False
 
-menulist = [start, rules, exit] #lijst van de buttons
+
 menu_index = 0                           #startwaarde = start
             #index van de lijst
 
@@ -62,7 +62,12 @@ def screen_update(screen,rect):
 def sound_play(punch_sound):
     pygame.mixer.music.play(0)
 
-def StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashed, punch_sound):
+def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound):
+    remove = x, y = -100, - 100
+    start = x, y = 70, 150 #coordinates glove --> start
+    rules = x, y = 70, 250 #coordinates glove --> rules
+    exit = x, y = 350, 520 #coordinates glove --> exit
+    menulist = [start, rules, exit] #lijst van de buttons
     rect = rectlist[screen_index]
     screen = screenlist[screen_index]
     button = menulist[menu_index]
@@ -97,7 +102,6 @@ def StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashe
                     exit = x,y= 300,650
                     menulist = [start,rules,exit]
 
-
         if screen_index == 1:   #rules
             screen = screenlist[screen_index]
             rect = rectlist[screen_index]
@@ -109,7 +113,12 @@ def StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashe
     return screen, rect, button, screen_index, menu_index, crashed
 
 
-def PlayerScreen(screenlist, rectlist,crashed, button,menulist):
+def PlayerScreen(screenlist, rectlist,crashed, button, menu_index):
+    start = x, y = 0, 650
+    rules = x, y = 225, 650
+    exit = x, y = 450, 650
+    menulist = [start, rules, exit] #lijst van de buttons
+    button = menulist[menu_index]
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             crashed = True                  #programma sluit af met rode X
@@ -117,21 +126,29 @@ def PlayerScreen(screenlist, rectlist,crashed, button,menulist):
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 sound_play(punch_sound)
+            if event.key == pygame.K_RIGHT:
+                menu_index += 1
+                if menu_index > 2:
+                    menu_index = 0
+            if event.key == pygame.K_LEFT:
+                menu_index -= 1
+                if menu_index < 0:
+                    menu_index = 2
     size = width, height = 750, 780
     gameDisplay = pygame.display.set_mode(size)
 
-    return screenlist,rectlist,crashed, button
+    return screenlist,rectlist,crashed, button, menu_index
 
 
 while not crashed:
     gameDisplay.fill(white)  #startscherm.png linksboven weergegeven
     if screen_index == 0 or screen_index == 1:
         screen, rect, button, screen_index, menu_index, crashed= \
-        StartScreen(screenlist, rectlist, menulist, screen_index, menu_index, crashed, punch_sound)
+        StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound)
         screen_update(screen, rect)
         glove_update(button, screen_index)                                   #hier word button meegegeven aan glove_update
     elif screen_index == 2:
-        screen, rect ,crashed, button = PlayerScreen(character_screen,character_screen_rect,crashed, button,menulist)
+        screen, rect ,crashed, button, menu_index = PlayerScreen(character_screen, character_screen_rect, crashed, button, menu_index)
         screen_update(screen, rect)
         glove_update(button, screen_index)
     # small_glove(navi)
