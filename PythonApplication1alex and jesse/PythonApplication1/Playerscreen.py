@@ -40,8 +40,8 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index,characte
                 crashed = True
             if menu_index == 1 and event.key == pygame.K_SPACE:
                 screen_index = 1
-            #if menu_index == 0 and event.key == pygame.K_SPACE:
-                #screen_index == 0
+            if menu_index == 0 and event.key == pygame.K_SPACE:
+                screen_index = 3
 
             if event.key == pygame.K_DOWN:
                 character_index += 1
