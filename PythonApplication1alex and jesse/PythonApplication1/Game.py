@@ -47,12 +47,13 @@ menu_index = 0                           #startwaarde = start
             #index van de lijst
 
 
-def glove_update(button, screen_index, char_button):                   #geeft handschoen.png weer
+def glove_update(button, screen_index):                   #geeft handschoen.png weer
     if screen_index == 0:           #standard vector
         gameDisplay.blit(big_glove,(button))
     elif screen_index == 2:
         gameDisplay.blit(big_glove,(button))
-        gamedisplay.blit(red_glove,(char_button))
+        char_button = button
+        gameDisplay.blit(red_glove,(char_button))
 
 # def small_glove(navi):                  #3Ruben handschoen over board functie
 #     gameDisplay.blit(gloveSmall,navi)
@@ -181,7 +182,7 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
     size = width, height = 750, 780
     gameDisplay = pygame.display.set_mode(size)
 
-    return screen, rect, crashed, button, menu_index, screen_index, b, small_glove
+    return screen, rect, crashed, button, menu_index, screen_index, b, char_button
 
 
 while not crashed:
@@ -190,17 +191,17 @@ while not crashed:
         screen, rect, button, screen_index, menu_index, crashed, b = \
         StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound)
         screen_update(screen, rect)
-        glove_update(button, screen_index, small_glove)                         #hier word button meegegeven aan glove_update
+        glove_update(button, screen_index)                         #hier word button meegegeven aan glove_update
     elif screen_index == 1:
         screen, rect,screen_index, menu_index, crashed = \
         RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b)
         screen_update(screen, rect)
-        glove_update(button, screen_index, small_glove)
+        glove_update(button, screen_index)
     elif screen_index == 2:
-        screen, rect ,crashed, button, menu_index, screen_index, b = \
+        screen, rect ,crashed, button, menu_index, screen_index, b, char_button = \
         PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index)
         screen_update(screen, rect)
-        glove_update(button, screen_index, small_glove)
+        glove_update(button, screen_index,)
     # small_glove(navi)
     pygame.display.update()
     clock.tick(60)
