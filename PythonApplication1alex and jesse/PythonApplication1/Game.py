@@ -1,7 +1,7 @@
 ﻿import pygame
 import time
-#from Node import *
-
+from Playerscreen import *
+from Rulesscreen import *
 pygame.init()
 
 size = width, height = 700, 650
@@ -103,87 +103,8 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_s
     b = 0
     return screen, rect, button, screen_index, menu_index, crashed, b
 
-def RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b):#b = ref van backspace screen
+
         
-    rect = rectlist[screen_index]
-    screen = screenlist[screen_index]
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            crashed = True
-        if b == 0:
-            start = x, y = 70, 150 #coordinates glove --> start
-            rules = x, y = 70, 250 #coordinates glove --> rules
-            exit = x, y = 350, 520
-            menulist = [start, rules, exit]
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_BACKSPACE:
-                    screen_index = 0
-                    button = menulist[1]     
-        if b == 2:   #rules
-            start = x, y = 0, 650
-            rules = x, y = 225, 650
-            exit = x, y = 450, 650
-            menulist = [start, rules, exit]
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_BACKSPACE:
-                    screen_index = 2
-                    button = menulist[1]
-    return screen, rect, screen_index, menu_index, crashed
-        
-def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index,character_index):
-    start = x, y = 0, 650
-    rules = x, y = 225, 650
-    exit = x, y = 450, 650
-    Jet = x,y = 450, 145
-    Mario = x,y = 450, 235
-    Chack = x,y = 450, 325
-    Jackie = x,y = 450, 415
-    Jason = x,y = 560, 145
-    Steven = x,y = 560, 235
-    Wesley = x,y = 560, 325
-    Terry = x,y = 560, 415
-    characterlist = [ Jet, Mario, Chack,  Jackie,  Jason, Steven, Wesley, Terry]
-
-    char_button = characterlist[character_index]
-    menulist = [start, rules, exit] #lijst van de buttons
-    button = menulist[menu_index]
-    rect = rectlist[screen_index]
-    screen = screenlist[screen_index]
-    for event in pygame.event.get():
-        if event.type == pygame.QUIT:
-            crashed = True                  #programma sluit af met rode X
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                sound_play(punch_sound)
-            if event.key == pygame.K_RIGHT:
-                menu_index += 1
-                if menu_index > 2:
-                    menu_index = 0
-            if event.key == pygame.K_LEFT:
-                menu_index -= 1
-                if menu_index < 0:
-                    menu_index = 2
-            if menu_index == 2 and event.key == pygame.K_SPACE:
-                crashed = True
-            if menu_index == 1 and event.key == pygame.K_SPACE:
-                screen_index = 1
-            #if menu_index == 0 and event.key == pygame.K_SPACE:
-                #screen_index == 0
-
-            if event.key == pygame.K_DOWN:
-                character_index += 1
-                if character_index > 7:
-                    character_index = 0
-            if event.key == pygame.K_UP:
-                character_index -= 1
-                if character_index < 0:
-                    character_index = 7
-    b = 2
-
-    size = width, height = 750, 780
-    gameDisplay = pygame.display.set_mode(size)
-
-    return screen, rect, crashed, button, menu_index, screen_index, b, char_button, character_index
 
 
 while not crashed:
@@ -200,7 +121,7 @@ while not crashed:
         glove_update(button, screen_index)
     elif screen_index == 2:#character
         screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index = \
-        PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index,character_index)
+        PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index,character_index,punch_sound)
         screen_update(screen, rect)
         glove_update(button, screen_index)
         character_glove(char_button)

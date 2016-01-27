@@ -27,6 +27,8 @@
     <Compile Include="Game.py" />
     <Compile Include="Gametile.py" />
     <Compile Include="Node.py" />
+    <Compile Include="Playerscreen.py" />
+    <Compile Include="Rulesscreen.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".idea\" />
