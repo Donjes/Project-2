@@ -63,7 +63,7 @@ def sound_play(punch_sound):
     pygame.mixer.music.play(0)
 
 def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound):
-    remove = x, y = -100, - 100
+
     start = x, y = 70, 150 #coordinates glove --> start
     rules = x, y = 70, 250 #coordinates glove --> rules
     exit = x, y = 350, 520 #coordinates glove --> exit
@@ -98,10 +98,10 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_s
                     screen_index = 1
                 if menu_index == 0 and event.key == pygame.K_SPACE:
                     screen_index = 2
-        x = 0
-    return screen, rect, button, screen_index, menu_index, crashed
+    b = 0
+    return screen, rect, button, screen_index, menu_index, crashed,b
 
-def RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b):
+def RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b):#b = ref van backspace screen
         
     rect = rectlist[screen_index]
     screen = screenlist[screen_index]
@@ -158,7 +158,7 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
                 screen_index = 1
             #if menu_index == 0 and event.key == pygame.K_SPACE:
                 #screen_index == 0
-        b = 2
+    b = 2
 
     size = width, height = 750, 780
     gameDisplay = pygame.display.set_mode(size)
@@ -172,7 +172,7 @@ while not crashed:
         screen, rect, button, screen_index, menu_index, crashed, b = \
         StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound)
         screen_update(screen, rect)
-        glove_update(button, screen_index)                                   #hier word button meegegeven aan glove_update
+        glove_update(button, screen_index)                         #hier word button meegegeven aan glove_update
     elif screen_index == 1:
         screen, rect,screen_index, menu_index, crashed = \
         RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b)
