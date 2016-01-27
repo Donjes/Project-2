@@ -25,6 +25,7 @@
     <Compile Include="Character.py" />
     <Compile Include="Dice.py" />
     <Compile Include="Game.py" />
+    <Compile Include="Gameboard.py" />
     <Compile Include="Gametile.py" />
     <Compile Include="Node.py" />
     <Compile Include="Playerscreen.py" />

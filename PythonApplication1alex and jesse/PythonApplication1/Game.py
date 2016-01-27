@@ -104,9 +104,6 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_s
     return screen, rect, button, screen_index, menu_index, crashed, b
 
 
-        
-
-
 while not crashed:
     gameDisplay.fill(white)  #startscherm.png linksboven weergegeven
     if screen_index == 0:#start
@@ -125,6 +122,9 @@ while not crashed:
         screen_update(screen, rect)
         glove_update(button, screen_index)
         character_glove(char_button)
+    elif screen_index == 3:
+        #hier moet Gameboard() komen
+        pass
     pygame.display.update()
     clock.tick(60)
 
