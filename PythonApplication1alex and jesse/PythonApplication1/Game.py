@@ -91,34 +91,52 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_s
                     menu_index -= 1                      #index - 1
                     if menu_index < 0:
                         menu_index = 2                   #na start button = exit
-                if event.key == pygame.K_SPACE and menu_index == 2:
+                
+                if menu_index == 2 and event.key == pygame.K_SPACE:
                     crashed = True
                 if menu_index == 1 and event.key == pygame.K_SPACE:
                     screen_index = 1
                 if menu_index == 0 and event.key == pygame.K_SPACE:
                     screen_index = 2
-                    start = x,y= 100,650
-                    rules = x,y= 200,650
-                    exit = x,y= 300,650
-                    menulist = [start,rules,exit]
+        x = 0
+    return screen, rect, button, screen_index, menu_index, crashed
 
-        if screen_index == 1:   #rules
-            screen = screenlist[screen_index]
-            rect = rectlist[screen_index]
+def RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b):
+        
+    rect = rectlist[screen_index]
+    screen = screenlist[screen_index]
+    for event in pygame.event.get():
+        if event.type == pygame.QUIT:
+            crashed = True
+        if b == 0:
+            remove = x, y = -100, - 100
+            start = x, y = 70, 150 #coordinates glove --> start
+            rules = x, y = 70, 250 #coordinates glove --> rules
+            exit = x, y = 350, 520
+            menulist = [start, rules, exit]
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_BACKSPACE:
                     screen_index = 0
+                    button = menulist[1]     
+        if b == 2:   #rules
+            start = x, y = 0, 650
+            rules = x, y = 225, 650
+            exit = x, y = 450, 650
+            menulist = [start, rules, exit]
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_BACKSPACE:
+                    screen_index = 2
                     button = menulist[1]
-
-    return screen, rect, button, screen_index, menu_index, crashed
-
-
-def PlayerScreen(screenlist, rectlist,crashed, button, menu_index):
+    return screen, rect, screen_index, menu_index, crashed
+        
+def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
     start = x, y = 0, 650
     rules = x, y = 225, 650
     exit = x, y = 450, 650
     menulist = [start, rules, exit] #lijst van de buttons
     button = menulist[menu_index]
+    rect = rectlist[screen_index]
+    screen = screenlist[screen_index]
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             crashed = True                  #programma sluit af met rode X
@@ -134,21 +152,35 @@ def PlayerScreen(screenlist, rectlist,crashed, button, menu_index):
                 menu_index -= 1
                 if menu_index < 0:
                     menu_index = 2
+            if menu_index == 2 and event.key == pygame.K_SPACE:
+                crashed = True
+            if menu_index == 1 and event.key == pygame.K_SPACE:
+                screen_index = 1
+            #if menu_index == 0 and event.key == pygame.K_SPACE:
+                #screen_index == 0
+        b = 2
+
     size = width, height = 750, 780
     gameDisplay = pygame.display.set_mode(size)
 
-    return screenlist,rectlist,crashed, button, menu_index
+    return screen, rect, crashed, button, menu_index, screen_index, b
 
 
 while not crashed:
     gameDisplay.fill(white)  #startscherm.png linksboven weergegeven
-    if screen_index == 0 or screen_index == 1:
-        screen, rect, button, screen_index, menu_index, crashed= \
+    if screen_index == 0:
+        screen, rect, button, screen_index, menu_index, crashed, b = \
         StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound)
         screen_update(screen, rect)
         glove_update(button, screen_index)                                   #hier word button meegegeven aan glove_update
+    elif screen_index == 1:
+        screen, rect,screen_index, menu_index, crashed = \
+        RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b)
+        screen_update(screen, rect)
+        glove_update(button, screen_index)
     elif screen_index == 2:
-        screen, rect ,crashed, button, menu_index = PlayerScreen(character_screen, character_screen_rect, crashed, button, menu_index)
+        screen, rect ,crashed, button, menu_index, screen_index, b = \
+        PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index)
         screen_update(screen, rect)
         glove_update(button, screen_index)
     # small_glove(navi)
