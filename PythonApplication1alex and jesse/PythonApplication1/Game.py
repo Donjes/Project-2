@@ -134,14 +134,14 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index,characte
     start = x, y = 0, 650
     rules = x, y = 225, 650
     exit = x, y = 450, 650
-    Jet = x,y = 450, 100
-    Mario = x,y = 400, 90
-    Chack = x,y = 400, 130
-    Jackie = x,y = 400, 170
-    Jason = x,y = 500, 50
-    Steven = x,y = 500, 90
-    Wesley = x,y = 500, 130
-    Terry = x,y = 500, 130
+    Jet = x,y = 450, 145
+    Mario = x,y = 450, 235
+    Chack = x,y = 450, 325
+    Jackie = x,y = 450, 415
+    Jason = x,y = 560, 145
+    Steven = x,y = 560, 235
+    Wesley = x,y = 560, 325
+    Terry = x,y = 560, 415
     characterlist = [ Jet, Mario, Chack,  Jackie,  Jason, Steven, Wesley, Terry]
 
     char_button = characterlist[character_index]
