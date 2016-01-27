@@ -22,9 +22,13 @@ navi2 = (20,20)
 navi3 = (575,590)
 navi4 = (20,590)
 gloveSmall1 = "images/red_handschoen.png"
+gloveSmall1move = "images/red_handschoen1.png"
 gloveSmall2 = "images/blue_handschoen.png"
+gloveSmall2move = "images/blue_handschoen1.png"
 gloveSmall3 = "images/green_handschoen.png"
+gloveSmall3move = "images/green_handschoen1.png"
 gloveSmall4 = "images/yellow_handschoen.png"
+gloveSmall4move = "images/yellow_handschoen1.png"
 gameDisplay = pygame.display.set_mode((width,height))
 pygame.display.set_caption('Survivor')
 clock = pygame.time.Clock()
@@ -56,7 +60,7 @@ while True:
                         for i in range(roll[0]):
                             tile1 += 1 
                             navi1 = navigate[tile1%40]
-                            small_glove(gloveSmall1,navi1)    
+                            small_glove(gloveSmall1move,navi1)    
                             pygame.display.update()
                             time.sleep(0.1)
                             print("plus")  
@@ -72,7 +76,7 @@ while True:
                         for i in range(roll[0]):
                             tile2 += 1 
                             navi2 = navigate[tile2%40]
-                            small_glove(gloveSmall2,navi2)    
+                            small_glove(gloveSmall2move,navi2)    
                             pygame.display.update()
                             time.sleep(0.1)
                             print("plus")    
@@ -87,7 +91,7 @@ while True:
                         for i in range(roll[0]):
                             tile3 += 1 
                             navi3 = navigate[tile3%40]
-                            small_glove(gloveSmall3,navi3)    
+                            small_glove(gloveSmall3move,navi3)    
                             pygame.display.update()
                             time.sleep(0.1)
                             print("plus")    
@@ -102,7 +106,7 @@ while True:
                         for i in range(roll[0]):
                             tile4 += 1 
                             navi4 = navigate[tile4%40]
-                            small_glove(gloveSmall4,navi4)    
+                            small_glove(gloveSmall4move,navi4)    
                             pygame.display.update()
                             time.sleep(0.1)
                             print("plus")    
