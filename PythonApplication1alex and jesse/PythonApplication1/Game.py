@@ -47,11 +47,12 @@ menu_index = 0                           #startwaarde = start
             #index van de lijst
 
 
-def glove_update(button, screen_index):                   #geeft handschoen.png weer
+def glove_update(button, screen_index, char_button):                   #geeft handschoen.png weer
     if screen_index == 0:           #standard vector
         gameDisplay.blit(big_glove,(button))
     elif screen_index == 2:
         gameDisplay.blit(big_glove,(button))
+        gamedisplay.blit(red_glove,(char_button))
 
 # def small_glove(navi):                  #3Ruben handschoen over board functie
 #     gameDisplay.blit(gloveSmall,navi)
@@ -109,7 +110,6 @@ def RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b):#b =
         if event.type == pygame.QUIT:
             crashed = True
         if b == 0:
-            remove = x, y = -100, - 100
             start = x, y = 70, 150 #coordinates glove --> start
             rules = x, y = 70, 250 #coordinates glove --> rules
             exit = x, y = 350, 520
@@ -133,6 +133,17 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
     start = x, y = 0, 650
     rules = x, y = 225, 650
     exit = x, y = 450, 650
+    Terry = x,y = 400, 50
+    Jason = x,y = 400, 90
+    Wesley = x,y = 400, 130
+    Jet = x,y = 400, 170
+    Steven = x,y = 500, 50 
+    Mario = x,y = 500, 90
+    Jackie = x,y = 500, 130
+    Chack = x,y = 500, 130
+    characterlist = [Terry, Jason, Wesley, Jet, Steven, Mario, Jackie, Chack]
+    character_index = 0
+    char_button = characterlist[character_index]
     menulist = [start, rules, exit] #lijst van de buttons
     button = menulist[menu_index]
     rect = rectlist[screen_index]
@@ -140,7 +151,6 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             crashed = True                  #programma sluit af met rode X
-
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
                 sound_play(punch_sound)
@@ -158,12 +168,20 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index):
                 screen_index = 1
             #if menu_index == 0 and event.key == pygame.K_SPACE:
                 #screen_index == 0
+            if event.key == pygame.K_DOWN:
+                character_index += 1
+                if character_index > 8:
+                    character_index = 0
+            if event.key == pygame.K_UP:
+                character_index -= 1
+                if character_index < 0:
+                    character_index = 8
     b = 2
 
     size = width, height = 750, 780
     gameDisplay = pygame.display.set_mode(size)
 
-    return screen, rect, crashed, button, menu_index, screen_index, b
+    return screen, rect, crashed, button, menu_index, screen_index, b, small_glove
 
 
 while not crashed:
@@ -172,17 +190,17 @@ while not crashed:
         screen, rect, button, screen_index, menu_index, crashed, b = \
         StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound)
         screen_update(screen, rect)
-        glove_update(button, screen_index)                         #hier word button meegegeven aan glove_update
+        glove_update(button, screen_index, small_glove)                         #hier word button meegegeven aan glove_update
     elif screen_index == 1:
         screen, rect,screen_index, menu_index, crashed = \
         RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b)
         screen_update(screen, rect)
-        glove_update(button, screen_index)
+        glove_update(button, screen_index, small_glove)
     elif screen_index == 2:
         screen, rect ,crashed, button, menu_index, screen_index, b = \
         PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index)
         screen_update(screen, rect)
-        glove_update(button, screen_index)
+        glove_update(button, screen_index, small_glove)
     # small_glove(navi)
     pygame.display.update()
     clock.tick(60)
