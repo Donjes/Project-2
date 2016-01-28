@@ -2,11 +2,7 @@
 import pygame
 from character import *
 
-v1 = (100, 85)
-v2 = (100, 215)
-v3 = (100, 345)
-v4 = (100, 475)
-vectorlist = [v1, v2, v3, v4]
+
 
 
 
@@ -17,6 +13,8 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index,characte
     start = x, y = 0, 650
     rules = x, y = 225, 650
     exit = x, y = 450, 650
+
+
 
     Jet = x,y = 450, 145
     Mario = x,y = 450, 235
@@ -65,47 +63,47 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index,characte
             skip = False
             size = width, height = 700, 650
             gameDisplay = pygame.display.set_mode((width,height))
-            pics = []
+
             for i in range(0,4):
                 if event.key == pygame.K_RETURN and char_button == characterlist[0] and not skip:
                     name = playerNames[i]
                     JetRi = Player(name,"images/JetRi.png",10,30,12,25,10,23)
-                    pics.append(JetRi.texture)
+
                     skip = True
                 elif event.key == pygame.K_RETURN and char_button == characterlist[1] and not skip:
                     name = playerNames[i]
                     SuperMario = Player(name,"images/SuperMario.png",10,10,30,30,15,15)
-                    pics.append(SuperMario.texture)
+
                     skip = True
                 elif event.key == pygame.K_RETURN and char_button == characterlist[2] and not skip:
                     name = playerNames[i]
                     ChackNorris = Player(name,"images/ChackNorris.png",10,26,25,24,24,1)
-                    pics.append(ChackNorris.texture)
+
                     skip = True
                 elif event.key == pygame.K_RETURN and char_button == characterlist[3] and not skip:
                     name = playerNames[i]
                     JackieChan = Player(name,"images/JackieChan.png",20,25,5,25,20,15)
-                    pics.append(JackieChan.texture)
+
                     skip = True
                 elif event.key == pygame.K_RETURN and char_button == characterlist[4] and not skip:
                     name = playerNames[i]
                     JasonStatham = Player(name,"images/JasonStatham.png",10,11,19,21,23,26)
-                    pics.append(JasonStatham.texture)
+
                     skip = True
                 elif event.key == pygame.K_RETURN and char_button == characterlist[5] and not skip:
                     name = playerNames[i]
                     StevenSeagal = Player(name,"images/StevenSeagal.png",27,15,12,11,25,20)
-                    pics.append(StevenSeagal.texture)
+
                     skip = True
                 elif event.key == pygame.K_RETURN and char_button == characterlist[6] and not skip:
                     name = playerNames[i]
                     WesleySniper = Player(name,"images/WesleySniper.png",30,14,14,20,18,14)
-                    pics.append(WesleySniper.texture)
+
                     skip = True
                 elif event.key == pygame.K_RETURN and char_button == characterlist[7] and not skip:
                     name = playerNames[i]
                     TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
-                    pics.append(TerryCrews.texture)
+
                     skip = True
 
 
@@ -116,4 +114,4 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index,characte
     size = width, height = 750, 780
     gameDisplay = pygame.display.set_mode(size)
 
-    return screen, rect, crashed, button, menu_index, screen_index, b, char_button, character_index, pics
+    return screen, rect, crashed, button, menu_index, screen_index, b, char_button, character_index

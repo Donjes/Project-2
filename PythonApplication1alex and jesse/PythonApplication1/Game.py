@@ -23,6 +23,14 @@ red_glove = pygame.image.load("images/red_handschoen.png")
 green_glove = pygame.image.load("images/green_handschoen.png")
 yellow_glove = pygame.image.load("images/yellow_handschoen.png")
 blue_glove = pygame.image.load("images/blue_handschoen.png")
+# imgTerry = pygame.image.load("images/TerryCrews.png")
+# imgJason = pygame.image.load("images/JasonStatham.png")
+# imgWesley = pygame.image.load("images/WesleySniper.png")
+# imgJet = pygame.image.load("images/JetRi.png")
+# imgSteven = pygame.image.load("images/StevenSeagal.png")
+# imgMario = pygame.image.load("images/SuperMario.png")
+# imgJackie = pygame.image.load("images/JackieChan.png")
+# imgChack = pygame.image.load("images/ChackNorris.png")
 
 startup_screen_rect = startup_screen.get_rect()                 #start at top left
 rules_screen_rect = startup_screen.get_rect()
@@ -45,9 +53,16 @@ character_index = 0
 crashed = False
 
 menu_index = 0                           #startwaarde = start
+pics = []
+
+v1 = (100, 85)
+v2 = (100, 215)
+v3 = (100, 345)
+v4 = (100, 475)
+vectorlist = [v1, v2, v3, v4]
 
 
-# fighters = [TerryCrews, JasonStatham, WesleySniper, JetRi, StevenSeagal, SuperMario, JackieChan, ChackNorris]
+
 
 
 def glove_update(button, screen_index):                   #geeft handschoen.png weer
@@ -120,11 +135,12 @@ while not crashed:
         screen_update(screen, rect)
         glove_update(button, screen_index)
     elif screen_index == 2:#character
-        screen, rect ,crashed, button, menu_index, screen_index, b, char_button, character_index, pics = \
+        screen, rect ,crashed, button, menu_index, screen_index, b, char_button, character_index = \
         PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index,character_index,punch_sound)
         screen_update(screen, rect)
         glove_update(button, screen_index)
         character_glove(char_button)
+
     elif screen_index == 3:
         #hier moet Gameboard() komen
         pass
