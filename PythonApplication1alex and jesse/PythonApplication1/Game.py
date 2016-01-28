@@ -6,6 +6,11 @@ from Gameboard import *
 
 pygame.init()
 
+player1.savePosition = 11
+player2.savePosition = 0
+player3.savePosition= 21
+player4.savePosition = 32
+navi=[(575,20),(20,20),(575,590),(20,590)]
 size = width, height = 700, 650
 tile = 0
 white = (255, 255, 255)
@@ -23,24 +28,27 @@ red_glove = pygame.image.load("images/red_handschoen.png")
 green_glove = pygame.image.load("images/green_handschoen.png")
 yellow_glove = pygame.image.load("images/yellow_handschoen.png")
 blue_glove = pygame.image.load("images/blue_handschoen.png")
+board_screen = pygame.image.load("images/speelveld.png")
 
+board_screen_rect = board_screen.get_rect()
 startup_screen_rect = startup_screen.get_rect()                 #start at top left
 rules_screen_rect = startup_screen.get_rect()
 character_screen_rect = character_screen.get_rect()
 
-screenlist = [startup_screen, rules_screen, character_screen]
+screenlist = [startup_screen, rules_screen, character_screen, board_screen]
 screen_index = 0
 
 s_rect = startup_screen_rect
 r_rect = rules_screen_rect
 p_rect = character_screen_rect
-rectlist = [s_rect, r_rect, p_rect]
+b_rect = board_screen_rect
+rectlist = [s_rect, r_rect, p_rect,b_rect]
 
 remove = x, y = -100, - 100
 start = x, y = 70, 150 #coordinates glove --> start
 rules = x, y = 70, 250 #coordinates glove --> rules
 exit = x, y = 350, 520 #coordinates glove --> exit
-navi = (-100,-100) #1Ruben speler kleine handschoen word buiten beeld neer gezet
+#navi = (-100,-100) #1Ruben speler kleine handschoen word buiten beeld neer gezet
 character_index = 0
 crashed = False
 
@@ -108,18 +116,23 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_s
 
 
 while not crashed:
-    gameDisplay.fill(white)  #startscherm.png linksboven weergegeven
+    
     if screen_index == 0:#start
+
         screen, rect, button, screen_index, menu_index, crashed, b = \
         StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound)
         screen_update(screen, rect)
         glove_update(button, screen_index)                         #hier word button meegegeven aan glove_update
+ 
     elif screen_index == 1:#rules
+
         screen, rect,screen_index, menu_index, crashed = \
         RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b)
         screen_update(screen, rect)
         glove_update(button, screen_index)
+
     elif screen_index == 2:#character
+ 
         screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index = \
         PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index,character_index,punch_sound)
         screen_update(screen, rect)
@@ -127,7 +140,9 @@ while not crashed:
         character_glove(char_button)
     elif screen_index == 3:
         #hier moet Gameboard() komen
-        player1Loc,player2Loc,player3Loc,player4Loc,screenlist, rectlist, crashed, menu_index, screen_index = BoardScreen(roll, player1Loc,player2Loc,player3Loc,player4Loc,p,screenlist, rectlist, crashed, menu_index, screen_index)
+        navi,p,playerList,screenlist, rectlist, crashed, menu_index, screen_index = \
+        BoardScreen(navi,roll, playerList,p,screenlist, rectlist, crashed, menu_index, screen_index)
+        
     pygame.display.update()
     clock.tick(60)
 
