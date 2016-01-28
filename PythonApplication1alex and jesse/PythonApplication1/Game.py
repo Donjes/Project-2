@@ -138,6 +138,10 @@ while not crashed:
         screen_update(screen, rect)
         glove_update(button, screen_index)
         character_glove(char_button)
+
+
+
+
     elif screen_index == 3:
         #hier moet Gameboard() komen
         roll,p,playerList,screenlist, rectlist, crashed, menu_index, screen_index = \
@@ -149,6 +153,11 @@ while not crashed:
         small_glove(gloveSmall2,navigate[player2.savePosition%40])
         small_glove(gloveSmall3,navigate[player3.savePosition%40])
         small_glove(gloveSmall4,navigate[player4.savePosition%40])
+        small_glove(playerList[p%4].texture,(290,230))
+        small_glove(player1.texture,(110,110))
+        small_glove(player2.texture,(470,110))
+        small_glove(player3.texture,(470,470))
+        small_glove(player4.texture,(110,470))
         dice_img(roll)
     pygame.display.update()
     clock.tick(60)

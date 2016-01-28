@@ -44,7 +44,7 @@ p = 0
 def BoardScreen(roll,playerList,p,screenlist, rectlist, crashed, menu_index, screen_index):   
 
     player = playerList[p%4]
-
+    
     tile = player.savePosition
     for event in pygame.event.get():         # Navigatie van de handschoenen bij elke dice throw
         if event.type == pygame.KEYDOWN:         
