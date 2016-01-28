@@ -118,7 +118,7 @@ while not crashed:
         screen_update(screen, rect)
         glove_update(button, screen_index)
     elif screen_index == 2:#character
-        screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index = \
+        screen, rect ,crashed, button, menu_index, screen_index, b, char_button, character_index, pics = \
         PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index,character_index,punch_sound)
         screen_update(screen, rect)
         glove_update(button, screen_index)
