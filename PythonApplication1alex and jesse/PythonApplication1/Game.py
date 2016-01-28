@@ -42,9 +42,19 @@ navi = (-100,-100) #1Ruben speler kleine handschoen word buiten beeld neer gezet
 character_index = 0
 crashed = False
 
-
 menu_index = 0                           #startwaarde = start
-            #index van de lijst
+
+playerNames = ['P1','P2','P3','P4']
+cnt = 0
+#
+# def jumpfromcharactogame:
+#     if at mario and keydown== enter:
+#         SuperMario = Player(playerNames[0],SuperMario)
+#         cnt += 1
+#
+#
+#     if cnt == 4:
+#         Start = True#(mag drukken)
 
 
 def glove_update(button, screen_index):                   #geeft handschoen.png weer
