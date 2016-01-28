@@ -5,15 +5,15 @@ from Rulesscreen import *
 from Gameboard import *
 pygame.init()
 
-player1.savePosition = 11
-player2.savePosition = 0
-player3.savePosition= 21
-player4.savePosition = 32
+
 #navi=[(575,20),(20,20),(575,590),(20,590)]
 size = width, height = 650, 650
 tile = 0
 white = (255, 255, 255)
 chooseChars = []
+firstround = True
+
+#playerList = [player1,player2,player3,player4]
 gameDisplay = pygame.display.set_mode((width,height))
 pygame.display.set_caption('Survivor')
 clock = pygame.time.Clock()
@@ -170,20 +170,20 @@ while not crashed:
 
     elif screen_index == 3:
         #hier moet Gameboard() komen
-        roll,p,playerList,screenlist, rectlist, crashed, menu_index, screen_index = \
-        BoardScreen(roll, playerList,p,screenlist, rectlist, crashed, menu_index, screen_index)
+        firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index = \
+        BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index)
         size = width, height = 650, 746
         gameDisplay = pygame.display.set_mode(size)
-        gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))       
-        small_glove(gloveSmall1,navigate[player1.savePosition%40])
-        small_glove(gloveSmall2,navigate[player2.savePosition%40])
-        small_glove(gloveSmall3,navigate[player3.savePosition%40])
-        small_glove(gloveSmall4,navigate[player4.savePosition%40])
-        small_glove(playerList[p%4].texture,(290,230))
-        small_glove(player1.texture,(110,110))
-        small_glove(player2.texture,(470,110))
-        small_glove(player3.texture,(470,470))
-        small_glove(player4.texture,(110,470))
+        gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))    
+        small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
+        small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
+        small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
+        small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+        small_glove(chooseChars[p%4].texture,(290,230))
+        small_glove(chooseChars[0].texture,(110,110))
+        small_glove(chooseChars[1].texture,(470,110))
+        small_glove(chooseChars[2].texture,(470,470))
+        small_glove(chooseChars[3].texture,(110,470))
         dice_img(roll)
     pygame.display.update()
     clock.tick(60)
