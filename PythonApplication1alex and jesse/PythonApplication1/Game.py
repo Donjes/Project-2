@@ -2,8 +2,6 @@
 import time
 from Playerscreen import *
 from Rulesscreen import *
-from Gameboard import *
-
 pygame.init()
 
 player1.savePosition = 11
@@ -23,12 +21,24 @@ startup_screen = pygame.image.load("images/startscherm2.png")
 rules_screen = pygame.image.load("images/rules.png")
 character_screen = pygame.image.load("images/playermenu.png")
 punch_sound = pygame.mixer.music.load("sounds/punch_sound.mp3")
+TileShift = pygame.mixer.music.load("sounds/TileShift.mp3")
+diceSound = pygame.mixer.music.load("sounds/dice.mp3")
 big_glove = pygame.image.load("images/handschoen.png")
 red_glove = pygame.image.load("images/red_handschoen.png")
 green_glove = pygame.image.load("images/green_handschoen.png")
 yellow_glove = pygame.image.load("images/yellow_handschoen.png")
 blue_glove = pygame.image.load("images/blue_handschoen.png")
 board_screen = pygame.image.load("images/speelveld.png")
+
+# imgTerry = pygame.image.load("images/TerryCrews.png")
+# imgJason = pygame.image.load("images/JasonStatham.png")
+# imgWesley = pygame.image.load("images/WesleySniper.png")
+# imgJet = pygame.image.load("images/JetRi.png")
+# imgSteven = pygame.image.load("images/StevenSeagal.png")
+# imgMario = pygame.image.load("images/SuperMario.png")
+# imgJackie = pygame.image.load("images/JackieChan.png")
+# imgChack = pygame.image.load("images/ChackNorris.png")
+
 
 board_screen_rect = board_screen.get_rect()
 startup_screen_rect = startup_screen.get_rect()                 #start at top left
@@ -53,8 +63,15 @@ character_index = 0
 crashed = False
 
 menu_index = 0                           #startwaarde = start
+pics = []
 
-playerNames = ['P1','P2','P3','P4']
+v1 = (100, 85)
+v2 = (100, 215)
+v3 = (100, 345)
+v4 = (100, 475)
+vectorlist = [v1, v2, v3, v4]
+
+
 
 
 
@@ -132,7 +149,7 @@ while not crashed:
         glove_update(button, screen_index)
 
     elif screen_index == 2:#character
- 
+
         screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index = \
         PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index,character_index,punch_sound)
         screen_update(screen, rect)
