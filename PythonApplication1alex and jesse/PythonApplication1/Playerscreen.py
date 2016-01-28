@@ -2,6 +2,12 @@
 import pygame
 from character import *
 
+v1 = (100, 85)
+v2 = (100, 215)
+v3 = (100, 345)
+v4 = (100, 475)
+vectorlist = [v1, v2, v3, v4]
+
 def sound_play(punch_sound):
     pygame.mixer.music.play(0)
 
@@ -54,11 +60,14 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index,characte
                 character_index -= 1
                 if character_index < 0:
                     character_index = 7
-
+            skip = False
+            size = width, height = 700, 650
+            gameDisplay = pygame.display.set_mode((width,height))
             for i in range(0,4):
                 if event.key == pygame.K_RETURN and char_button == characterlist[0] and not skip:
                     name = playerNames[i]
                     JetRi = Player(name,"images/JetRi.png",10,30,12,25,10,23)
+                    gameDisplay.blit("images/JetRi.png",(vectorlist[i]))
                     skip = True
                 elif event.key == pygame.K_RETURN and char_button == characterlist[1] and not skip:
                     name = playerNames[i]
