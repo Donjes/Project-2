@@ -16,6 +16,7 @@ startup_screen = pygame.image.load("images/startscherm2.png")
 rules_screen = pygame.image.load("images/rules.png")
 character_screen = pygame.image.load("images/playermenu.png")
 punch_sound = pygame.mixer.music.load("sounds/punch_sound.mp3")
+TileShift = pygame.mixer.music.load("Tile
 big_glove = pygame.image.load("images/handschoen.png")
 red_glove = pygame.image.load("images/red_handschoen.png")
 green_glove = pygame.image.load("images/green_handschoen.png")
