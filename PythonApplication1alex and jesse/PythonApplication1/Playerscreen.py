@@ -57,38 +57,30 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index,characte
 
             for i in range(0,4):
                 if event.key == pygame.K_RETURN and char_button == characterlist[0]:
-                    name = characterlist[i]
+                    name = playerNames[i]
                     JetRi = Player(name,"images/JetRi.png",10,30,12,25,10,23)
-
                 elif event.key == pygame.K_RETURN and char_button == characterlist[1]:
-                    name = characterlist[i]
+                    name = playerNames[i]
                     SuperMario = Player(name,"images/SuperMario.png",10,10,30,30,15,15)
-                    screen_index = 1
                 elif event.key == pygame.K_RETURN and char_button == characterlist[2]:
-                    name = characterlist[i]
+                    name = playerNames[i]
                     ChackNorris = Player(name,"images/ChackNorris.png",10,26,25,24,24,1)
-
                 elif event.key == pygame.K_RETURN and char_button == characterlist[3]:
-                    name = characterlist[i]
+                    name = playerNames[i]
                     JackieChan = Player(name,"images/JackieChan.png",20,25,5,25,20,15)
-
                 elif event.key == pygame.K_RETURN and char_button == characterlist[4]:
-                    name = characterlist[i]
+                    name = playerNames[i]
                     JasonStatham = Player(name,"images/JasonStatham.png",10,11,19,21,23,26)
-
                 elif event.key == pygame.K_RETURN and char_button == characterlist[5]:
-                    name = characterlist[i]
+                    name = playerNames[i]
                     StevenSeagal = Player(name,"images/StevenSeagal.png",27,15,12,11,25,20)
-
                 elif event.key == pygame.K_RETURN and char_button == characterlist[6]:
-                    name = characterlist[i]
+                    name = playerNames[i]
                     WesleySniper = Player(name,"images/WesleySniper.png",30,14,14,20,18,14)
-
                 elif event.key == pygame.K_RETURN and char_button == characterlist[7]:
-                    name = characterlist[i]
+                    name = playerNames[i]
                     TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
 
-                    
 
 
 

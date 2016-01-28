@@ -45,7 +45,7 @@ crashed = False
 menu_index = 0                           #startwaarde = start
 
 playerNames = ['P1','P2','P3','P4']
-
+# fighters = [TerryCrews, JasonStatham, WesleySniper, JetRi, StevenSeagal, SuperMario, JackieChan, ChackNorris]
 
 
 def glove_update(button, screen_index):                   #geeft handschoen.png weer
