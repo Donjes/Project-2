@@ -1,6 +1,6 @@
 #from Game import *
 import pygame
-from character import *
+from Character import *
 
 def sound_play(punch_sound):
     pygame.mixer.music.play(0)

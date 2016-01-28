@@ -1,3 +1,4 @@
+import pygame
 name = None
 
 class Player:
