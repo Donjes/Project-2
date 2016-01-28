@@ -10,8 +10,8 @@ player1.savePosition = 11
 player2.savePosition = 0
 player3.savePosition= 21
 player4.savePosition = 32
-navi=[(575,20),(20,20),(575,590),(20,590)]
-size = width, height = 700, 650
+#navi=[(575,20),(20,20),(575,590),(20,590)]
+size = width, height = 650, 650
 tile = 0
 white = (255, 255, 255)
 
@@ -140,9 +140,16 @@ while not crashed:
         character_glove(char_button)
     elif screen_index == 3:
         #hier moet Gameboard() komen
-        navi,p,playerList,screenlist, rectlist, crashed, menu_index, screen_index = \
-        BoardScreen(navi,roll, playerList,p,screenlist, rectlist, crashed, menu_index, screen_index)
-        
+        roll,p,playerList,screenlist, rectlist, crashed, menu_index, screen_index = \
+        BoardScreen(roll, playerList,p,screenlist, rectlist, crashed, menu_index, screen_index)
+        size = width, height = 650, 746
+        gameDisplay = pygame.display.set_mode(size)
+        gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))       
+        small_glove(gloveSmall1,navigate[player1.savePosition%40])
+        small_glove(gloveSmall2,navigate[player2.savePosition%40])
+        small_glove(gloveSmall3,navigate[player3.savePosition%40])
+        small_glove(gloveSmall4,navigate[player4.savePosition%40])
+        dice_img(roll)
     pygame.display.update()
     clock.tick(60)
 
