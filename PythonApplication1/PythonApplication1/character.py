@@ -1,22 +1,21 @@
-class Player:
-    def __init__(self,name,position,texture,attack1,attack2,attack3,attack4,attack5,attack6):
-        self.playername = name
-        self.Position = position
-        self.character = Character(texture,attack1,attack2,attack3,attack4,attack5,attack6)
 
+name = None 
+ 
+ 
+class Player: 
+    def __init__(self,name,texture,attack1,attack2,attack3,attack4,attack5,attack6): 
+        self.playername = name 
+        self.texture = texture 
+        self.hitPoints = 100 #  change the hitpoints and conditionpoints !!! 
+        self.conditionPoints = 15 
+        self.savePosition = None #Optional for a saving option 
+        self.dice1 = attack1 
+        self.dice2 = attack2 
+        self.dice3 = attack3 
+        self.dice4 = attack4 
+        self.dice5 = attack5 
+        self.dice6 = attack6 
 
-class Character:
-    def __init__(self,texture,attack1,attack2,attack3,attack4,attack5,attack6):
-        self.texture = texture
-        self.hitPoints = 100 # for superfighters, change the hitpoints and conditionpoints !!! 
-        self.conditionPoints = 15
-        self.savePosition = None #Optional for a saving option
-        self.dice1 = attack1
-        self.dice2 = attack2
-        self.dice3 = attack3
-        self.dice4 = attack4
-        self.dice5 = attack5
-        self.dice6 = attack6
 
 TerryCrews = Player("input",(-100,-100),"images/TerryCrews.png",10,15,25,30,20,10)
 JasonStatham = Player("input",(-100,-100),"images/JasonStatham.png",10,11,19,21,23,26)
