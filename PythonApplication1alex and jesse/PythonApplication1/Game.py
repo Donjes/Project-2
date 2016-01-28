@@ -2,6 +2,7 @@
 import time
 from Playerscreen import *
 from Rulesscreen import *
+from Gameboard import *
 pygame.init()
 
 player1.savePosition = 11
@@ -12,7 +13,7 @@ player4.savePosition = 32
 size = width, height = 650, 650
 tile = 0
 white = (255, 255, 255)
-
+chooseChars = []
 gameDisplay = pygame.display.set_mode((width,height))
 pygame.display.set_caption('Survivor')
 clock = pygame.time.Clock()
@@ -150,11 +151,19 @@ while not crashed:
 
     elif screen_index == 2:#character
 
-        screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index = \
-        PlayerScreen(screenlist, rectlist, crashed, menu_index, screen_index,character_index,punch_sound)
+        screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index,chooseChars = \
+        PlayerScreen(chooseChars,screenlist, rectlist, crashed, menu_index, screen_index,character_index,punch_sound)
         screen_update(screen, rect)
         glove_update(button, screen_index)
         character_glove(char_button)
+        if len(chooseChars) > 0:
+            small_glove(chooseChars[0].texture,(100,85))
+        if len(chooseChars) > 1:
+            small_glove(chooseChars[1].texture,(100,195))
+        if len(chooseChars) > 2:
+            small_glove(chooseChars[2].texture,(100,310))
+        if len(chooseChars) > 3:
+            small_glove(chooseChars[3].texture,(100,435))
 
 
 
