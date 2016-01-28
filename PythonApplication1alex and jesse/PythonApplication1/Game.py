@@ -2,6 +2,8 @@
 import time
 from Playerscreen import *
 from Rulesscreen import *
+from Gameboard import *
+
 pygame.init()
 
 size = width, height = 700, 650
@@ -125,7 +127,7 @@ while not crashed:
         character_glove(char_button)
     elif screen_index == 3:
         #hier moet Gameboard() komen
-        pass
+        player1Loc,player2Loc,player3Loc,player4Loc,screenlist, rectlist, crashed, menu_index, screen_index = BoardScreen(roll, player1Loc,player2Loc,player3Loc,player4Loc,p,screenlist, rectlist, crashed, menu_index, screen_index)
     pygame.display.update()
     clock.tick(60)
 
