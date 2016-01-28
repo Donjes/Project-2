@@ -8,12 +8,12 @@ def Trow_dice():
     return dice,diceImg
 
 
-for i in range(6):
-    dice = Trow_dice()
-    diceImg = dice[1]
-    dice = dice[0]
-    print (dice)
-    print (diceImg)
+#for i in range(6):
+#    dice = Trow_dice()
+#    diceImg = dice[1]
+#    dice = dice[0]
+#    print (dice)
+#    print (diceImg)
     
 ##functie Trow_dice() opnieuw uitvoeren voor player B 
 # DIT IS VOOR DE SPOTFIGHT !!! 
