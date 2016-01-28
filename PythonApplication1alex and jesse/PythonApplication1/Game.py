@@ -2,8 +2,6 @@
 import time
 from Playerscreen import *
 from Rulesscreen import *
-from Gameboard import *
-
 pygame.init()
 
 size = width, height = 700, 650
@@ -46,7 +44,7 @@ crashed = False
 
 menu_index = 0                           #startwaarde = start
 
-playerNames = ['P1','P2','P3','P4']
+
 # fighters = [TerryCrews, JasonStatham, WesleySniper, JetRi, StevenSeagal, SuperMario, JackieChan, ChackNorris]
 
 
@@ -127,7 +125,7 @@ while not crashed:
         character_glove(char_button)
     elif screen_index == 3:
         #hier moet Gameboard() komen
-        player1Loc,player2Loc,player3Loc,player4Loc,screenlist, rectlist, crashed, menu_index, screen_index = BoardScreen(roll, player1Loc,player2Loc,player3Loc,player4Loc,p,screenlist, rectlist, crashed, menu_index, screen_index)
+        pass
     pygame.display.update()
     clock.tick(60)
 

@@ -19,7 +19,7 @@ def PlayerScreen(screenlist, rectlist,crashed, menu_index, screen_index,characte
     Wesley = x,y = 560, 325
     Terry = x,y = 560, 415
     characterlist = [ Jet, Mario, Chack,  Jackie,  Jason, Steven, Wesley, Terry]
-
+    playerNames = ['P1','P2','P3','P4']
     char_button = characterlist[character_index]
     menulist = [start, rules, exit] #lijst van de buttons
     button = menulist[menu_index]
