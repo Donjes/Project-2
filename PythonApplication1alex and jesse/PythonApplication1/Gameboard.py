@@ -40,8 +40,8 @@ p = 0
 #gameboard
 def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index):   
     if firstround:
-        chooseChars[0].savePosition = 0
-        chooseChars[1].savePosition = 10
+        chooseChars[0].savePosition = 10
+        chooseChars[1].savePosition = 0
         chooseChars[2].savePosition = 20
         chooseChars[3].savePosition = 30
         firstround = False
@@ -52,16 +52,21 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
         if event.type == pygame.KEYDOWN:         
             if event.key == pygame.K_SPACE: 
                 roll = Trow_dice() 
-                for i in range(roll[0]):
+                small_glove("images/DiceRolling.png",(300,300))  
+                pygame.display.update()
+                time.sleep(0.5)
+                dice_img(roll)  
+                pygame.display.update()
+                time.sleep(0.5)           
+                for i in range(roll[0]):                   
                     tile += 1 
-                    
                     small_glove(smallGlovemove[p%4],navigate[tile%40])    
                     pygame.display.update()
                     time.sleep(0.1)
                     print("plus")  
                 chooseChars[p%4].savePosition = tile
                 p += 1
-
+                
     
 
     return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index
