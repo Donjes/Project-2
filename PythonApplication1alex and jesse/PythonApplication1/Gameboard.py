@@ -39,6 +39,8 @@ p = 0
 
 #gameboard
 def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index):   
+    save_game = False
+    load_old_game = False
     if firstround:
         chooseChars[0].savePosition = 10
         chooseChars[1].savePosition = 0
@@ -66,7 +68,13 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                     print("plus")  
                 chooseChars[p%4].savePosition = tile
                 p += 1
+            elif event.key == pygame.K_s:
+                screen_index = 4
+                save_game = True
+            elif event.key == pygame.K_l:
+                screen_index = 4
+                load_old_game = True
                 
     
 
-    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index
+    return load_old_game,save_game,firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index

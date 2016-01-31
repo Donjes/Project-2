@@ -3,6 +3,7 @@ import time
 from Playerscreen import *
 from Rulesscreen import *
 from Gameboard import *
+from SaveGame import *
 pygame.init()
 
 
@@ -12,7 +13,8 @@ tile = 0
 white = (255, 255, 255)
 chooseChars = []
 firstround = True
-
+save_game = False
+load_old_game = False
 #playerList = [player1,player2,player3,player4]
 gameDisplay = pygame.display.set_mode((width,height))
 pygame.display.set_caption('Survivor')
@@ -180,7 +182,7 @@ while not crashed:
 
     elif screen_index == 3:
         #hier moet Gameboard() komen
-        firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index = \
+        load_old_game,save_game,firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index = \
         BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index)
         size = width, height = 650, 746
         gameDisplay = pygame.display.set_mode(size)
@@ -195,7 +197,15 @@ while not crashed:
         small_glove(chooseChars[2].texture,(470,470))
         small_glove(chooseChars[3].texture,(110,470))
         dice_img(roll)
-       
+
+    elif screen_index == 4:
+        if save_game == True:
+            saveGame(firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index)
+            screen_index = 3
+        elif load_old_game == True:           
+            firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index = loadGame()
+            print(chooseChars[1])
+            screen_index = 3
     pygame.display.update()
     clock.tick(60)
 

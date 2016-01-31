@@ -30,6 +30,7 @@
     <Compile Include="Node.py" />
     <Compile Include="Playerscreen.py" />
     <Compile Include="Rulesscreen.py" />
+    <Compile Include="SaveGame.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".idea\" />
