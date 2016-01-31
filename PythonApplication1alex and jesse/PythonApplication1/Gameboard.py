@@ -38,7 +38,7 @@ navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20
 p = 0
 
 #gameboard
-def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index):   
+def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page):   
     save_game = False
     load_old_game = False
     if firstround:
@@ -69,12 +69,17 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 chooseChars[p%4].savePosition = tile
                 p += 1
             elif event.key == pygame.K_s:
-                screen_index = 4
+                screen_index = 5
                 save_game = True
             elif event.key == pygame.K_l:
-                screen_index = 4
+                screen_index = 5
                 load_old_game = True
-                
-    
+            elif event.key == pygame.K_ESCAPE:
+                crashed = True
+            elif event.key == pygame.K_o:
+                screen_index = 4
+                last_page = 3
+            elif event.key == pygame.K_TAP:
+                screen_index = 2
 
-    return load_old_game,save_game,firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index
+    return load_old_game,save_game,firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page

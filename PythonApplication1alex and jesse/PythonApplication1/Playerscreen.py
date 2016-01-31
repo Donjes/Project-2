@@ -9,7 +9,7 @@ from Character import *
 def sound_play(punch_sound):
     pygame.mixer.music.play(0)
 
-def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_index,character_index,punch_sound):
+def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_index,character_index,punch_sound,last_page):
     start = x, y = 0, 650
     rules = x, y = 225, 650
     exit = x, y = 450, 650
@@ -50,6 +50,7 @@ def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_in
             elif menu_index == 1 and event.key == pygame.K_SPACE:
                 screen_index = 4
                 menu_index = 0
+                last_page = 2
             elif menu_index == 0 and event.key == pygame.K_SPACE and len(chooseChars) == 4:
                 screen_index = 3
  
@@ -115,4 +116,4 @@ def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_in
     size = width, height = 750, 780
     gameDisplay = pygame.display.set_mode(size)
 
-    return screen, rect, crashed, button, menu_index, screen_index, b, char_button, character_index,chooseChars
+    return screen, rect, crashed, button, menu_index, screen_index, b, char_button, character_index,chooseChars,last_page

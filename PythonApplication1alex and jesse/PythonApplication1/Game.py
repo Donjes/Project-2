@@ -15,6 +15,7 @@ chooseChars = []
 firstround = True
 save_game = False
 load_old_game = False
+last_page = 0
 #playerList = [player1,player2,player3,player4]
 gameDisplay = pygame.display.set_mode((width,height))
 pygame.display.set_caption('Survivor')
@@ -108,7 +109,7 @@ def screen_update(screen,rect):
 def sound_play(punch_sound):
     pygame.mixer.music.play(0)
 
-def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound):
+def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound,last_page):
 
     start = x, y = 70, 150 #coordinates glove --> start
     rules = x, y = 70, 250 #coordinates glove --> rules
@@ -143,18 +144,19 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_s
                 elif menu_index == 1 and event.key == pygame.K_SPACE:
                     screen_index = 4
                     menu_index = 0
+                    last_page = 0
                 elif menu_index == 0 and event.key == pygame.K_SPACE:
                     screen_index = 2
     b = 0
-    return screen, rect, button, screen_index, menu_index, crashed, b
+    return screen, rect, button, screen_index, menu_index, crashed, b,last_page
 
 
 while not crashed:
     
     if screen_index == 0:#start
 
-        screen, rect, button, screen_index, menu_index, crashed, b = \
-        StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound)
+        screen, rect, button, screen_index, menu_index, crashed, b,last_page = \
+        StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound,last_page)
         screen_update(screen, rect)
         glove_update(button, screen_index)                         #hier word button meegegeven aan glove_update
  
@@ -167,15 +169,15 @@ while not crashed:
 
     elif screen_index == 4:
 
-        screen, rect, crashed, button, menu_index, screen_index, b = \
-        Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,punch_sound)
+        screen, rect, crashed, button, menu_index, screen_index, b,save_game,load_old_game,last_page = \
+        Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,punch_sound,b,save_game,load_old_game,last_page)
         screen_update(screen, rect)
         glove_update(button, screen_index)
 
     elif screen_index == 2:#character
 
-        screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index,chooseChars = \
-        PlayerScreen(chooseChars,screenlist, rectlist, crashed, menu_index, screen_index,character_index,punch_sound)
+        screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index,chooseChars,last_page = \
+        PlayerScreen(chooseChars,screenlist, rectlist, crashed, menu_index, screen_index,character_index,punch_sound,last_page)
         screen_update(screen, rect)
         glove_update(button, screen_index)
         character_glove(char_button)
@@ -193,8 +195,8 @@ while not crashed:
 
     elif screen_index == 3:
         #hier moet Gameboard() komen
-        load_old_game,save_game,firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index = \
-        BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index)
+        load_old_game,save_game,firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page = \
+        BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page)
         size = width, height = 650, 746
         gameDisplay = pygame.display.set_mode(size)
         gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))    

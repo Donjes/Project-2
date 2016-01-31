@@ -2,7 +2,7 @@ import pygame
 def sound_play(punch_sound):
     pygame.mixer.music.play(0)
 
-def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,punch_sound):
+def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,punch_sound,b,save_game,load_old_game,last_page):
 
 
     resume = x, y = 25, 110 #coordinates glove --> resume
@@ -31,12 +31,17 @@ def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_ind
                 menu_index += 1
 
             if menu_index == 0 and event.key == pygame.K_SPACE:
-                screen_index = 3
+                if last_page == 0:
+                    screen_index = 0
+                if last_page == 2:
+                    screen_index = 2
+                if last_page == 3:
+                    screen_index = 3
             if menu_index == 1 and event.key == pygame.K_SPACE:
-                screen_index = 4
+                screen_index = 5
                 save_game = True
             if menu_index == 2 and event.key == pygame.K_SPACE:
-                screen_index = 4
+                screen_index = 5
                 load_old_game = True
             if menu_index == 3 and event.key == pygame.K_SPACE:
                 screen_index = 1
@@ -47,7 +52,7 @@ def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_ind
                 
 
     b = 3
-    return screen, rect, crashed, button, menu_index, screen_index, b
+    return screen, rect, crashed, button, menu_index, screen_index, b,save_game,load_old_game,last_page
 
 def RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b):#b = ref van backspace screen
         
