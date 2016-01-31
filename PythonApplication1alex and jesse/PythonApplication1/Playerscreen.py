@@ -47,9 +47,10 @@ def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_in
                     menu_index = 2
             if menu_index == 2 and event.key == pygame.K_SPACE:
                 crashed = True
-            if menu_index == 1 and event.key == pygame.K_SPACE:
-                screen_index = 1
-            if menu_index == 0 and event.key == pygame.K_SPACE and len(chooseChars) == 4:
+            elif menu_index == 1 and event.key == pygame.K_SPACE:
+                screen_index = 4
+                menu_index = 0
+            elif menu_index == 0 and event.key == pygame.K_SPACE and len(chooseChars) == 4:
                 screen_index = 3
  
             if event.key == pygame.K_DOWN:

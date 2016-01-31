@@ -1,7 +1,7 @@
 ﻿import pygame
 import time
 from Playerscreen import *
-from Rulesscreen import *
+from Options import *
 from Gameboard import *
 from SaveGame import *
 pygame.init()
@@ -32,7 +32,7 @@ green_glove = pygame.image.load("images/green_handschoen.png")
 yellow_glove = pygame.image.load("images/yellow_handschoen.png")
 blue_glove = pygame.image.load("images/blue_handschoen.png")
 board_screen = pygame.image.load("images/speelveld.png")
-
+options_screen = pygame.image.load("images/Options.png")
 # imgTerry = pygame.image.load("images/TerryCrews.png")
 # imgJason = pygame.image.load("images/JasonStatham.png")
 # imgWesley = pygame.image.load("images/WesleySniper.png")
@@ -42,20 +42,21 @@ board_screen = pygame.image.load("images/speelveld.png")
 # imgJackie = pygame.image.load("images/JackieChan.png")
 # imgChack = pygame.image.load("images/ChackNorris.png")
 
-
+options_screen_rect = options_screen.get_rect()
 board_screen_rect = board_screen.get_rect()
 startup_screen_rect = startup_screen.get_rect()                 #start at top left
 rules_screen_rect = startup_screen.get_rect()
 character_screen_rect = character_screen.get_rect()
 
-screenlist = [startup_screen, rules_screen, character_screen, board_screen]
+screenlist = [startup_screen, rules_screen, character_screen, board_screen, options_screen]
 screen_index = 0
 
 s_rect = startup_screen_rect
 r_rect = rules_screen_rect
 p_rect = character_screen_rect
 b_rect = board_screen_rect
-rectlist = [s_rect, r_rect, p_rect,b_rect]
+o_rect = options_screen_rect
+rectlist = [s_rect, r_rect, p_rect,b_rect,o_rect]
 
 remove = x, y = -100, - 100
 start = x, y = 70, 150 #coordinates glove --> start
@@ -74,24 +75,26 @@ v3 = (100, 345)
 v4 = (100, 475)
 vectorlist = [v1, v2, v3, v4]
 #koffie logo bij het opstarten van het spel
-def Koffielogo():
-    size = width, height = 650, 650
-    gameDisplay = pygame.display.set_mode(size)
+#def Koffielogo():
+#    size = width, height = 650, 650
+#    gameDisplay = pygame.display.set_mode(size)
     
-    for i in range (9):
-        gameDisplay.blit(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png"),(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png").get_rect()))  
-        pygame.display.update()
-        if i == 0:
-            time.sleep(2)
-        time.sleep(0.1)
-    time.sleep(3)
-Koffielogo()
+#    for i in range (9):
+#        gameDisplay.blit(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png"),(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png").get_rect()))  
+#        pygame.display.update()
+#        if i == 0:
+#            time.sleep(2)
+#        time.sleep(0.1)
+#    time.sleep(3)
+#Koffielogo()
 
 
 def glove_update(button, screen_index):                   #geeft handschoen.png weer
     if screen_index == 0:           #standard vector
         gameDisplay.blit(big_glove,(button))
     elif screen_index == 2:
+        gameDisplay.blit(big_glove,(button))
+    elif screen_index == 4:
         gameDisplay.blit(big_glove,(button))
 
 
@@ -137,9 +140,10 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_s
                 
                 if menu_index == 2 and event.key == pygame.K_SPACE:
                     crashed = True
-                if menu_index == 1 and event.key == pygame.K_SPACE:
-                    screen_index = 1
-                if menu_index == 0 and event.key == pygame.K_SPACE:
+                elif menu_index == 1 and event.key == pygame.K_SPACE:
+                    screen_index = 4
+                    menu_index = 0
+                elif menu_index == 0 and event.key == pygame.K_SPACE:
                     screen_index = 2
     b = 0
     return screen, rect, button, screen_index, menu_index, crashed, b
@@ -158,6 +162,13 @@ while not crashed:
 
         screen, rect,screen_index, menu_index, crashed = \
         RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b)
+        screen_update(screen, rect)
+        glove_update(button, screen_index)
+
+    elif screen_index == 4:
+
+        screen, rect, crashed, button, menu_index, screen_index, b = \
+        Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,punch_sound)
         screen_update(screen, rect)
         glove_update(button, screen_index)
 
@@ -198,7 +209,7 @@ while not crashed:
         small_glove(chooseChars[3].texture,(110,470))
         dice_img(roll)
 
-    elif screen_index == 4:
+    elif screen_index == 5:
         if save_game == True:
             saveGame(firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index)
             screen_index = 3
