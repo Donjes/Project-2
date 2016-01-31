@@ -54,10 +54,15 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
         if event.type == pygame.KEYDOWN:         
             if event.key == pygame.K_SPACE: 
                 roll = Trow_dice() 
-                small_glove("images/DiceRolling.png",(300,300))  
-                pygame.display.update()
+                for i in range(15):
+                    rolling = Trow_dice()
+                    dice_img(rolling) 
+                    small_glove("images/DiceRolling.png",(300,300)) 
+                    pygame.display.update()
+                    time.sleep(0.1)
+                    if i == 14:
+                        dice_img(roll)
                 time.sleep(0.5)
-                dice_img(roll)  
                 pygame.display.update()
                 time.sleep(0.5)           
                 for i in range(roll[0]):                   
@@ -68,12 +73,6 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                     print("plus")  
                 chooseChars[p%4].savePosition = tile
                 p += 1
-            elif event.key == pygame.K_s:
-                screen_index = 5
-                save_game = True
-            elif event.key == pygame.K_l:
-                screen_index = 5
-                load_old_game = True
             elif event.key == pygame.K_ESCAPE:
                 crashed = True
             elif event.key == pygame.K_o:
@@ -82,4 +81,4 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             elif event.key == pygame.K_TAP:
                 screen_index = 2
 
-    return load_old_game,save_game,firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page
+    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page

@@ -195,7 +195,7 @@ while not crashed:
 
     elif screen_index == 3:
         #hier moet Gameboard() komen
-        load_old_game,save_game,firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page = \
+        firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page = \
         BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page)
         size = width, height = 650, 746
         gameDisplay = pygame.display.set_mode(size)

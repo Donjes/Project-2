@@ -13,6 +13,8 @@ def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_in
     start = x, y = 0, 650
     rules = x, y = 225, 650
     exit = x, y = 450, 650
+    size = width, height = 750, 780
+    gameDisplay = pygame.display.set_mode(size)
 
 
     
@@ -63,57 +65,53 @@ def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_in
                 if character_index < 0:
                     character_index = 7
             skip = False
-            size = width, height = 700, 650
-            gameDisplay = pygame.display.set_mode((width,height))
 
-            for i in range(0,4):
-                if event.key == pygame.K_RETURN and char_button == characterlist[0] and not skip:
-                    name = playerNames[i]
-                    JetRi = Player(name,"images/JetRi.png",10,30,12,25,10,23)
-                    chooseChars.append(JetRi)
-                    skip = True
-                elif event.key == pygame.K_RETURN and char_button == characterlist[1] and not skip:
-                    name = playerNames[i]
-                    SuperMario = Player(name,"images/SuperMario.png",10,10,30,30,15,15)
-                    chooseChars.append(SuperMario)
-                    skip = True
-                elif event.key == pygame.K_RETURN and char_button == characterlist[2] and not skip:
-                    name = playerNames[i]
-                    ChackNorris = Player(name,"images/ChackNorris.png",10,26,25,24,24,1)
-                    chooseChars.append(ChackNorris)
-                    skip = True
-                elif event.key == pygame.K_RETURN and char_button == characterlist[3] and not skip:
-                    name = playerNames[i]
-                    JackieChan = Player(name,"images/JackieChan.png",20,25,5,25,20,15)
-                    chooseChars.append(JackieChan)
-                    skip = True
-                elif event.key == pygame.K_RETURN and char_button == characterlist[4] and not skip:
-                    name = playerNames[i]
-                    JasonStatham = Player(name,"images/JasonStatham.png",10,11,19,21,23,26)
-                    chooseChars.append(JasonStatham)
-                    skip = True
-                elif event.key == pygame.K_RETURN and char_button == characterlist[5] and not skip:
-                    name = playerNames[i]
-                    StevenSeagal = Player(name,"images/StevenSeagal.png",27,15,12,11,25,20)
-                    chooseChars.append(StevenSeagal)
-                    skip = True
-                elif event.key == pygame.K_RETURN and char_button == characterlist[6] and not skip:
-                    name = playerNames[i]
-                    WesleySniper = Player(name,"images/WesleySniper.png",30,14,14,20,18,14)
-                    chooseChars.append(WesleySniper)
-                    skip = True
-                elif event.key == pygame.K_RETURN and char_button == characterlist[7] and not skip:
-                    name = playerNames[i]
-                    TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
-                    chooseChars.append(TerryCrews)
-                    skip = True 
-                
-                
+            if len(chooseChars) < 4:
+                for i in range(0,4):
+                    if event.key == pygame.K_RETURN and char_button == characterlist[0] and not skip:
+                        name = playerNames[i]
+                        JetRi = Player(name,"images/JetRi.png",10,30,12,25,10,23)
+                        chooseChars.append(JetRi)
+                        skip = True
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[1] and not skip:
+                        name = playerNames[i]
+                        SuperMario = Player(name,"images/SuperMario.png",10,10,30,30,15,15)
+                        chooseChars.append(SuperMario)
+                        skip = True
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[2] and not skip:
+                        name = playerNames[i]
+                        ChackNorris = Player(name,"images/ChackNorris.png",10,26,25,24,24,1)
+                        chooseChars.append(ChackNorris)
+                        skip = True
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[3] and not skip:
+                        name = playerNames[i]
+                        JackieChan = Player(name,"images/JackieChan.png",20,25,5,25,20,15)
+                        chooseChars.append(JackieChan)
+                        skip = True
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[4] and not skip:
+                        name = playerNames[i]
+                        JasonStatham = Player(name,"images/JasonStatham.png",10,11,19,21,23,26)
+                        chooseChars.append(JasonStatham)
+                        skip = True
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[5] and not skip:
+                        name = playerNames[i]
+                        StevenSeagal = Player(name,"images/StevenSeagal.png",27,15,12,11,25,20)
+                        chooseChars.append(StevenSeagal)
+                        skip = True
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[6] and not skip:
+                        name = playerNames[i]
+                        WesleySniper = Player(name,"images/WesleySniper.png",30,14,14,20,18,14)
+                        chooseChars.append(WesleySniper)
+                        skip = True
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[7] and not skip:
+                        name = playerNames[i]
+                        TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
+                        chooseChars.append(TerryCrews)
+                        skip = True 
+    
 
 
     b = 2
 
-    size = width, height = 750, 780
-    gameDisplay = pygame.display.set_mode(size)
 
     return screen, rect, crashed, button, menu_index, screen_index, b, char_button, character_index,chooseChars,last_page
