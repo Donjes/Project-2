@@ -6,7 +6,7 @@ from Gameboard import *
 pygame.init()
 
 
-#navi=[(575,20),(20,20),(575,590),(20,590)]
+
 size = width, height = 650, 650
 tile = 0
 white = (255, 255, 255)
@@ -71,9 +71,19 @@ v2 = (100, 215)
 v3 = (100, 345)
 v4 = (100, 475)
 vectorlist = [v1, v2, v3, v4]
-
-
-
+#koffie logo bij het opstarten van het spel
+def Koffielogo():
+    size = width, height = 650, 650
+    gameDisplay = pygame.display.set_mode(size)
+    
+    for i in range (9):
+        gameDisplay.blit(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png"),(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png").get_rect()))  
+        pygame.display.update()
+        if i == 0:
+            time.sleep(2)
+        time.sleep(0.1)
+    time.sleep(3)
+Koffielogo()
 
 
 def glove_update(button, screen_index):                   #geeft handschoen.png weer
@@ -185,6 +195,7 @@ while not crashed:
         small_glove(chooseChars[2].texture,(470,470))
         small_glove(chooseChars[3].texture,(110,470))
         dice_img(roll)
+       
     pygame.display.update()
     clock.tick(60)
 
