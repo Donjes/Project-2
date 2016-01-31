@@ -1,8 +1,7 @@
 import pygame
-def sound_play(punch_sound):
-    pygame.mixer.music.play(0)
+from Playerscreen import *
 
-def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,punch_sound,b,save_game,load_old_game,last_page):
+def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,b,save_game,load_old_game,last_page):
 
 
     resume = x, y = 25, 110 #coordinates glove --> resume
@@ -23,7 +22,7 @@ def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_ind
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                sound_play(punch_sound)
+                Sounds.Punch()
             if event.key == pygame.K_UP:
                 menu_index -= 1
 
@@ -31,6 +30,7 @@ def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_ind
                 menu_index += 1
 
             if menu_index == 0 and event.key == pygame.K_SPACE:
+                Sounds.Punch()
                 if last_page == 0:
                     screen_index = 0
                 if last_page == 2:
@@ -38,14 +38,18 @@ def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_ind
                 if last_page == 3:
                     screen_index = 3
             if menu_index == 1 and event.key == pygame.K_SPACE:
+                Sounds.Punch()
                 screen_index = 5
                 save_game = True
             if menu_index == 2 and event.key == pygame.K_SPACE:
+                Sounds.Punch()
                 screen_index = 5
                 load_old_game = True
             if menu_index == 3 and event.key == pygame.K_SPACE:
+                Sounds.Punch()
                 screen_index = 1
             if menu_index == 4 and event.key == pygame.K_SPACE:
+                Sounds.Punch()
                 crashed = True
 
 

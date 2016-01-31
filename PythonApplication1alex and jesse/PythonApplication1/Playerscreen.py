@@ -1,23 +1,36 @@
 #from Game import *
 import pygame
 from Character import *
+pygame.init()
+
+punchsound = pygame.mixer.Sound("sounds/punch.ogg")
+dicesound = pygame.mixer.Sound("sounds/dice.ogg")
+mariosound = pygame.mixer.Sound("sounds/mario.ogg")
+tilesound = pygame.mixer.Sound("sounds/tileshift.ogg")
+
+class Sounds:
+    def Punch():
+        pygame.mixer.Sound.play(punchsound)
+    def Dice():
+        pygame.mixer.Sound.play(dicesound)
+    def Mario():
+        pygame.mixer.Sound.play(mariosound)
+    def Tile():
+        pygame.mixer.Sound.play(tilesound)
 
 
 
 
 
-def sound_play(punch_sound):
-    pygame.mixer.music.play(0)
 
-def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_index,character_index,punch_sound,last_page):
+
+def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_index,character_index,last_page):
     start = x, y = 0, 650
     rules = x, y = 225, 650
     exit = x, y = 450, 650
     size = width, height = 750, 780
     gameDisplay = pygame.display.set_mode(size)
 
-
-    
     Jet = x,y = 450, 145
     Mario = x,y = 450, 235
     Chack = x,y = 450, 325
@@ -38,7 +51,7 @@ def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_in
             crashed = True                  #programma sluit af met rode X
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                sound_play(punch_sound)
+                Sounds.Punch()
             if event.key == pygame.K_RIGHT:
                 menu_index += 1
                 if menu_index > 2:
@@ -70,41 +83,49 @@ def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_in
                 for i in range(0,4):
                     if event.key == pygame.K_RETURN and char_button == characterlist[0] and not skip:
                         name = playerNames[i]
+                        Sounds.Mario()
                         JetRi = Player(name,"images/JetRi.png",10,30,12,25,10,23)
                         chooseChars.append(JetRi)
                         skip = True
                     elif event.key == pygame.K_RETURN and char_button == characterlist[1] and not skip:
                         name = playerNames[i]
+                        Sounds.Mario()
                         SuperMario = Player(name,"images/SuperMario.png",10,10,30,30,15,15)
                         chooseChars.append(SuperMario)
                         skip = True
                     elif event.key == pygame.K_RETURN and char_button == characterlist[2] and not skip:
                         name = playerNames[i]
+                        Sounds.Mario()
                         ChackNorris = Player(name,"images/ChackNorris.png",10,26,25,24,24,1)
                         chooseChars.append(ChackNorris)
                         skip = True
                     elif event.key == pygame.K_RETURN and char_button == characterlist[3] and not skip:
                         name = playerNames[i]
+                        Sounds.Mario()
                         JackieChan = Player(name,"images/JackieChan.png",20,25,5,25,20,15)
                         chooseChars.append(JackieChan)
                         skip = True
                     elif event.key == pygame.K_RETURN and char_button == characterlist[4] and not skip:
                         name = playerNames[i]
+                        Sounds.Mario()
                         JasonStatham = Player(name,"images/JasonStatham.png",10,11,19,21,23,26)
                         chooseChars.append(JasonStatham)
                         skip = True
                     elif event.key == pygame.K_RETURN and char_button == characterlist[5] and not skip:
                         name = playerNames[i]
+                        Sounds.Mario()
                         StevenSeagal = Player(name,"images/StevenSeagal.png",27,15,12,11,25,20)
                         chooseChars.append(StevenSeagal)
                         skip = True
                     elif event.key == pygame.K_RETURN and char_button == characterlist[6] and not skip:
                         name = playerNames[i]
+                        Sounds.Mario()
                         WesleySniper = Player(name,"images/WesleySniper.png",30,14,14,20,18,14)
                         chooseChars.append(WesleySniper)
                         skip = True
                     elif event.key == pygame.K_RETURN and char_button == characterlist[7] and not skip:
                         name = playerNames[i]
+                        Sounds.Mario()
                         TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
                         chooseChars.append(TerryCrews)
                         skip = True 

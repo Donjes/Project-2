@@ -24,9 +24,6 @@ clock = pygame.time.Clock()
 startup_screen = pygame.image.load("images/startscherm2.png")
 rules_screen = pygame.image.load("images/rules.png")
 character_screen = pygame.image.load("images/playermenu.png")
-punch_sound = pygame.mixer.music.load("sounds/punch_sound.mp3")
-TileShift = pygame.mixer.music.load("sounds/TileShift.mp3")
-diceSound = pygame.mixer.music.load("sounds/dice.mp3")
 big_glove = pygame.image.load("images/handschoen.png")
 red_glove = pygame.image.load("images/red_handschoen.png")
 green_glove = pygame.image.load("images/green_handschoen.png")
@@ -109,7 +106,7 @@ def screen_update(screen,rect):
 def sound_play(punch_sound):
     pygame.mixer.music.play(0)
 
-def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound,last_page):
+def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_page):
 
     start = x, y = 70, 150 #coordinates glove --> start
     rules = x, y = 70, 250 #coordinates glove --> rules
@@ -124,7 +121,7 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_s
 
         if event.type == pygame.KEYDOWN:
             if event.key == pygame.K_SPACE:
-                sound_play(punch_sound)
+                Sounds.Punch()
         if screen_index == 0:      #start
             screen = screenlist[screen_index]
             rect = rectlist[screen_index]
@@ -140,12 +137,15 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_s
                         menu_index = 2                   #na start button = exit
                 
                 if menu_index == 2 and event.key == pygame.K_SPACE:
+                    Sounds.Punch()
                     crashed = True
                 elif menu_index == 1 and event.key == pygame.K_SPACE:
+                    Sounds.Punch()
                     screen_index = 4
                     menu_index = 0
                     last_page = 0
                 elif menu_index == 0 and event.key == pygame.K_SPACE:
+                    Sounds.Punch()
                     screen_index = 2
     b = 0
     return screen, rect, button, screen_index, menu_index, crashed, b,last_page
@@ -156,7 +156,7 @@ while not crashed:
     if screen_index == 0:#start
 
         screen, rect, button, screen_index, menu_index, crashed, b,last_page = \
-        StartScreen(screenlist, rectlist, screen_index, menu_index, crashed, punch_sound,last_page)
+        StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_page)
         screen_update(screen, rect)
         glove_update(button, screen_index)                         #hier word button meegegeven aan glove_update
  
@@ -170,14 +170,14 @@ while not crashed:
     elif screen_index == 4:
 
         screen, rect, crashed, button, menu_index, screen_index, b,save_game,load_old_game,last_page = \
-        Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,punch_sound,b,save_game,load_old_game,last_page)
+        Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,b,save_game,load_old_game,last_page)
         screen_update(screen, rect)
         glove_update(button, screen_index)
 
     elif screen_index == 2:#character
 
         screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index,chooseChars,last_page = \
-        PlayerScreen(chooseChars,screenlist, rectlist, crashed, menu_index, screen_index,character_index,punch_sound,last_page)
+        PlayerScreen(chooseChars,screenlist, rectlist, crashed, menu_index, screen_index,character_index,last_page)
         screen_update(screen, rect)
         glove_update(button, screen_index)
         character_glove(char_button)

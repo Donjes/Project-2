@@ -4,6 +4,7 @@ from Dice import *
 import os
 from Character import *
 from Node import *
+from Playerscreen import *
 
 #======================================= Variable die vanuit player screen moeten komen
 
@@ -51,8 +52,9 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
     player = chooseChars[p%4]
     tile = player.savePosition
     for event in pygame.event.get():         # Navigatie van de handschoenen bij elke dice throw
-        if event.type == pygame.KEYDOWN:         
+        if event.type == pygame.KEYDOWN: 
             if event.key == pygame.K_SPACE: 
+                Sounds.Dice()
                 roll = Trow_dice() 
                 for i in range(15):
                     rolling = Trow_dice()
@@ -68,6 +70,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 for i in range(roll[0]):                   
                     tile += 1 
                     small_glove(smallGlovemove[p%4],navigate[tile%40])    
+                    Sounds.Tile()
                     pygame.display.update()
                     time.sleep(0.1)
                     print("plus")  
