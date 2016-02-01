@@ -36,7 +36,7 @@ def dice_img(roll):
 navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20),(472,20),(520,20),(575,20),(575,85),(575,130),(575,180),(575,230),(575,300),(575,373),(575,425),(575,475),(575,525),(575,590),(520,590),(472,590),(425,590),(375,590),(300,590),(230,590),(180,590),(130,590),(80,590),(20,590),(20,525),(20,475),(20,425),(20,373),(20,300),(20,230),(20,180),(20,130),(20,85)]
 # playerList 
 
-p = 0
+
 
 #gameboard
 def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn):   
@@ -48,7 +48,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
         chooseChars[2].savePosition = 20
         chooseChars[3].savePosition = 30
         firstround = False
-
+    corner = [0,10,20,30]
     player = chooseChars[p%4]
     tile = player.savePosition
     for event in pygame.event.get():         # Navigatie van de handschoenen bij elke dice throw
@@ -75,15 +75,17 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                     time.sleep(0.1)
                     print("plus")  
                 chooseChars[p%4].savePosition = tile
-                p += 1
-                if chooseChars[p%4].savePosition%40 == 5 or chooseChars[p%4].savePosition%40 == 15 or chooseChars[p%4].savePosition%40 == 25 or chooseChars[p%4].savePosition%40 == 35:
+                
+                prevPositie = chooseChars[p%4].savePosition%40
+                if prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 and prevPositie is not corner[p%4]:
                     letsSuperFight = 1
                 for i in range(4):
                     print(chooseChars[p%4])
-                    if chooseChars[p%4].savePosition == chooseChars[i].savePosition and not chooseChars[p%4] == chooseChars[i]:
+                    if prevPositie == chooseChars[i].savePosition and not chooseChars[p%4] == chooseChars[i]:
                         letsFight = 1
                 if letsSuperFight == 0 and letsFight == 0:
                     nextturn = 1
+                p += 1
             elif event.key == pygame.K_ESCAPE:
                 crashed = True
             elif event.key == pygame.K_o:
