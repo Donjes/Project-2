@@ -231,7 +231,17 @@ while not crashed:
             firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index = loadGame()
             print(chooseChars[1])
             screen_index = 3
+
+    # for x in chooseChars:             remove player if he is dead
+    #     if x.hitPoints == 0:
+    #         chooseChars.remove(x)
+    #
+    # if len(chooseChars) == 1:
+    #     print chooseChars[0] with the right image
+
+
     pygame.display.update()
+
     clock.tick(60)
 
 pygame.quit()
