@@ -270,7 +270,7 @@ while not crashed:
     #     if x.hitPoints == 0:
     #         chooseChars.remove(x)
 
-<<<<<<< HEAD
+
     # if len(chooseChars) == 1:       #   only 1 player so print win
     #     screen_update(winning_screen, winning_screen_rect)
     #     winning_pic(chooseChars[0].texture)
@@ -280,17 +280,7 @@ while not crashed:
     #             crashed = True
     #         elif event.key == pygame.K_TAB:
     #             screen_index = 2
-=======
-    #if len(chooseChars) == 1:       #   only 1 player so print win
-    #    screen.fill(white)
-    #    winning_pic(chooseChars[0].texture)
-    #    text_pop('The winner is ' + chooseChars[0].name , black)
-    #    for event in pygame.event.get():
-    #        if event.key == pygame.K_ESCAPE:
-    #            crashed = True
-    #        elif event.key == pygame.K_TAB:
-    #            screen_index = 2
->>>>>>> 5157b0f804ad64c0f0e4b2a11a280f6ce3ee083e
+
 
     pygame.display.update()
 
