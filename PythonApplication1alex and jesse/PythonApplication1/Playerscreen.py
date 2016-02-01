@@ -10,6 +10,7 @@ tilesound = pygame.mixer.Sound("sounds/tileshift.ogg")
 tapsound = pygame.mixer.Sound("sounds/tapsound.ogg")
 introping = pygame.mixer.Sound("sounds/introping.ogg")
 
+soundtrack = pygame.mixer.music.load("sounds/soundtrack.wav")
 class Sounds:
     def Punch():
         pygame.mixer.Sound.play(punchsound)

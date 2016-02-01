@@ -1,4 +1,4 @@
-import random
+﻿import random
 
 def Trow_dice():
     diceList = [1,2,3,4,5,6]
@@ -52,16 +52,16 @@ def Trow_dice():
 #attack_a.conditionPoints -= 3 
 #attack_b.conditionPoints -= 3
 
-#if player_a.conditionPoints > 0 and player_b.conditionPoints > 0:
+#if player_a.conditionPoints > -1 and player_b.conditionPoints > -1:
 #    if attack_a => attack_b:
 #        totalattack = attack_a - attack_b
 #        player_b.hitPoints -= totalattack
 #    else: 
 #        totalattack = attack_b - attack_a
 #        player_a.hitPoints -= totalattack
-#elif player_a.conditionPoints > 0 and player_b.conditionPoints < 1:
+#elif player_a.conditionPoints > -1 and player_b.conditionPoints < 0:
 #    player_b.hitPoints -= attack_a
-#elif player_a.conditionPoints < 1 and player_b.conditionPoints > 0:
+#elif player_a.conditionPoints < 0 and player_b.conditionPoints > -1:
 #    player_a.hitPoints -= attack_a
 
 
@@ -103,14 +103,63 @@ def Trow_dice():
 #attack_a.conditionPoints -= 3 
 #attack_b.conditionPoints -= 3
 
-#if player_a.conditionPoints > 0 and player_b.conditionPoints > 0:
+#if player_a.conditionPoints > -1 and player_b.conditionPoints > -1:
 #    if attack_a => attack_b:
 #        totalattack = attack_a - attack_b
 #        player_b.hitPoints -= totalattack
 #    else: 
 #        totalattack = attack_b - attack_a
 #        player_a.hitPoints -= totalattack
-#elif player_a.conditionPoints > 0 and player_b.conditionPoints < 1:
+#elif player_a.conditionPoints > -1 and player_b.conditionPoints < 0:
 #    player_b.hitPoints -= attack_a
-#elif player_a.conditionPoints < 1 and player_b.conditionPoints > 0:
+#elif player_a.conditionPoints < 0 and player_b.conditionPoints > -1:
+#    player_a.hitPoints -= attack_a
+
+#DIT IS VOOR DE FIGHT TILE 
+
+#attack_b= 0
+
+#if dice == 1:
+#    attack_b += player_b.dice1
+#elif dice == 2:
+#    attack_b += player_b.dice2
+#elif dice == 3:
+#    attack_b += player_b.dice3
+#elif dice == 4:
+#    attack_b += player_b.dice4
+#elif dice == 5:
+#    attack_b += player_b.dice5
+#elif dice == 6:
+#    attack_b += player_b.dice6
+
+#attack_a= 0
+
+#if dice == 1:
+#    attack_a += player_a.dice1
+#elif dice == 2:
+#    attack_a += player_a.dice2
+#elif dice == 3:
+#    attack_a += player_a.dice3
+#elif dice == 4:
+#    attack_a += player_a.dice4
+#elif dice == 5:
+#    attack_a += player_a.dice5
+#elif dice == 6:
+#    attack_a += player_a.dice6
+
+
+
+#attack_a.conditionPoints -= 3 
+#attack_b.conditionPoints -= 3
+
+#if player_a.conditionPoints > -1 and player_b.conditionPoints > -1:
+#    if attack_a => attack_b:
+#        totalattack = attack_a - attack_b
+#        player_b.hitPoints -= totalattack
+#    else: 
+#        totalattack = attack_b - attack_a
+#        player_a.hitPoints -= totalattack
+#elif player_a.conditionPoints > -1 and player_b.conditionPoints < 0:
+#    player_b.hitPoints -= attack_a
+#elif player_a.conditionPoints < 0 and player_b.conditionPoints > -1:
 #    player_a.hitPoints -= attack_a

@@ -157,7 +157,9 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_pag
     return screen, rect, button, screen_index, menu_index, crashed, b,last_page
 
 
+pygame.mixer.music.play(-1)
 while not crashed:
+    
     
     if screen_index == 0:#start
         size = width, height = 650, 650
