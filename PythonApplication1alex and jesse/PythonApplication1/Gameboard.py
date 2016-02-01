@@ -39,7 +39,7 @@ navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20
 p = 0
 
 #gameboard
-def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight):   
+def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn):   
     save_game = False
     load_old_game = False
     if firstround:
@@ -76,6 +76,14 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                     print("plus")  
                 chooseChars[p%4].savePosition = tile
                 p += 1
+                if chooseChars[p%4].savePosition%40 == 5 or chooseChars[p%4].savePosition%40 == 15 or chooseChars[p%4].savePosition%40 == 25 or chooseChars[p%4].savePosition%40 == 35:
+                    letsSuperFight = 1
+                for i in range(4):
+                    print(chooseChars[p%4])
+                    if chooseChars[p%4].savePosition == chooseChars[i].savePosition and not chooseChars[p%4] == chooseChars[i]:
+                        letsFight = 1
+                if letsSuperFight == 0 and letsFight == 0:
+                    nextturn = 1
             elif event.key == pygame.K_ESCAPE:
                 crashed = True
             elif event.key == pygame.K_o:
@@ -83,14 +91,12 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 last_page = 3
             elif event.key == pygame.K_TAB:
                 screen_index = 2
-    if chooseChars[p%4].savePosition%40 == 5 or chooseChars[p%4].savePosition%40 == 15 or chooseChars[p%4].savePosition%40 == 25 or chooseChars[p%4].savePosition%40 == 35:
-        letsSuperFight = 1
 
-    for i in range(4):
-        print(chooseChars[p%4])
-        if chooseChars[p%4].savePosition == chooseChars[i].savePosition and not chooseChars[p%4] == chooseChars[i]:
-            letsFight = 1
-    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight
+
+
+
+
+    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn
 
 def fight(p,i):
     i = True
