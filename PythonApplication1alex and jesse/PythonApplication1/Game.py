@@ -11,6 +11,7 @@ pygame.init()
 size = width, height = 650, 650
 tile = 0
 white = (255, 255, 255)
+black = (0, 0, 0)
 chooseChars = []
 firstround = True
 save_game = False
@@ -75,6 +76,9 @@ v2 = (100, 215)
 v3 = (100, 345)
 v4 = (100, 475)
 vectorlist = [v1, v2, v3, v4]
+
+font = pygame.font.SysFont(None, 50)
+
 #koffie logo bij het opstarten van het spel
 #def Koffielogo():
 #    size = width, height = 650, 650
@@ -92,6 +96,9 @@ vectorlist = [v1, v2, v3, v4]
     
 #Koffielogo()
 
+def text_pop(msg, color):
+    screen_text = font.render(msg, True, color)
+    gameDisplay.blit(screen_text, [width/2, height/2])
 def winning_pic(texture):
     gameDisplay.blit(texture(350, 325))
 
@@ -110,9 +117,6 @@ def character_glove(char_button):
 
 def screen_update(screen,rect):
     gameDisplay.blit(screen,(rect))
-
-def sound_play(punch_sound):
-    pygame.mixer.music.play(0)
 
 def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_page):
 
@@ -158,9 +162,11 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_pag
     b = 0
     return screen, rect, button, screen_index, menu_index, crashed, b,last_page
 
-
+pygame.mixer.music.play(-1)
 while not crashed:
     
+
+
     if screen_index == 0:#start
         size = width, height = 650, 650
         gameDisplay = pygame.display.set_mode(size)
@@ -168,7 +174,7 @@ while not crashed:
         StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_page)
         screen_update(screen, rect)
         glove_update(button, screen_index)                         #hier word button meegegeven aan glove_update
- 
+
     elif screen_index == 1:#rules
         size = width, height = 650, 650
         gameDisplay = pygame.display.set_mode(size)
@@ -234,13 +240,13 @@ while not crashed:
             print(chooseChars[1])
             screen_index = 3
 
-    # for x in chooseChars:             remove player if he is dead
+    # for x in chooseChars:          #   remove player if he is dead
     #     if x.hitPoints == 0:
     #         chooseChars.remove(x)
     #
-    # if len(chooseChars) == 1:
+    # if len(chooseChars) == 1:       #   only 1 player so print win
     #     winning_pic(chooseChars[0].texture)
-
+    #     text_pop('The winner is ' + chooseChars[0].name , black)
 
 
     pygame.display.update()
