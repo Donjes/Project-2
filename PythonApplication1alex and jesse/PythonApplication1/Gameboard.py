@@ -83,5 +83,12 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 last_page = 3
             elif event.key == pygame.K_TAP:
                 screen_index = 2
-
+    #for i in range(4):
+    #    if player.savePosition == chooseChars[i].savePostion and player != chooseChars[i]:
+    #        fight(player,chooseChars[i])
     return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page
+
+def fight(p,i):
+    while not results:
+        gameDisplay.blit(pygame.image.load("images/fight.png"),navilist)
+    return p,i

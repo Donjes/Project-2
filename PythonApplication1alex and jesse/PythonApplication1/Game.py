@@ -178,8 +178,8 @@ while not crashed:
 
     elif screen_index == 2:#character
 
-        screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index,chooseChars,last_page = \
-        PlayerScreen(chooseChars,screenlist, rectlist, crashed, menu_index, screen_index,character_index,last_page)
+        screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index,chooseChars,last_page,Charlist = \
+        PlayerScreen(Charlist,chooseChars,screenlist, rectlist, crashed, menu_index, screen_index,character_index,last_page)
         screen_update(screen, rect)
         glove_update(button, screen_index)
         character_glove(char_button)
