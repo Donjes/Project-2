@@ -8,6 +8,7 @@ dicesound = pygame.mixer.Sound("sounds/dice.ogg")
 mariosound = pygame.mixer.Sound("sounds/mario.ogg")
 tilesound = pygame.mixer.Sound("sounds/tileshift.ogg")
 tapsound = pygame.mixer.Sound("sounds/tapsound.ogg")
+introping = pygame.mixer.Sound("sounds/introping.ogg")
 
 class Sounds:
     def Punch():
@@ -20,6 +21,8 @@ class Sounds:
         pygame.mixer.Sound.play(tilesound)
     def Tapsound():
         pygame.mixer.Sound.play(tapsound)
+    def Introping():
+        pygame.mixer.Sound.play(introping)
 
 Charlist = [JetRi,SuperMario,ChackNorris,JackieChan,JasonStatham,StevenSeagal,WesleySniper,TerryCrews]
 
