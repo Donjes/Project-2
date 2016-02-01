@@ -118,8 +118,6 @@ def character_glove(char_button):
 def screen_update(screen,rect):
     gameDisplay.blit(screen,(rect))
 
-def sound_play(punch_sound):
-    pygame.mixer.music.play(0)
 
 def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_page):
 
