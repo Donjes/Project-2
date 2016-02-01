@@ -154,7 +154,8 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_pag
 while not crashed:
     
     if screen_index == 0:#start
-
+        size = width, height = 650, 650
+        gameDisplay = pygame.display.set_mode(size)
         screen, rect, button, screen_index, menu_index, crashed, b,last_page = \
         StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_page)
         screen_update(screen, rect)
