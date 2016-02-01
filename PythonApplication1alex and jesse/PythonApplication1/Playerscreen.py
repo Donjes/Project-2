@@ -7,6 +7,7 @@ punchsound = pygame.mixer.Sound("sounds/punch.ogg")
 dicesound = pygame.mixer.Sound("sounds/dice.ogg")
 mariosound = pygame.mixer.Sound("sounds/mario.ogg")
 tilesound = pygame.mixer.Sound("sounds/tileshift.ogg")
+tapsound = pygame.mixer.Sound("sounds/tapsound.ogg")
 
 class Sounds:
     def Punch():
@@ -17,6 +18,8 @@ class Sounds:
         pygame.mixer.Sound.play(mariosound)
     def Tile():
         pygame.mixer.Sound.play(tilesound)
+    def Tapsound():
+        pygame.mixer.Sound.play(tapsound)
 
 Charlist = [JetRi,SuperMario,ChackNorris,JackieChan,JasonStatham,StevenSeagal,WesleySniper,TerryCrews]
 
@@ -50,30 +53,38 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
         if event.type == pygame.QUIT:
             crashed = True                  #programma sluit af met rode X
         if event.type == pygame.KEYDOWN:
+            Sounds.Tapsound()
             if event.key == pygame.K_SPACE:
                 Sounds.Punch()
             if event.key == pygame.K_RIGHT:
+                Sounds.Tapsound()
                 menu_index += 1
                 if menu_index > 2:
                     menu_index = 0
             if event.key == pygame.K_LEFT:
+                Sounds.Tapsound()
                 menu_index -= 1
                 if menu_index < 0:
                     menu_index = 2
             if menu_index == 2 and event.key == pygame.K_SPACE:
+                Sounds.Punch()
                 crashed = True
             elif menu_index == 1 and event.key == pygame.K_SPACE:
+                Sounds.Punch()
                 screen_index = 4
                 menu_index = 0
                 last_page = 2
             elif menu_index == 0 and event.key == pygame.K_SPACE and len(chooseChars) == 4:
+                Sounds.Punch()
                 screen_index = 3
  
             if event.key == pygame.K_DOWN:
+                Sounds.Tapsound()
                 character_index += 1
                 if character_index > 7:
                     character_index = 0
             if event.key == pygame.K_UP:
+                Sounds.Tapsound()
                 character_index -= 1
                 if character_index < 0:
                     character_index = 7
