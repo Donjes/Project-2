@@ -77,58 +77,57 @@ def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_in
                 character_index -= 1
                 if character_index < 0:
                     character_index = 7
-            skip = False
+
 
             if len(chooseChars) < 4:
                 for i in range(0,4):
-                    if event.key == pygame.K_RETURN and char_button == characterlist[0] and not skip:
+                    if event.key == pygame.K_RETURN and char_button == characterlist[0]:
                         name = playerNames[i]
                         Sounds.Mario()
                         JetRi = Player(name,"images/JetRi.png",10,30,12,25,10,23)
                         chooseChars.append(JetRi)
-                        skip = True
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[1] and not skip:
+    
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[1]:
                         name = playerNames[i]
                         Sounds.Mario()
                         SuperMario = Player(name,"images/SuperMario.png",10,10,30,30,15,15)
                         chooseChars.append(SuperMario)
-                        skip = True
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[2] and not skip:
+
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[2]:
                         name = playerNames[i]
                         Sounds.Mario()
                         ChackNorris = Player(name,"images/ChackNorris.png",10,26,25,24,24,1)
-                        chooseChars.append(ChackNorris)
-                        skip = True
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[3] and not skip:
+
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[3]:
                         name = playerNames[i]
                         Sounds.Mario()
                         JackieChan = Player(name,"images/JackieChan.png",20,25,5,25,20,15)
                         chooseChars.append(JackieChan)
-                        skip = True
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[4] and not skip:
+
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[4]:
                         name = playerNames[i]
                         Sounds.Mario()
                         JasonStatham = Player(name,"images/JasonStatham.png",10,11,19,21,23,26)
                         chooseChars.append(JasonStatham)
-                        skip = True
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[5] and not skip:
+
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[5]:
                         name = playerNames[i]
                         Sounds.Mario()
                         StevenSeagal = Player(name,"images/StevenSeagal.png",27,15,12,11,25,20)
                         chooseChars.append(StevenSeagal)
-                        skip = True
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[6] and not skip:
+
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[6]:
                         name = playerNames[i]
                         Sounds.Mario()
                         WesleySniper = Player(name,"images/WesleySniper.png",30,14,14,20,18,14)
                         chooseChars.append(WesleySniper)
-                        skip = True
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[7] and not skip:
+
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[7]:
                         name = playerNames[i]
                         Sounds.Mario()
                         TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
                         chooseChars.append(TerryCrews)
-                        skip = True 
+
     
 
 
