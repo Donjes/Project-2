@@ -162,7 +162,8 @@ while not crashed:
         glove_update(button, screen_index)                         #hier word button meegegeven aan glove_update
  
     elif screen_index == 1:#rules
-
+        size = width, height = 650, 650
+        gameDisplay = pygame.display.set_mode(size)
         screen, rect,screen_index, menu_index, crashed = \
         RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b)
         screen_update(screen, rect)
