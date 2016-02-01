@@ -7,6 +7,7 @@ punchsound = pygame.mixer.Sound("sounds/punch.ogg")
 dicesound = pygame.mixer.Sound("sounds/dice.ogg")
 mariosound = pygame.mixer.Sound("sounds/mario.ogg")
 tilesound = pygame.mixer.Sound("sounds/tileshift.ogg")
+introping = pygame.mixer.Sound("sounds/introping.ogg")
 
 class Sounds:
     def Punch():
@@ -17,6 +18,8 @@ class Sounds:
         pygame.mixer.Sound.play(mariosound)
     def Tile():
         pygame.mixer.Sound.play(tilesound)
+    def Introping():
+        pygame.mixer.Sound.play(introping)
 
 
 TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
@@ -85,6 +88,7 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
                 character_index -= 1
                 if character_index < 0:
                     character_index = 7
+<<<<<<< HEAD
 
 
 
@@ -138,6 +142,58 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
                         TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
                         chooseChars.append(TerryCrews)
 
+=======
+            i = 0
+            if len(chooseChars) < 4:
+                if event.key == pygame.K_RETURN and char_button == characterlist[0]:
+                    name = playerNames[i]
+                    Sounds.Mario()
+                    JetRi = Player(name,"images/JetRi.png",10,30,12,25,10,23)
+                    chooseChars.append(JetRi)
+
+                elif event.key == pygame.K_RETURN and char_button == characterlist[1]:
+                    name = playerNames[i]
+                    Sounds.Mario()
+                    SuperMario = Player(name,"images/SuperMario.png",10,10,30,30,15,15)
+                    chooseChars.append(SuperMario)
+
+                elif event.key == pygame.K_RETURN and char_button == characterlist[2]:
+                    name = playerNames[i]
+                    Sounds.Mario()
+                    ChackNorris = Player(name,"images/ChackNorris.png",10,26,25,24,24,1)
+                    chooseChars.append(ChackNorris)
+
+                elif event.key == pygame.K_RETURN and char_button == characterlist[3]:
+                    name = playerNames[i]
+                    Sounds.Mario()
+                    JackieChan = Player(name,"images/JackieChan.png",20,25,5,25,20,15)
+                    chooseChars.append(JackieChan)
+
+                elif event.key == pygame.K_RETURN and char_button == characterlist[4]:
+                    name = playerNames[i]
+                    Sounds.Mario()
+                    JasonStatham = Player(name,"images/JasonStatham.png",10,11,19,21,23,26)
+                    chooseChars.append(JasonStatham)
+
+                elif event.key == pygame.K_RETURN and char_button == characterlist[5]:
+                    name = playerNames[i]
+                    Sounds.Mario()
+                    StevenSeagal = Player(name,"images/StevenSeagal.png",27,15,12,11,25,20)
+                    chooseChars.append(StevenSeagal)
+
+                elif event.key == pygame.K_RETURN and char_button == characterlist[6]:
+                    name = playerNames[i]
+                    Sounds.Mario()
+                    WesleySniper = Player(name,"images/WesleySniper.png",30,14,14,20,18,14)
+                    chooseChars.append(WesleySniper)
+
+                elif event.key == pygame.K_RETURN and char_button == characterlist[7]:
+                    name = playerNames[i]
+                    Sounds.Mario()
+                    TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
+                    chooseChars.append(TerryCrews)
+                i += 1
+>>>>>>> origin/master
     
 
     b = 2
