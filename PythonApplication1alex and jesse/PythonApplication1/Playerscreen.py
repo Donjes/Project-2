@@ -19,7 +19,7 @@ class Sounds:
     def Tile():
         pygame.mixer.Sound.play(tilesound)
     def Introping():
-        pygame.mixer.Sound.play(Introping)
+        pygame.mixer.Sound.play(introping)
 
 
 

@@ -82,8 +82,12 @@ vectorlist = [v1, v2, v3, v4]
 #        pygame.display.update()
 #        if i == 0:
 #            time.sleep(2)
+        
+#        elif i == 6:
+#            Sounds.Introping()
 #        time.sleep(0.1)
 #    time.sleep(3)
+    
 #Koffielogo()
 
 
