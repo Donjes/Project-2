@@ -73,21 +73,21 @@ v3 = (100, 345)
 v4 = (100, 475)
 vectorlist = [v1, v2, v3, v4]
 #koffie logo bij het opstarten van het spel
-def Koffielogo():
-    size = width, height = 650, 650
-    gameDisplay = pygame.display.set_mode(size)
+#def Koffielogo():
+#    size = width, height = 650, 650
+#    gameDisplay = pygame.display.set_mode(size)
     
-    for i in range (9):
-        gameDisplay.blit(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png"),(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png").get_rect()))  
-        pygame.display.update()
-        if i == 0:
-            time.sleep(1)
-        elif i == 6:
-            Sounds.Introping()
-        time.sleep(0.08)
-    time.sleep(2)
+#    for i in range (9):
+#        gameDisplay.blit(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png"),(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png").get_rect()))  
+#        pygame.display.update()
+#        if i == 0:
+#            time.sleep(1)
+#        elif i == 6:
+#            Sounds.Introping()
+#        time.sleep(0.08)
+#    time.sleep(2)
     
-Koffielogo()
+#Koffielogo()
 
 
 def glove_update(button, screen_index):                   #geeft handschoen.png weer
