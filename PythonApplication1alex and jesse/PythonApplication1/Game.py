@@ -35,6 +35,7 @@ yellow_glove = pygame.image.load("images/yellow_handschoen.png")
 blue_glove = pygame.image.load("images/blue_handschoen.png")
 board_screen = pygame.image.load("images/speelveld.png")
 options_screen = pygame.image.load("images/Options.png")
+winning_screen = pygame.image.load("images/winningscreen.png")
 # imgTerry = pygame.image.load("images/TerryCrews.png")
 # imgJason = pygame.image.load("images/JasonStatham.png")
 # imgWesley = pygame.image.load("images/WesleySniper.png")
@@ -49,6 +50,7 @@ board_screen_rect = board_screen.get_rect()
 startup_screen_rect = startup_screen.get_rect()                 #start at top left
 rules_screen_rect = startup_screen.get_rect()
 character_screen_rect = character_screen.get_rect()
+winning_screen_rect = winning_screen.get_rect()
 
 screenlist = [startup_screen, rules_screen, character_screen, board_screen, options_screen]
 screen_index = 0
@@ -253,15 +255,15 @@ while not crashed:
     #     if x.hitPoints == 0:
     #         chooseChars.remove(x)
 
-    if len(chooseChars) == 1:       #   only 1 player so print win
-        screen.fill(white)
-        winning_pic(chooseChars[0].texture)
-        text_pop('The winner is ' + chooseChars[0].name , black)
-        for event in pygame.event.get():
-            if event.key == pygame.K_ESCAPE:
-                crashed = True
-            elif event.key == pygame.K_TAB:
-                screen_index = 2
+    # if len(chooseChars) == 1:       #   only 1 player so print win
+    #     screen_update(winning_screen, winning_screen_rect)
+    #     winning_pic(chooseChars[0].texture)
+    #     text_pop('The winner is ' + chooseChars[0].name , black)
+    #     for event in pygame.event.get():
+    #         if event.key == pygame.K_ESCAPE:
+    #             crashed = True
+    #         elif event.key == pygame.K_TAB:
+    #             screen_index = 2
 
     pygame.display.update()
 
