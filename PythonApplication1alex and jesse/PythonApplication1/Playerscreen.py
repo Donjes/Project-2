@@ -9,7 +9,7 @@ mariosound = pygame.mixer.Sound("sounds/mario.ogg")
 tilesound = pygame.mixer.Sound("sounds/tileshift.ogg")
 tapsound = pygame.mixer.Sound("sounds/tapsound.ogg")
 introping = pygame.mixer.Sound("sounds/introping.ogg")
-
+soundtrack = pygame.mixer.music.load("sounds/soundtrack.wav")
 class Sounds:
     def Punch():
         pygame.mixer.Sound.play(punchsound)
@@ -56,11 +56,11 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
         if event.type == pygame.QUIT:
             crashed = True                  #programma sluit af met rode X
         if event.type == pygame.KEYDOWN:
-            Sounds.Tapsound()
+            #Sounds.Tapsound()
             if event.key == pygame.K_SPACE:
                 Sounds.Punch()
             if event.key == pygame.K_RIGHT:
-                Sounds.Tapsound()
+                #Sounds.Tapsound()
                 menu_index += 1
                 if menu_index > 2:
                     menu_index = 0
