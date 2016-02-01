@@ -21,6 +21,12 @@ letsSuperFight = 0
 letsFight = 0
 nextturn = 0
 p = 0
+roller1 = False
+roller2 = False
+roller_reset = False
+roller1_img = "DiceRolling.png" 
+roller2_img = "DiceRolling.png"
+
 #playerList = [player1,player2,player3,player4]
 gameDisplay = pygame.display.set_mode((width,height))
 pygame.display.set_caption('Survivor')
@@ -215,14 +221,93 @@ while not crashed:
 
 
     elif screen_index == 3:
-        #hier moet Gameboard() komen
-        firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn = \
-        BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn)
-        size = width, height = 650, 746
-        gameDisplay = pygame.display.set_mode(size)
-        
-        gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))    
-        if nextturn == 1:
+#normale functie
+        if letsSuperFight == 0 and letsFight == 0:
+            firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn = \
+            BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn)
+            size = width, height = 650, 746
+            gameDisplay = pygame.display.set_mode(size)
+
+#fight functions      
+        if letsSuperFight == 1:
+            tempChar = chooseChars[p%4-1]
+            roller1,roller2,roller_reset,roller1_img,roller2_img = superFight(tempChar,chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img)
+            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
+            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
+            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
+            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
+            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+            small_glove(chooseChars[p%4].texture,(290,230))
+            small_glove(chooseChars[0].texture,(110,110))
+            small_glove(chooseChars[1].texture,(470,110))
+            small_glove(chooseChars[2].texture,(470,470))
+            small_glove(chooseChars[3].texture,(110,470))  
+            gameDisplay.blit(pygame.image.load("images/fight.png"),(-5,170))
+            gameDisplay.blit(pygame.image.load(tempChar.texture),(30,180))
+            gameDisplay.blit(pygame.image.load("images/"+ roller1_img),(30,250)) 
+            gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))             
+            pygame.display.update()
+            if roller_reset == True:
+                time.sleep(2)
+                roller1 = False
+                roller2 = False
+                roller_reset = False      
+                letsSuperFight = 0 
+                         
+        elif letsFight == 1:
+            tempChar = chooseChars[p%4-1]
+            roller1,roller2,roller_reset,roller1_img,roller2_img = fight(tempChar,chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img)
+            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
+            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
+            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
+            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
+            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+            small_glove(chooseChars[p%4].texture,(290,230))
+            small_glove(chooseChars[0].texture,(110,110))
+            small_glove(chooseChars[1].texture,(470,110))
+            small_glove(chooseChars[2].texture,(470,470))
+            small_glove(chooseChars[3].texture,(110,470))  
+            gameDisplay.blit(pygame.image.load("images/fight.png"),(-5,170))
+            gameDisplay.blit(pygame.image.load(tempChar.texture),(30,180))
+            gameDisplay.blit(pygame.image.load("images/"+ roller1_img),(30,250)) 
+            gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))  
+            pygame.display.update()
+            if roller_reset == True:  
+                time.sleep(2) 
+                roller1 = False
+                roller2 = False
+                roller_reset = False    
+                letsFight = 0   
+#bij normale functie 
+        elif nextturn == 1:
+            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
+            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
+            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
+            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
+            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+            small_glove(chooseChars[p%4].texture,(290,230))
+            small_glove(chooseChars[0].texture,(110,110))
+            small_glove(chooseChars[1].texture,(470,110))
+            small_glove(chooseChars[2].texture,(470,470))
+            small_glove(chooseChars[3].texture,(110,470))    
+            gameDisplay.blit(pygame.image.load("images/nextturn.png"),(88,225))
+            small_glove(chooseChars[p%4].texture,(150,250))
+            pygame.display.update()
+            time.sleep(1)
+            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))
+            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
+            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
+            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
+            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+            small_glove(chooseChars[p%4].texture,(290,230))
+            small_glove(chooseChars[0].texture,(110,110))
+            small_glove(chooseChars[1].texture,(470,110))
+            small_glove(chooseChars[2].texture,(470,470))
+            small_glove(chooseChars[3].texture,(110,470))
+            dice_img(roll)          
+            nextturn = 0
+        else:
+            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
             small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
             small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
             small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
@@ -233,30 +318,8 @@ while not crashed:
             small_glove(chooseChars[2].texture,(470,470))
             small_glove(chooseChars[3].texture,(110,470))
             dice_img(roll)
-            gameDisplay.blit(pygame.image.load("images/nextturn.png"),(88,225))
-            small_glove(chooseChars[p%4].texture,(150,250))
-            pygame.display.update()
-            time.sleep(1)
-            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))    
 
-            nextturn = 0
-
-        small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
-        small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
-        small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
-        small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
-        small_glove(chooseChars[p%4].texture,(290,230))
-        small_glove(chooseChars[0].texture,(110,110))
-        small_glove(chooseChars[1].texture,(470,110))
-        small_glove(chooseChars[2].texture,(470,470))
-        small_glove(chooseChars[3].texture,(110,470))
-        dice_img(roll)
-
-        if letsSuperFight == 1:
-            superFight(chooseChars[p%4],chooseChars)
-        if letsFight == 1:
-            fight(chooseChars[p%4],chooseChars)
-        
+     
     elif screen_index == 5:
         if save_game == True:
             saveGame(firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index)

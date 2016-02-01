@@ -127,6 +127,12 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
                         JasonStatham = Player(name,"images/JasonStatham.png",10,11,19,21,23,26)
                         chooseChars.append(JasonStatham)
 
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[5] and StevenSeagal not in chooseChars:
+                        name = playerNames[i]
+                        Sounds.Mario()
+                        StevenSeagal = Player(name,"images/StevenSeagal.png",27,15,12,11,25,20)
+                        chooseChars.append(StevenSeagal)
+
                     elif event.key == pygame.K_RETURN and char_button == characterlist[6] and WesleySniper not in chooseChars:
                         name = playerNames[i]
                         Sounds.Mario()
