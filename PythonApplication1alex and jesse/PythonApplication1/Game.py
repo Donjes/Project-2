@@ -219,22 +219,35 @@ while not crashed:
         gameDisplay = pygame.display.set_mode(size)
         
         gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))    
-        small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
-        small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
-        small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
-        small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
-        small_glove(chooseChars[p%4].texture,(290,230))
-        small_glove(chooseChars[0].texture,(110,110))
-        small_glove(chooseChars[1].texture,(470,110))
-        small_glove(chooseChars[2].texture,(470,470))
-        small_glove(chooseChars[3].texture,(110,470))
-        dice_img(roll)
         if nextturn == 1:
             gameDisplay.blit(pygame.image.load("images/nextturn.png"),(88,225))
             small_glove(chooseChars[p%4].texture,(150,250))
             pygame.display.update()
             time.sleep(1)
+            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))    
+            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
+            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
+            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
+            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+            small_glove(chooseChars[p%4].texture,(290,230))
+            small_glove(chooseChars[0].texture,(110,110))
+            small_glove(chooseChars[1].texture,(470,110))
+            small_glove(chooseChars[2].texture,(470,470))
+            small_glove(chooseChars[3].texture,(110,470))
+            dice_img(roll)
             nextturn = 0
+        else:
+            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
+            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
+            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
+            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+            small_glove(chooseChars[p%4].texture,(290,230))
+            small_glove(chooseChars[0].texture,(110,110))
+            small_glove(chooseChars[1].texture,(470,110))
+            small_glove(chooseChars[2].texture,(470,470))
+            small_glove(chooseChars[3].texture,(110,470))
+            dice_img(roll)
+
         if letsSuperFight == 1:
             superFight(chooseChars[p%4],chooseChars)
         if letsFight == 1:
@@ -253,15 +266,15 @@ while not crashed:
     #     if x.hitPoints == 0:
     #         chooseChars.remove(x)
 
-    if len(chooseChars) == 1:       #   only 1 player so print win
-        screen.fill(white)
-        winning_pic(chooseChars[0].texture)
-        text_pop('The winner is ' + chooseChars[0].name , black)
-        for event in pygame.event.get():
-            if event.key == pygame.K_ESCAPE:
-                crashed = True
-            elif event.key == pygame.K_TAB:
-                screen_index = 2
+    #if len(chooseChars) == 1:       #   only 1 player so print win
+    #    screen.fill(white)
+    #    winning_pic(chooseChars[0].texture)
+    #    text_pop('The winner is ' + chooseChars[0].name , black)
+    #    for event in pygame.event.get():
+    #        if event.key == pygame.K_ESCAPE:
+    #            crashed = True
+    #        elif event.key == pygame.K_TAB:
+    #            screen_index = 2
 
     pygame.display.update()
 
