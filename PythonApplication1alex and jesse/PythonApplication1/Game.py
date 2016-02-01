@@ -92,6 +92,8 @@ vectorlist = [v1, v2, v3, v4]
     
 #Koffielogo()
 
+def winning_pic(texture):
+    gameDisplay.blit(texture(350, 325))
 
 def glove_update(button, screen_index):                   #geeft handschoen.png weer
     if screen_index == 0:           #standard vector
@@ -237,7 +239,8 @@ while not crashed:
     #         chooseChars.remove(x)
     #
     # if len(chooseChars) == 1:
-    #     print chooseChars[0] with the right image
+    #     winning_pic(chooseChars[0].texture)
+
 
 
     pygame.display.update()
