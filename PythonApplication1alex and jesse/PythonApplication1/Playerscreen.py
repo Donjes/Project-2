@@ -78,7 +78,6 @@ def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_in
                 if character_index < 0:
                     character_index = 7
 
-
             if len(chooseChars) < 4:
                 for i in range(0,4):
                     if event.key == pygame.K_RETURN and char_button == characterlist[0]:
@@ -86,7 +85,7 @@ def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_in
                         Sounds.Mario()
                         JetRi = Player(name,"images/JetRi.png",10,30,12,25,10,23)
                         chooseChars.append(JetRi)
-    
+
                     elif event.key == pygame.K_RETURN and char_button == characterlist[1]:
                         name = playerNames[i]
                         Sounds.Mario()
@@ -97,6 +96,7 @@ def PlayerScreen(chooseChars,screenlist, rectlist,crashed, menu_index, screen_in
                         name = playerNames[i]
                         Sounds.Mario()
                         ChackNorris = Player(name,"images/ChackNorris.png",10,26,25,24,24,1)
+                        chooseChars.append(ChackNorris)
 
                     elif event.key == pygame.K_RETURN and char_button == characterlist[3]:
                         name = playerNames[i]
