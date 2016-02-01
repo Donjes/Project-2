@@ -57,5 +57,24 @@ ChackNorris = Player("input",(-100,-100),"images/ChackNorris.png",10,26,25,24,24
 #        self.dice4 = attack4
 #        self.dice5 = attack5
 #        self.dice6 = attack6
+punchsound = pygame.mixer.Sound("sounds/punch.ogg")
+dicesound = pygame.mixer.Sound("sounds/dice.ogg")
+mariosound = pygame.mixer.Sound("sounds/mario.ogg")
+tilesound = pygame.mixer.Sound("sounds/tileshift.ogg")
+tapsound = pygame.mixer.Sound("sounds/tapsound.ogg")
+introping = pygame.mixer.Sound("sounds/introping.ogg")
 
+class Sounds:
+    def Punch():
+        pygame.mixer.Sound.play(punchsound)
+    def Dice():
+        pygame.mixer.Sound.play(dicesound)
+    def Mario():
+        pygame.mixer.Sound.play(mariosound)
+    def Tile():
+        pygame.mixer.Sound.play(tilesound)
+    def Tapsound():
+        pygame.mixer.Sound.play(tapsound)
+    def Introping():
+        pygame.mixer.Sound.play(introping)
 
