@@ -52,16 +52,16 @@ def Trow_dice():
 #attack_a.conditionPoints -= 3 
 #attack_b.conditionPoints -= 3
 
-#if player_a.conditionPoints > 0 and player_b.conditionPoints > 0:
+#if player_a.conditionPoints > -1 and player_b.conditionPoints > -1:
 #    if attack_a => attack_b:
 #        totalattack = attack_a - attack_b
 #        player_b.hitPoints -= totalattack
 #    else: 
 #        totalattack = attack_b - attack_a
 #        player_a.hitPoints -= totalattack
-#elif player_a.conditionPoints > 0 and player_b.conditionPoints < 1:
+#elif player_a.conditionPoints > -1 and player_b.conditionPoints < 0:
 #    player_b.hitPoints -= attack_a
-#elif player_a.conditionPoints < 1 and player_b.conditionPoints > 0:
+#elif player_a.conditionPoints < 0 and player_b.conditionPoints > -1:
 #    player_a.hitPoints -= attack_a
 
 
@@ -103,16 +103,16 @@ def Trow_dice():
 #attack_a.conditionPoints -= 3 
 #attack_b.conditionPoints -= 3
 
-#if player_a.conditionPoints > 0 and player_b.conditionPoints > 0:
+#if player_a.conditionPoints > -1 and player_b.conditionPoints > -1:
 #    if attack_a => attack_b:
 #        totalattack = attack_a - attack_b
 #        player_b.hitPoints -= totalattack
 #    else: 
 #        totalattack = attack_b - attack_a
 #        player_a.hitPoints -= totalattack
-#elif player_a.conditionPoints > 0 and player_b.conditionPoints < 1:
+#elif player_a.conditionPoints > -1 and player_b.conditionPoints < 0:
 #    player_b.hitPoints -= attack_a
-#elif player_a.conditionPoints < 1 and player_b.conditionPoints > 0:
+#elif player_a.conditionPoints < 0 and player_b.conditionPoints > -1:
 #    player_a.hitPoints -= attack_a
 
 #DIT IS VOOR DE FIGHT TILE 
@@ -152,14 +152,14 @@ def Trow_dice():
 #attack_a.conditionPoints -= 3 
 #attack_b.conditionPoints -= 3
 
-#if player_a.conditionPoints > 0 and player_b.conditionPoints > 0:
+#if player_a.conditionPoints > -1 and player_b.conditionPoints > -1:
 #    if attack_a => attack_b:
 #        totalattack = attack_a - attack_b
 #        player_b.hitPoints -= totalattack
 #    else: 
 #        totalattack = attack_b - attack_a
 #        player_a.hitPoints -= totalattack
-#elif player_a.conditionPoints > 0 and player_b.conditionPoints < 1:
+#elif player_a.conditionPoints > -1 and player_b.conditionPoints < 0:
 #    player_b.hitPoints -= attack_a
-#elif player_a.conditionPoints < 1 and player_b.conditionPoints > 0:
+#elif player_a.conditionPoints < 0 and player_b.conditionPoints > -1:
 #    player_a.hitPoints -= attack_a
