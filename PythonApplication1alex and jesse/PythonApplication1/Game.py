@@ -84,12 +84,11 @@ vectorlist = [v1, v2, v3, v4]
 #        gameDisplay.blit(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png"),(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png").get_rect()))  
 #        pygame.display.update()
 #        if i == 0:
-#            time.sleep(2)
-        
+#            time.sleep(1)
 #        elif i == 6:
 #            Sounds.Introping()
-#        time.sleep(0.1)
-#    time.sleep(3)
+#        time.sleep(0.08)
+#    time.sleep(2)
     
 #Koffielogo()
 
