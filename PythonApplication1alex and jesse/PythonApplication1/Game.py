@@ -107,7 +107,8 @@ font = pygame.font.SysFont(None, 50)
 
 def text_pop(msg, color):
     screen_text = font.render(msg, True, color)
-    gameDisplay.blit(screen_text, [width/2, height/2])
+    gameDisplay.blit(screen_text, [225, 275])
+
 def winning_pic(texture):
     gameDisplay.blit(texture(350, 325))
 
@@ -332,7 +333,6 @@ while not crashed:
     # for x in chooseChars:          #   remove player if he is dead
     #     if x.hitPoints == 0:
     #         chooseChars.remove(x)
-
 
     # if len(chooseChars) == 1:       #   only 1 player so print win
     #     screen_update(winning_screen, winning_screen_rect)
