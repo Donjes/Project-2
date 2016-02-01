@@ -79,9 +79,8 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
                     character_index = 7
 
 
-
+            i = 0
             if len(chooseChars) < 4:
-                for i in range(0,4):
                     if event.key == pygame.K_RETURN and char_button == characterlist[0] and JetRi not in chooseChars:
                         name = playerNames[i]
                         Sounds.Mario()   
@@ -129,7 +128,7 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
                         Sounds.Mario()
                         TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
                         chooseChars.append(TerryCrews)
-
+                    i += 1
     
 
     b = 2

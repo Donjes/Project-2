@@ -16,6 +16,9 @@ firstround = True
 save_game = False
 load_old_game = False
 last_page = 0
+letsSuperFight = 0
+letsFight = 0
+
 #playerList = [player1,player2,player3,player4]
 gameDisplay = pygame.display.set_mode((width,height))
 pygame.display.set_caption('Survivor')
@@ -201,8 +204,8 @@ while not crashed:
 
     elif screen_index == 3:
         #hier moet Gameboard() komen
-        firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page = \
-        BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page)
+        firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight = \
+        BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight)
         size = width, height = 650, 746
         gameDisplay = pygame.display.set_mode(size)
         gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))    
@@ -216,6 +219,10 @@ while not crashed:
         small_glove(chooseChars[2].texture,(470,470))
         small_glove(chooseChars[3].texture,(110,470))
         dice_img(roll)
+        if letsSuperFight == 1:
+            superFight(chooseChars[p%4],chooseChars)
+        if letsFight == 1:
+            fight(chooseChars[p%4],chooseChars)
 
     elif screen_index == 5:
         if save_game == True:

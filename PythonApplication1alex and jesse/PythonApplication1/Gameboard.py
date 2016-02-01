@@ -10,10 +10,10 @@ from Playerscreen import *
 
 size = width, height = 700, 650
 white = (255, 255, 255)
-gloveSmall1 = "images/red_handschoen.png"
-gloveSmall1move = "images/red_handschoen1.png"
-gloveSmall2 = "images/blue_handschoen.png"
-gloveSmall2move = "images/blue_handschoen1.png"
+gloveSmall2 = "images/red_handschoen.png"
+gloveSmall2move = "images/red_handschoen1.png"
+gloveSmall1 = "images/blue_handschoen.png"
+gloveSmall1move = "images/blue_handschoen1.png"
 gloveSmall3 = "images/green_handschoen.png"
 gloveSmall3move = "images/green_handschoen1.png"
 gloveSmall4 = "images/yellow_handschoen.png"
@@ -39,12 +39,12 @@ navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20
 p = 0
 
 #gameboard
-def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page):   
+def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight):   
     save_game = False
     load_old_game = False
     if firstround:
-        chooseChars[0].savePosition = 10
-        chooseChars[1].savePosition = 0
+        chooseChars[0].savePosition = 0
+        chooseChars[1].savePosition = 10
         chooseChars[2].savePosition = 20
         chooseChars[3].savePosition = 30
         firstround = False
@@ -81,14 +81,29 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             elif event.key == pygame.K_o:
                 screen_index = 4
                 last_page = 3
-            elif event.key == pygame.K_TAP:
+            elif event.key == pygame.K_TAB:
                 screen_index = 2
-    #for i in range(4):
-    #    if player.savePosition == chooseChars[i].savePostion and player != chooseChars[i]:
-    #        fight(player,chooseChars[i])
-    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page
+    if chooseChars[p%4].savePosition%40 == 5 or chooseChars[p%4].savePosition%40 == 15 or chooseChars[p%4].savePosition%40 == 25 or chooseChars[p%4].savePosition%40 == 35:
+        letsSuperFight = 1
+
+    for i in range(4):
+        print(chooseChars[p%4])
+        if chooseChars[p%4].savePosition == chooseChars[i].savePosition and not chooseChars[p%4] == chooseChars[i]:
+            letsFight = 1
+    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight
 
 def fight(p,i):
-    while not results:
-        gameDisplay.blit(pygame.image.load("images/fight.png"),navilist)
-    return p,i
+    i = True
+    while True:
+        gameDisplay.blit(pygame.image.load("images/fight.png"),(-5,170))
+        pygame.display.update()
+        
+        i = False
+
+def superFight(p,plist):
+    i = True
+    while i:
+        gameDisplay.blit(pygame.image.load("images/fight.png"),(-5,170))
+        pygame.display.update()
+        time.sleep(10)
+        i = False
