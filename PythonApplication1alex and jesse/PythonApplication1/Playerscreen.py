@@ -7,6 +7,7 @@ punchsound = pygame.mixer.Sound("sounds/punch.ogg")
 dicesound = pygame.mixer.Sound("sounds/dice.ogg")
 mariosound = pygame.mixer.Sound("sounds/mario.ogg")
 tilesound = pygame.mixer.Sound("sounds/tileshift.ogg")
+introping = pygame.mixer.Sound("sounds/introping.ogg")
 
 class Sounds:
     def Punch():
@@ -17,6 +18,8 @@ class Sounds:
         pygame.mixer.Sound.play(mariosound)
     def Tile():
         pygame.mixer.Sound.play(tilesound)
+    def Introping():
+        pygame.mixer.Sound.Play(introping)
 
 
 
