@@ -89,17 +89,18 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             tempTile = tile
             newLocation = True
 # =========================================== Navigatie van de handschoenen bij enter kies je je lokatie en worden alle variable returned
-        if event.key == pygame.K_RETURN and tempTile != chooseChars[p%4].savePosition and newLocation == True:
+        if event.key == pygame.K_SPACE and tempTile != chooseChars[p%4].savePosition and newLocation == True:
             chooseChars[p%4].savePosition = tempTile
                 
             prevPositie = chooseChars[p%4].savePosition%40
 
-            if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 and prevPositie is not corner[p%4]):
-                letsSuperFight = 1
+            if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and prevPositie is not corner[p%4]:
+                letsSuperFight = 1#corner fight
+               # attacker = tempChar
             for i in range(4):
-                print(chooseChars[p%4])
+              #  print(chooseChars[p%4])
                 if prevPositie == chooseChars[i].savePosition and not chooseChars[p%4] == chooseChars[i]:
-                    letsFight = 1
+                    letsFight = 1#spot fight
             if letsSuperFight == 0 and letsFight == 0:
                 nextturn = 1
             p += 1
@@ -118,7 +119,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
 
 #===================================================== FIGHT FUNCTIES! =============================================================================#
 # 1v1 fight
-def fight(tempChar,i,roller1,roller2,roller_reset,roller1_img,roller2_img):
+def spotFight(tempChar,i,roller1,roller2,roller_reset,roller1_img,roller2_img):
 
         event = pygame.event.poll()      
         if event.type == pygame.KEYDOWN:       
@@ -146,7 +147,7 @@ def fight(tempChar,i,roller1,roller2,roller_reset,roller1_img,roller2_img):
             return roller1,roller2,roller_reset,roller1_img,roller2_img    
         
 # Corner fight
-def superFight(tempChar,i,roller1,roller2,roller_reset,roller1_img,roller2_img):
+def superFight(tempChar,roller1,roller2,roller_reset,roller1_img,roller2_img):
 
         event = pygame.event.poll()      
         if event.type == pygame.KEYDOWN:       
@@ -157,6 +158,8 @@ def superFight(tempChar,i,roller1,roller2,roller_reset,roller1_img,roller2_img):
                 #
                 # hier komt de logica van hoeveel dmg1
                 #
+                
+
             if event.key == pygame.K_RETURN:   
                 roll2 = Trow_dice()
                 roller2_img = roll2[1]

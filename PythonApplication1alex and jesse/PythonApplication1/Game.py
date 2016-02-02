@@ -259,7 +259,7 @@ while not crashed:
                          
         elif letsFight == 1:
             tempChar = chooseChars[p%4-1]
-            roller1,roller2,roller_reset,roller1_img,roller2_img = fight(tempChar,chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img)
+            roller1,roller2,roller_reset,roller1_img,roller2_img = spotFight(tempChar,chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img)
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
             small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
             small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
