@@ -50,7 +50,8 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
     corner = [0,10,20,30]
     player = chooseChars[p%4]
     tile = player.savePosition
-    event = pygame.event.poll()         # Navigatie van de handschoenen bij elke dice throw
+# =========================================== Navigatie van de handschoenen bij elke dice throw optie om kant te kiezen
+    event = pygame.event.poll()         
     if event.type == pygame.KEYDOWN: 
         if event.key == pygame.K_SPACE and newLocation == False and dice_rolled == False: 
             Sounds.Dice()
@@ -87,11 +88,15 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 print("plus")  
             tempTile = tile
             newLocation = True
+# =========================================== Navigatie van de handschoenen bij enter kies je je lokatie en worden alle variable returned
         if event.key == pygame.K_RETURN and tempTile != chooseChars[p%4].savePosition and newLocation == True:
             chooseChars[p%4].savePosition = tempTile
                 
             prevPositie = chooseChars[p%4].savePosition%40
             if prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 and prevPositie is not corner[p%4]:
+                print(corner[p%4])
+                print(prevPositie)
+                time.sleep(10)
                 letsSuperFight = 1
             for i in range(4):
                 print(chooseChars[p%4])
