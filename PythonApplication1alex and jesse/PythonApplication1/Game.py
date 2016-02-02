@@ -22,6 +22,9 @@ letsFight = 0
 nextturn = 0
 p = 0
 
+rollA = None
+rollD = None
+
 prevPositie = None
 corner = [0,10,20,30]
 roller1 = False
@@ -237,7 +240,7 @@ while not crashed:
 #fight functions      
         if letsSuperFight == 1:
             tempChar = chooseChars[p%4-1]
-            roller1,roller2,roller_reset,roller1_img,roller2_img = superFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img)
+            roller1,roller2,roller_reset,roller1_img,roller2_img = superFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD)
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
             small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
             small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])

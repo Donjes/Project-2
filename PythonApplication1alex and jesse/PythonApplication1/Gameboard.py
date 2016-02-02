@@ -149,8 +149,8 @@ def spotFight(tempChar, chooseChars,roller1,roller2,roller_reset,roller1_img,rol
         return roller1,roller2,roller_reset,roller1_img,roller2_img    
         
 # Corner fight
-def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roller_reset,roller1_img,roller2_img):
-        for player in corner:
+def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2):
+        for player in range(len(corner)):
             if prevPositie == corner[player]:#player is de index
                 defender = chooseChars[player]
                 attacker = tempChar
@@ -249,6 +249,9 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                     elif defender.conditionPoints < 0 and attacker.conditionPoints > -1:
                        defender.hitPoints -= damageD
                     roller_reset = True
+
+                    print(attacker.hitPoints)
+                    print(defender.hitPoints)
                     return roller1,roller2,roller_reset,roller1_img,roller2_img
                 else:
                     return roller1,roller2,roller_reset,roller1_img,roller2_img
