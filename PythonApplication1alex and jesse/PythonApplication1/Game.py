@@ -21,6 +21,8 @@ letsSuperFight = 0
 letsFight = 0
 nextturn = 0
 p = 0
+
+corner = [0,10,20,30]
 roller1 = False
 roller2 = False
 roller_reset = False
@@ -226,7 +228,7 @@ while not crashed:
     elif screen_index == 3:
 #normale functie
         if letsSuperFight == 0 and letsFight == 0:
-            firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled = \
+            firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie = \
             BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled)
             size = width, height = 650, 746
             gameDisplay = pygame.display.set_mode(size)
@@ -234,7 +236,7 @@ while not crashed:
 #fight functions      
         if letsSuperFight == 1:
             tempChar = chooseChars[p%4-1]
-            roller1,roller2,roller_reset,roller1_img,roller2_img = superFight(tempChar,chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img)
+            roller1,roller2,roller_reset,roller1_img,roller2_img = superFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img)
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
             small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
             small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])

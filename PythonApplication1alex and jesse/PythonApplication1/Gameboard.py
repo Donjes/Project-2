@@ -115,7 +115,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             screen_index = 2
 
 
-    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled
+    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie
 
 #===================================================== FIGHT FUNCTIES! =============================================================================#
 # 1v1 fight
@@ -149,31 +149,37 @@ def spotFight(tempChar,roller1,roller2,roller_reset,roller1_img,roller2_img):
         return roller1,roller2,roller_reset,roller1_img,roller2_img    
         
 # Corner fight
-def superFight(tempChar,roller1,roller2,roller_reset,roller1_img,roller2_img):
+def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roller_reset,roller1_img,roller2_img):
+        for player in corner:
+            if prevPositie == corner[player]:#player is de index
+                defender = chooseChars[player]
+                attacker = tempChar
 
-        event = pygame.event.poll()      
-        if event.type == pygame.KEYDOWN:       
-            if event.key == pygame.K_SPACE:     
-                roll = Trow_dice()                      
-                roller1_img = roll[1]
-                roller1 = True
-                #
-                # hier komt de logica van hoeveel dmg1
-                #
-                
 
-            if event.key == pygame.K_RETURN:   
-                roll2 = Trow_dice()
-                roller2_img = roll2[1]
-                roller2 = True
+            event = pygame.event.poll()
+            if event.type == pygame.KEYDOWN:
+                if event.key == pygame.K_SPACE:
+                    roll = Trow_dice()
+                    roller1_img = roll[1]
+                    roller1 = True
+                    #
+                    # hier komt de logica van hoeveel dmg1
+                    #
+
+
+                if event.key == pygame.K_RETURN:
+                    roll2 = Trow_dice()
+                    roller2_img = roll2[1]
+                    roller2 = True
+                    #
+                    # hier komt de logica van hoeveel dmg2
+                    #
+
+            if roller1 and roller2:
                 #
-                # hier komt de logica van hoeveel dmg2
+                # hier komt de zelfde logica als bij superfight (alle visuele cijfers worden in Game.py getekend)
                 #
-        if roller1 and roller2:   
-            #
-            # hier komt de zelfde logica als bij superfight (alle visuele cijfers worden in Game.py getekend)
-            #                 
-            roller_reset = True
-            return roller1,roller2,roller_reset,roller1_img,roller2_img
-        else:               
-            return roller1,roller2,roller_reset,roller1_img,roller2_img     
+                roller_reset = True
+                return roller1,roller2,roller_reset,roller1_img,roller2_img
+            else:
+                return roller1,roller2,roller_reset,roller1_img,roller2_img
