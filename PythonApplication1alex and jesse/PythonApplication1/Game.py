@@ -22,6 +22,7 @@ letsFight = 0
 nextturn = 0
 p = 0
 
+prevPositie = None
 corner = [0,10,20,30]
 roller1 = False
 roller2 = False
@@ -229,7 +230,7 @@ while not crashed:
 #normale functie
         if letsSuperFight == 0 and letsFight == 0:
             firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie = \
-            BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled)
+            BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie)
             size = width, height = 650, 746
             gameDisplay = pygame.display.set_mode(size)
 

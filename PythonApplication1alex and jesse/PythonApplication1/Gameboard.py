@@ -38,7 +38,7 @@ navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20
 
 
 #=================================================== NAVIGATIE FUNCTIE! ===========================================================================#
-def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled):   
+def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie):
     save_game = False
     load_old_game = False
     if firstround:
@@ -120,7 +120,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
 #===================================================== FIGHT FUNCTIES! =============================================================================#
 # 1v1 fight
 
-def spotFight(tempChar,roller1,roller2,roller_reset,roller1_img,roller2_img):
+def spotFight(tempChar, chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img):
 
     event = pygame.event.poll()
     if event.type == pygame.KEYDOWN:
@@ -156,30 +156,99 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                 attacker = tempChar
 
 
-            event = pygame.event.poll()
-            if event.type == pygame.KEYDOWN:
-                if event.key == pygame.K_SPACE:
-                    roll = Trow_dice()
-                    roller1_img = roll[1]
-                    roller1 = True
-                    #
-                    # hier komt de logica van hoeveel dmg1
-                    #
+                event = pygame.event.poll()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:#attacker
+                        roll = Trow_dice()
+                        roller1_img = roll[1]
+                        roller1 = True
+                        #
+                        # hier komt de logica van hoeveel dmg1
+                        #
+                        #########test damageA = attacker.dice(roll[0])
+                        if roll[0] == 1:
+                            damageA = attacker.dice1
+                        elif roll[0] == 2:
+                            damageA = attacker.dice2
+                        elif roll[0] == 3:
+                            damageA = attacker.dice3
+                        elif roll[0] == 4:
+                            damageA = attacker.dice4
+                        elif roll[0] == 5:
+                            damageA = attacker.dice5
+                        elif roll[0] == 6:
+                            damageA = attacker.dice6
 
+                    if event.key == pygame.K_RETURN:#defender
+                        roll2 = Trow_dice()
+                        roller2_img = roll2[1]
+                        roller2 = True
+                        #
+                        # hier komt de logica van hoeveel dmg2
+                        #
+                        if roll2[0] == 1:
+                            damageD = defender.dice1
+                        elif roll2[0] == 2:
+                            damageD = defender.dice2
+                        elif roll2[0] == 3:
+                            damageD = defender.dice3
+                        elif roll2[0] == 4:
+                            damageD = defender.dice4
+                        elif roll2[0] == 5:
+                            damageD = defender.dice5
+                        elif roll2[0] == 6:
+                            damageD = defender.dice6
 
-                if event.key == pygame.K_RETURN:
-                    roll2 = Trow_dice()
-                    roller2_img = roll2[1]
-                    roller2 = True
+                if roller1 and roller2:
                     #
-                    # hier komt de logica van hoeveel dmg2
+                    # hier komt de zelfde logica als bij superfight (alle visuele cijfers worden in Game.py getekend)
                     #
+                    damageA = 2
 
-            if roller1 and roller2:
-                #
-                # hier komt de zelfde logica als bij superfight (alle visuele cijfers worden in Game.py getekend)
-                #
-                roller_reset = True
-                return roller1,roller2,roller_reset,roller1_img,roller2_img
-            else:
-                return roller1,roller2,roller_reset,roller1_img,roller2_img
+                    if roll == 1:
+                       damageA += attacker.roll1
+                    elif roll == 2:
+                       damageA += attacker.roll2
+                    elif roll == 3:
+                       damageA += attacker.roll3
+                    elif roll == 4:
+                       damageA += attacker.roll4
+                    elif roll == 5:
+                       damageA += attacker.roll5
+                    elif roll == 6:
+                       damageA += attacker.roll6
+
+                    damageD= 0
+
+                    if roll2 == 1:
+                       damageD += defender.roll21
+                    elif roll2 == 2:
+                       damageD += defender.roll22
+                    elif roll2 == 3:
+                       damageD += defender.roll23
+                    elif roll2 == 4:
+                       damageD += defender.roll24
+                    elif roll2 == 5:
+                       damageD += defender.roll25
+                    elif roll2 == 6:
+                       damageD += defender.roll26
+
+                    defender.conditionPoints -= 3
+                    attacker.conditionPoints -= 3
+                    totalattack = 0
+
+                    if defender.conditionPoints > -1 and attacker.conditionPoints > -1:
+                       if damageD >= damageA:
+                           totalattack = damageD - damageA
+                           attacker.hitPoints -= totalattack
+                       else:
+                           totalattack = damageA - damageD
+                           defender.hitPoints -= totalattack
+                    elif defender.conditionPoints > -1 and attacker.conditionPoints < 0:
+                       attacker.hitPoints -= damageD
+                    elif defender.conditionPoints < 0 and attacker.conditionPoints > -1:
+                       defender.hitPoints -= damageD
+                    roller_reset = True
+                    return roller1,roller2,roller_reset,roller1_img,roller2_img
+                else:
+                    return roller1,roller2,roller_reset,roller1_img,roller2_img
