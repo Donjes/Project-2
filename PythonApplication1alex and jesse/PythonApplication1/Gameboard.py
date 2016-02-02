@@ -56,13 +56,13 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
         if event.key == pygame.K_SPACE and newLocation == False and dice_rolled == False: 
             Sounds.Dice()
             roll = Trow_dice() 
-            for i in range(15):
+            for i in range(1):#15 doen
                 rolling = Trow_dice()
                 dice_img(rolling) 
                 small_glove("images/DiceRolling.png",(300,300)) 
                 pygame.display.update()
                 time.sleep(0.1)
-                if i == 14:
+                if i == 0:#14 doen
                     dice_img(roll)
             time.sleep(0.5)
             pygame.display.update()
@@ -93,10 +93,8 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             chooseChars[p%4].savePosition = tempTile
                 
             prevPositie = chooseChars[p%4].savePosition%40
-            if prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 and prevPositie is not corner[p%4]:
-                print(corner[p%4])
-                print(prevPositie)
-                time.sleep(10)
+
+            if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 and prevPositie is not corner[p%4]):
                 letsSuperFight = 1
             for i in range(4):
                 print(chooseChars[p%4])
