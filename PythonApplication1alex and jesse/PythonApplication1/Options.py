@@ -1,5 +1,6 @@
 import pygame
 from Playerscreen import *
+pygame.mixer.init()
 
 def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,b,save_game,load_old_game,last_page):
 
@@ -51,6 +52,11 @@ def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_ind
             if menu_index == 4 and event.key == pygame.K_SPACE:
                 Sounds.Punch()
                 crashed = True
+            if event.key == pygame.K_m:
+                pygame.mixer.music.stop()
+                pygame.mixer.Sound.stop(punchsound)
+
+
 
 
                 
