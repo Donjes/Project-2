@@ -2,6 +2,23 @@ import pygame
 from Playerscreen import *
 pygame.mixer.init()
 
+def Mute():
+    pygame.mixer.music.pause()
+    punchsound.set_volume(0)
+    dicesound.set_volume(0)
+    introping.set_volume(0)
+    mariosound.set_volume(0)
+    tapsound.set_volume(0)
+    tilesound.set_volume(0)
+def Unmute():
+    pygame.mixer.music.unpause()
+    punchsound.set_volume(1)
+    dicesound.set_volume(1)
+    introping.set_volume(1)
+    mariosound.set_volume(1)
+    tapsound.set_volume(1)
+    tilesound.set_volume(1)
+
 def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,b,save_game,load_old_game,last_page):
 
 
@@ -18,16 +35,20 @@ def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_ind
     gameDisplay = pygame.display.set_mode(size)
 
     for event in pygame.event.get():
+        
         if event.type == pygame.QUIT:
             crashed = True                  #programma sluit af met rode X
 
         if event.type == pygame.KEYDOWN:
+            count = 0
             if event.key == pygame.K_SPACE:
                 Sounds.Punch()
             if event.key == pygame.K_UP:
+                Sounds.Tapsound()
                 menu_index -= 1
 
             if event.key == pygame.K_DOWN:
+                Sounds.Tapsound()
                 menu_index += 1
 
             if menu_index == 0 and event.key == pygame.K_SPACE:
@@ -53,8 +74,13 @@ def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_ind
                 Sounds.Punch()
                 crashed = True
             if event.key == pygame.K_m:
-                pygame.mixer.music.stop()
-                pygame.mixer.Sound.stop(punchsound)
+                    Mute()
+            if event.key == pygame.K_u:
+                    Unmute()
+
+
+
+
 
 
 

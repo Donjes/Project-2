@@ -4,7 +4,6 @@ from Character import *
 pygame.mixer.init()
 
 punchsound = pygame.mixer.Sound("sounds/punch.ogg")
-punchsound.set_volume(15)
 dicesound = pygame.mixer.Sound("sounds/dice.ogg")
 mariosound = pygame.mixer.Sound("sounds/mario.ogg")
 tilesound = pygame.mixer.Sound("sounds/tileshift.ogg")
