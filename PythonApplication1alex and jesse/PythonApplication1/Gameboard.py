@@ -38,7 +38,7 @@ navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20
 
 
 #=================================================== NAVIGATIE FUNCTIE! ===========================================================================#
-def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn):   
+def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled):   
     save_game = False
     load_old_game = False
     if firstround:
@@ -52,7 +52,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
     tile = player.savePosition
     event = pygame.event.poll()         # Navigatie van de handschoenen bij elke dice throw
     if event.type == pygame.KEYDOWN: 
-        if event.key == pygame.K_SPACE: 
+        if event.key == pygame.K_SPACE and newLocation == False and dice_rolled == False: 
             Sounds.Dice()
             roll = Trow_dice() 
             for i in range(15):
@@ -65,7 +65,9 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                     dice_img(roll)
             time.sleep(0.5)
             pygame.display.update()
-            time.sleep(0.5)           
+            time.sleep(0.5)      
+            dice_rolled = True
+        if event.key == pygame.K_UP and dice_rolled == True:
             for i in range(roll[0]):                   
                 tile += 1 
                 small_glove(smallGlovemove[p%4],navigate[tile%40])    
@@ -73,7 +75,20 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 pygame.display.update()
                 time.sleep(0.1)
                 print("plus")  
-            chooseChars[p%4].savePosition = tile
+            tempTile = tile
+            newLocation = True
+        if event.key == pygame.K_DOWN and dice_rolled == True:
+            for i in range(roll[0]):                   
+                tile -= 1 
+                small_glove(smallGlovemove[p%4],navigate[tile%40])    
+                Sounds.Tile()
+                pygame.display.update()
+                time.sleep(0.1)
+                print("plus")  
+            tempTile = tile
+            newLocation = True
+        if event.key == pygame.K_RETURN and tempTile != chooseChars[p%4].savePosition and newLocation == True:
+            chooseChars[p%4].savePosition = tempTile
                 
             prevPositie = chooseChars[p%4].savePosition%40
             if prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 and prevPositie is not corner[p%4]:
@@ -85,6 +100,8 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             if letsSuperFight == 0 and letsFight == 0:
                 nextturn = 1
             p += 1
+            newLocation = False
+            dice_rolled = False
         elif event.key == pygame.K_ESCAPE:
             crashed = True
         elif event.key == pygame.K_o:
@@ -94,7 +111,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             screen_index = 2
 
 
-    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn
+    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled
 
 #===================================================== FIGHT FUNCTIES! =============================================================================#
 # 1v1 fight

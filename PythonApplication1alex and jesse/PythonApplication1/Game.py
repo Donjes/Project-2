@@ -26,7 +26,9 @@ roller2 = False
 roller_reset = False
 roller1_img = "DiceRolling.png" 
 roller2_img = "DiceRolling.png"
-
+tempTile = 0
+newLocation = False
+dice_rolled = False
 #playerList = [player1,player2,player3,player4]
 gameDisplay = pygame.display.set_mode((width,height))
 pygame.display.set_caption('Survivor')
@@ -224,8 +226,8 @@ while not crashed:
     elif screen_index == 3:
 #normale functie
         if letsSuperFight == 0 and letsFight == 0:
-            firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn = \
-            BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn)
+            firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled = \
+            BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled)
             size = width, height = 650, 746
             gameDisplay = pygame.display.set_mode(size)
 
