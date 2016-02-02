@@ -166,18 +166,20 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                         # hier komt de logica van hoeveel dmg1
                         #
                         #########test damageA = attacker.dice(roll[0])
-                        if roll[0] == 1:
-                            damageA = attacker.dice1
-                        elif roll[0] == 2:
-                            damageA = attacker.dice2
-                        elif roll[0] == 3:
-                            damageA = attacker.dice3
-                        elif roll[0] == 4:
-                            damageA = attacker.dice4
-                        elif roll[0] == 5:
-                            damageA = attacker.dice5
-                        elif roll[0] == 6:
-                            damageA = attacker.dice6
+                        extra = 2
+                        if roll == 1:
+                           damageA = attacker.dice1 + extra
+                        elif roll == 2:
+                           damageA = attacker.dice1 + extra
+                        elif roll == 3:
+                           damageA = attacker.dice1 + extra
+                        elif roll == 4:
+                           damageA = attacker.dice1 + extra
+                        elif roll == 5:
+                           damageA = attacker.dice1 + extra
+                           print('foo')
+                        elif roll == 6:
+                           damageA = attacker.dice1 + extra
 
                     if event.key == pygame.K_RETURN:#defender
                         roll2 = Trow_dice()
@@ -186,72 +188,43 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                         #
                         # hier komt de logica van hoeveel dmg2
                         #
-                        if roll2[0] == 1:
-                            damageD = defender.dice1
-                        elif roll2[0] == 2:
-                            damageD = defender.dice2
-                        elif roll2[0] == 3:
-                            damageD = defender.dice3
-                        elif roll2[0] == 4:
-                            damageD = defender.dice4
-                        elif roll2[0] == 5:
-                            damageD = defender.dice5
-                        elif roll2[0] == 6:
-                            damageD = defender.dice6
+                        if roll2 == 1:
+                           damageD = defender.dice1
+                        elif roll2 == 2:
+                           damageD = defender.dice2
+                        elif roll2 == 3:
+                           damageD = defender.dice3
+                        elif roll2 == 4:
+                           damageD = defender.dice4
+                        elif roll2 == 5:
+                           damageD = defender.dice5
+                           print('bla')
+                        elif roll2 == 6:
+                           damageD = defender.dice6
 
-                if roller1 and roller2:
-                    #
-                    # hier komt de zelfde logica als bij superfight (alle visuele cijfers worden in Game.py getekend)
-                    #
-                    damageA = 2
+                    if roller1 == True and roller2 == True:
+                        #
+                        # hier komt de zelfde logica als bij superfight (alle visuele cijfers worden in Game.py getekend)
 
-                    if roll == 1:
-                       damageA += attacker.roll1
-                    elif roll == 2:
-                       damageA += attacker.roll2
-                    elif roll == 3:
-                       damageA += attacker.roll3
-                    elif roll == 4:
-                       damageA += attacker.roll4
-                    elif roll == 5:
-                       damageA += attacker.roll5
-                    elif roll == 6:
-                       damageA += attacker.roll6
+                        defender.conditionPoints -= 3
+                        attacker.conditionPoints -= 3
+                        totalattack = 0
 
-                    damageD= 0
+                        if defender.conditionPoints > -1 and attacker.conditionPoints > -1:
+                           if damageD >= damageA:
+                               totalattack = damageD - damageA
+                               attacker.hitPoints -= totalattack
+                           else:
+                               totalattack = damageA - damageD
+                               defender.hitPoints -= totalattack
+                        elif defender.conditionPoints > -1 and attacker.conditionPoints < 0:
+                           attacker.hitPoints -= damageD
+                        elif defender.conditionPoints < 0 and attacker.conditionPoints > -1:
+                           defender.hitPoints -= damageD
+                        roller_reset = True
 
-                    if roll2 == 1:
-                       damageD += defender.roll21
-                    elif roll2 == 2:
-                       damageD += defender.roll22
-                    elif roll2 == 3:
-                       damageD += defender.roll23
-                    elif roll2 == 4:
-                       damageD += defender.roll24
-                    elif roll2 == 5:
-                       damageD += defender.roll25
-                    elif roll2 == 6:
-                       damageD += defender.roll26
-
-                    defender.conditionPoints -= 3
-                    attacker.conditionPoints -= 3
-                    totalattack = 0
-
-                    if defender.conditionPoints > -1 and attacker.conditionPoints > -1:
-                       if damageD >= damageA:
-                           totalattack = damageD - damageA
-                           attacker.hitPoints -= totalattack
-                       else:
-                           totalattack = damageA - damageD
-                           defender.hitPoints -= totalattack
-                    elif defender.conditionPoints > -1 and attacker.conditionPoints < 0:
-                       attacker.hitPoints -= damageD
-                    elif defender.conditionPoints < 0 and attacker.conditionPoints > -1:
-                       defender.hitPoints -= damageD
-                    roller_reset = True
-
-                    print(attacker.hitPoints)
-                    print(defender.hitPoints)
+                        print (str(attacker.hitPoints) +'att')
+                        print (str(defender.hitPoints) +'def')
                     return roller1,roller2,roller_reset,roller1_img,roller2_img
                 else:
                     return roller1,roller2,roller_reset,roller1_img,roller2_img

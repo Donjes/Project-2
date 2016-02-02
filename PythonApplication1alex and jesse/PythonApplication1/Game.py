@@ -25,6 +25,8 @@ p = 0
 rollA = None
 rollD = None
 
+
+
 prevPositie = None
 corner = [0,10,20,30]
 roller1 = False
