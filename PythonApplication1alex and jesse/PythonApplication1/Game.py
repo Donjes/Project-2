@@ -21,6 +21,14 @@ letsSuperFight = 0
 letsFight = 0
 nextturn = 0
 p = 0
+
+rollA = None
+rollD = None
+
+
+
+prevPositie = None
+corner = [0,10,20,30]
 roller1 = False
 roller2 = False
 roller_reset = False
@@ -227,14 +235,17 @@ while not crashed:
 #normale functie
         tempChar = chooseChars[p%4-1]
         if letsSuperFight == 0 and letsFight == 0:
-            firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled = \
-            BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled)
+            firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie = \
+            BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie)
             size = width, height = 650, 746
             gameDisplay = pygame.display.set_mode(size)
 
 #fight functions      
-        if letsSuperFight == 1:            
-            roller1,roller2,roller_reset,roller1_img,roller2_img = superFight(tempChar,chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img)
+
+        if letsSuperFight == 1:
+            tempChar = chooseChars[p%4-1]
+            roller1,roller2,roller_reset,roller1_img,roller2_img = superFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD)
+
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
             cnt = 0
             for i in chooseChars:
@@ -275,8 +286,9 @@ while not crashed:
                          
         elif letsFight == 1:
             tempChar = chooseChars[p%4-1]
-            roller1,roller2,roller_reset,roller1_img,roller2_img = fight(tempChar,chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img)
-            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))
+
+            roller1,roller2,roller_reset,roller1_img,roller2_img = spotFight(tempChar,chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img)
+            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect())) 
             cnt = 0
             for i in chooseChars:
                 if chooseChars[cnt].savePosition%40 == chooseChars[p%4].savePosition%40 and cnt is not p%4:

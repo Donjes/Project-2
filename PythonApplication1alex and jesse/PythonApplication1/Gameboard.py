@@ -1,4 +1,4 @@
-import pygame
+﻿import pygame
 import time
 from Dice import *
 import os
@@ -46,7 +46,7 @@ navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20
 
 
 #=================================================== NAVIGATIE FUNCTIE! ===========================================================================#
-def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled):   
+def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie):
     save_game = False
     load_old_game = False
     if firstround:
@@ -97,17 +97,20 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             tempTile = tile
             newLocation = True
 # =========================================== Navigatie van de handschoenen bij enter kies je je lokatie en worden alle variable returned
-        if event.key == pygame.K_RETURN and tempTile != chooseChars[p%4].savePosition and newLocation == True:
+        if event.key == pygame.K_SPACE and tempTile != chooseChars[p%4].savePosition and newLocation == True:
             chooseChars[p%4].savePosition = tempTile
-                
             prevPositie = chooseChars[p%4].savePosition%40
 
-            if chooseChars[p%4].alive == True and (prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30) and prevPositie is not corner[p%4]:
-                letsSuperFight = 1
+
+            if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and prevPositie is not corner[p%4]:
+                letsSuperFight = 1#corner fight
+               # attacker = tempChar
+
+
             for i in range(4):
-                print(chooseChars[p%4])
+              #  print(chooseChars[p%4])
                 if prevPositie == chooseChars[i].savePosition and not chooseChars[p%4] == chooseChars[i]:
-                    letsFight = 1
+                    letsFight = 1#spot fight
             if letsSuperFight == 0 and letsFight == 0:
                 nextturn = 1
             p += 1
@@ -122,61 +125,116 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             screen_index = 2
 
 
-    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled
+    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie
 
 #===================================================== FIGHT FUNCTIES! =============================================================================#
 # 1v1 fight
-def fight(tempChar,i,roller1,roller2,roller_reset,roller1_img,roller2_img):
 
-        event = pygame.event.poll()      
-        if event.type == pygame.KEYDOWN:       
-            if event.key == pygame.K_SPACE:     
-                roll = Trow_dice()
-                roller1_img = roll[1]
-                roller1 = True
-                #
-                # hier komt de logica van hoeveel dmg1
-                #
-            if event.key == pygame.K_RETURN:   
-                roll2 = Trow_dice()
-                roller2_img = roll2[1]
-                roller2 = True
-                #
-                # hier komt de logica van hoeveel dmg2
-                #
-        if roller1 and roller2:    
+def spotFight(tempChar, chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img):
+
+    event = pygame.event.poll()
+    if event.type == pygame.KEYDOWN:
+        if event.key == pygame.K_SPACE:
+            roll = Trow_dice()
+            roller1_img = roll[1]
+            roller1 = True
             #
-            # hier komt de logica wie dmg doet aan wie en hoeveel conditie het kost (alle visuele cijfers worden in Game.py getekend
-            #          
-            roller_reset = True
-            return roller1,roller2,roller_reset,roller1_img,roller2_img
-        else:         
-            return roller1,roller2,roller_reset,roller1_img,roller2_img    
+            # hier komt de logica van hoeveel dmg1
+            #
+        if event.key == pygame.K_RETURN:
+            roll2 = Trow_dice()
+            roller2_img = roll2[1]
+            roller2 = True
+            #
+            # hier komt de logica van hoeveel dmg2
+            #
+        #
+    if roller1 and roller2:
+        #
+        # hier komt de logica wie dmg doet aan wie en hoeveel conditie het kost (alle visuele cijfers worden in Game.py getekend
+        #          
+        roller_reset = True
+        return roller1,roller2,roller_reset,roller1_img,roller2_img
+    else:         
+        return roller1,roller2,roller_reset,roller1_img,roller2_img    
         
 # Corner fight
-def superFight(tempChar,i,roller1,roller2,roller_reset,roller1_img,roller2_img):
+def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2):
+        for player in range(len(corner)):
+            if prevPositie == corner[player]:#player is de index
+                defender = chooseChars[player]
+                attacker = tempChar
 
-        event = pygame.event.poll()      
-        if event.type == pygame.KEYDOWN:       
-            if event.key == pygame.K_SPACE:     
-                roll = Trow_dice()                      
-                roller1_img = roll[1]
-                roller1 = True
-                #
-                # hier komt de logica van hoeveel dmg1
-                #
-            if event.key == pygame.K_RETURN:   
-                roll2 = Trow_dice()
-                roller2_img = roll2[1]
-                roller2 = True
-                #
-                # hier komt de logica van hoeveel dmg2
-                #
-        if roller1 and roller2:   
-            #
-            # hier komt de zelfde logica als bij superfight (alle visuele cijfers worden in Game.py getekend)
-            #                 
-            roller_reset = True
-            return roller1,roller2,roller_reset,roller1_img,roller2_img
-        else:               
-            return roller1,roller2,roller_reset,roller1_img,roller2_img     
+
+                event = pygame.event.poll()
+                if event.type == pygame.KEYDOWN:
+                    if event.key == pygame.K_SPACE:#attacker
+                        roll = Trow_dice()
+                        roller1_img = roll[1]
+                        roller1 = True
+                        #
+                        # hier komt de logica van hoeveel dmg1
+                        #
+                        #########test damageA = attacker.dice(roll[0])
+                        extra = 2
+                        if roll == 1:
+                           damageA = attacker.dice1 + extra
+                        elif roll == 2:
+                           damageA = attacker.dice1 + extra
+                        elif roll == 3:
+                           damageA = attacker.dice1 + extra
+                        elif roll == 4:
+                           damageA = attacker.dice1 + extra
+                        elif roll == 5:
+                           damageA = attacker.dice1 + extra
+                           print('foo')
+                        elif roll == 6:
+                           damageA = attacker.dice1 + extra
+
+                    if event.key == pygame.K_RETURN:#defender
+                        roll2 = Trow_dice()
+                        roller2_img = roll2[1]
+                        roller2 = True
+                        #
+                        # hier komt de logica van hoeveel dmg2
+                        #
+                        if roll2 == 1:
+                           damageD = defender.dice1
+                        elif roll2 == 2:
+                           damageD = defender.dice2
+                        elif roll2 == 3:
+                           damageD = defender.dice3
+                        elif roll2 == 4:
+                           damageD = defender.dice4
+                        elif roll2 == 5:
+                           damageD = defender.dice5
+                           print('bla')
+                        elif roll2 == 6:
+                           damageD = defender.dice6
+
+                    if roller1 == True and roller2 == True:
+                        #
+                        # hier komt de zelfde logica als bij superfight (alle visuele cijfers worden in Game.py getekend)
+
+                        defender.conditionPoints -= 3
+                        attacker.conditionPoints -= 3
+                        totalattack = 0
+
+                        if defender.conditionPoints > -1 and attacker.conditionPoints > -1:
+                           if damageD >= damageA:
+                               totalattack = damageD - damageA
+                               attacker.hitPoints -= totalattack
+                           else:
+                               totalattack = damageA - damageD
+                               defender.hitPoints -= totalattack
+                        elif defender.conditionPoints > -1 and attacker.conditionPoints < 0:
+                           attacker.hitPoints -= damageD
+                        elif defender.conditionPoints < 0 and attacker.conditionPoints > -1:
+                           defender.hitPoints -= damageD
+                        roller_reset = True
+
+                        print (str(attacker.hitPoints) +'att')
+                        print (str(defender.hitPoints) +'def')
+                    return roller1,roller2,roller_reset,roller1_img,roller2_img
+                else:
+                    return roller1,roller2,roller_reset,roller1_img,roller2_img

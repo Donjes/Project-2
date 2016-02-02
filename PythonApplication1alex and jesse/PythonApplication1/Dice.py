@@ -3,8 +3,10 @@
 def Trow_dice():
     diceList = [1,2,3,4,5,6]
     dice = random.choice(diceList)
+    dice = 5 #testing for corner
     diceImglist = ["Dice1.png","Dice2.png","Dice3.png","Dice4.png","Dice5.png","Dice6.png"]
-    diceImg = diceImglist[dice-1]
+    # diceImg = diceImglist[dice-1]
+    diceImg = diceImglist[4]#testing
     return dice,diceImg
 
 
@@ -59,13 +61,13 @@ def Trow_dice():
 #    else: 
 #        totalattack = attack_b - attack_a
 #        player_a.hitPoints -= totalattack
-#elif player_a.conditionPoints > -1 and player_b.conditionPoints < 0:
+#elif player_a.condi/////// 
 #    player_b.hitPoints -= attack_a
 #elif player_a.conditionPoints < 0 and player_b.conditionPoints > -1:
 #    player_a.hitPoints -= attack_a
 
 
-# DIT IS VOOR DE CORNERFIGHT!!! 
+# DIT IS VOOR DE CORNERFIGHT!!! attack a = defender  attack b = attacker 
 
 
 #attack_b= 2
@@ -163,3 +165,56 @@ def Trow_dice():
 #    player_b.hitPoints -= attack_a
 #elif player_a.conditionPoints < 0 and player_b.conditionPoints > -1:
 #    player_a.hitPoints -= attack_a
+
+
+
+
+#======================================================================================#
+#tempChar = attacker #attacker
+#chooseChar[i] = defender #defender
+
+#damageA = 2
+
+#if dice == 1:
+#    damageA += attacker.dice1
+#elif dice == 2:
+#    damageA += attacker.dice2
+#elif dice == 3:
+#    damageA += attacker.dice3
+#elif dice == 4:
+#    damageA += attacker.dice4
+#elif dice == 5:
+#    damageA += attacker.dice5
+#elif dice == 6:
+#    damageA += attacker.dice6
+
+#damageD= 0
+
+#if dice == 1:
+#    damageD += defender.dice1
+#elif dice == 2:
+#    damageD += defender.dice2
+#elif dice == 3:
+#    damageD += defender.dice3
+#elif dice == 4:
+#    damageD += defender.dice4
+#elif dice == 5:
+#    damageD += defender.dice5
+#elif dice == 6:
+#    damageD += defender.dice6
+
+#defender.conditionPoints -= 3 
+#attacker.conditionPoints -= 3
+#totalattack = 0 
+
+#if defender.conditionPoints > -1 and attacker.conditionPoints > -1:
+#    if damageD => damageA:
+#        totalattack = damageD - damageA
+#        attacker.hitPoints -= totalattack
+#    else: 
+#        totalattack = damageA - damageD
+#        defender.hitPoints -= totalattack
+#elif defender.conditionPoints > -1 and attacker.conditionPoints < 0:
+#    attacker.hitPoints -= damageD
+#elif defender.conditionPoints < 0 and attacker.conditionPoints > -1:
+#    defender.hitPoints -= damageD
