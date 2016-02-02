@@ -15,7 +15,7 @@ class Player:
         self.dice4 = attack4
         self.dice5 = attack5
         self.dice6 = attack6
-
+        self.alive = True
 TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
 JasonStatham = Player(name,"images/JasonStatham.png",10,11,19,21,23,26)
 WesleySniper = Player(name,"images/WesleySniper.png",30,14,14,20,18,14)

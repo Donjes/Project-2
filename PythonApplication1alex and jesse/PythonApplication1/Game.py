@@ -294,7 +294,7 @@ while not crashed:
             gameDisplay.blit(pygame.image.load("images/nextturn.png"),(88,225))
             small_glove(chooseChars[p%4].texture,(150,250))
             pygame.display.update()
-            time.sleep(1)
+            time.sleep(0.1)#1 doen
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))
             small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
             small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
@@ -331,10 +331,10 @@ while not crashed:
             screen_index = 3
 
     # for x in chooseChars:          #   remove player if he is dead
-    #     if x.hitPoints == 0:
-    #         chooseChars.remove(x)
-
-    # if len(chooseChars) == 1:       #   only 1 player so print win
+    #     if x.hitPoints <= 0:
+    #         chooseChars.alive = False
+    #if list met dead == 3: change
+    # if player alive == true   change    #   only 1 player so print win
     #     screen_update(winning_screen, winning_screen_rect)
     #     winning_pic(chooseChars[0].texture)
     #     text_pop('The winner is ' + chooseChars[0].name , black)
