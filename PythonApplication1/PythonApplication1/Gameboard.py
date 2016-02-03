@@ -45,7 +45,7 @@ def BoardScreen(roll,player1Loc,player2Loc,player3Loc,player4Loc,p,screenlist, r
     navi3 = (575,590)
     navi4 = (20,590)
     player = playerList[p]
-    if player == player1: #player 1 navigation
+    if player == player1: #player1 navigation
         tile1 = player1Loc
         for event in pygame.event.get():         
             if event.type == pygame.KEYDOWN:         
@@ -77,7 +77,7 @@ def BoardScreen(roll,player1Loc,player2Loc,player3Loc,player4Loc,p,screenlist, r
                     player2Loc = tile2                               
                     p = 2
 
-    if player == player3: #player 3 navigation
+    if player == player3: #player3 navigation
         tile3 = player3Loc
         for event in pygame.event.get():         
             if event.type == pygame.KEYDOWN:         
