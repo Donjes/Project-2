@@ -47,7 +47,7 @@ roller2_img = "DiceRolling.png"
 tempTile = 0
 newLocation = False
 dice_rolled = False
-#playerList = [player1,player2,player3,player4]
+
 gameDisplay = pygame.display.set_mode((width,height))
 pygame.display.set_caption('Survivor')
 clock = pygame.time.Clock()
@@ -106,7 +106,7 @@ v3 = (100, 345)
 v4 = (100, 475)
 vectorlist = [v1, v2, v3, v4]
 
-font = pygame.font.SysFont(None, 50)
+font = pygame.font.SysFont("System", 50)
 
 #koffie logo bij het opstarten van het spel
 #def Koffielogo():
@@ -125,9 +125,7 @@ font = pygame.font.SysFont(None, 50)
     
 #Koffielogo()
 
-def text_pop(msg, color):
-    screen_text = font.render(msg, True, color)
-    gameDisplay.blit(screen_text, [225, 275])
+
 
 def winning_pic(texture):
     gameDisplay.blit(texture(350, 325))
@@ -258,8 +256,7 @@ while not crashed:
             roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender = superFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
             print(str(damageA) + str( damageD) +' klm')
 
-            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))
-            Draw_navi(chooseChars)
+
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))   
             Draw_navi(chooseChars)
             small_glove(chooseChars[p%4].texture,(290,230))
@@ -280,10 +277,9 @@ while not crashed:
         elif letsFight == 1:
             tempChar = chooseChars[p%4-1]
 
-            roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= spotFight(tempChar,chooseChars, prevPositie,navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
+            roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= spotFight(tempChar,chooseChars, prevPositie,navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender,p)
 
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect())) 
-
             Draw_navi(chooseChars)               
             small_glove(chooseChars[p%4].texture,(290,230))
             gameDisplay.blit(pygame.image.load("images/fight.png"),(-5,170))
@@ -292,6 +288,8 @@ while not crashed:
             gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))  
             pygame.display.update()
             if roller_reset == True:  
+                defender, attacker = calculation(defender,attacker, damageA, damageD, totalattack)
+                print(str(defender.hitPoints)+ '  '+str(attacker.hitPoints) +' '+ str(defender.conditionPoints) + ' ' +str(attacker.conditionPoints))
                 time.sleep(2) 
                 roller1 = False
                 roller2 = False
