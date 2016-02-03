@@ -1,11 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="7e43ba8d-5bf2-4a1a-b917-556e9f9c2dad" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PythonApplication1alex and jesse/.vs/PythonApplication1/v14/.suo" afterPath="$PROJECT_DIR$/PythonApplication1alex and jesse/.vs/PythonApplication1/v14/.suo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py" afterPath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" afterPath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" />
-    </list>
+    <list default="true" id="7e43ba8d-5bf2-4a1a-b917-556e9f9c2dad" name="Default" comment="" />
     <ignored path="Project-2.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -25,8 +21,8 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="character.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
+      <file leaf-file-name="Character.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
               <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
@@ -468,7 +464,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
@@ -505,7 +501,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
@@ -601,7 +597,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
@@ -640,7 +636,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
@@ -679,7 +675,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
@@ -771,7 +767,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
@@ -880,7 +876,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
