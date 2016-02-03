@@ -22,6 +22,11 @@ letsFight = 0
 nextturn = 0
 p = 0
 
+
+defender = None
+attacker = None
+damageA = 0
+damageD = 0
 rollA = None
 rollD = None
 
@@ -244,7 +249,7 @@ while not crashed:
 
         if letsSuperFight == 1:
             tempChar = chooseChars[p%4-1]
-            roller1,roller2,roller_reset,roller1_img,roller2_img = superFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD)
+            roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= superFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
 
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
             cnt = 0
