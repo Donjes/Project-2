@@ -266,20 +266,21 @@ while not crashed:
             gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))             
             pygame.display.update()
             if roller_reset == True:
-                defender, attacker = calculation(defender,attacker, damageA, damageD, totalattack, 3)
-                print(str(defender.hitPoints)+ '  '+str(attacker.hitPoints) +' '+ str(defender.conditionPoints) + ' ' +str(attacker.conditionPoints))
+                calculation(defender,attacker, damageA, damageD, totalattack, 3)
+
+               
                 time.sleep(2)
                 roller1 = False
                 roller2 = False
                 roller_reset = False      
                 letsSuperFight = 0 
 
-<<<<<<< HEAD
+
         elif letsFight == 1:
             tempChar = chooseChars[p%4-1]
 
             roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= spotFight(tempChar,chooseChars, prevPositie,navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender,p)
-
+            print(str(damageA) + str( damageD) +' klm')
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect())) 
             Draw_navi(chooseChars)               
             small_glove(chooseChars[p%4].texture,(290,230))
@@ -289,38 +290,14 @@ while not crashed:
             gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))  
             pygame.display.update()
             if roller_reset == True:  
-                defender, attacker = calculation(defender,attacker, damageA, damageD, totalattack)
-                print(str(defender.hitPoints)+ '  '+str(attacker.hitPoints) +' '+ str(defender.conditionPoints) + ' ' +str(attacker.conditionPoints))
+                calculation(defender,attacker, damageA, damageD, totalattack,5)
+
                 time.sleep(2) 
                 roller1 = False
                 roller2 = False
                 roller_reset = False    
                 letsFight = 0   
-=======
-        #elif letsFight == 1:
-        #    tempChar = chooseChars[p%4-1]
 
-        #    roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= spotFight(tempChar,chooseChars, prevPositie,navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
-
-        #    gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))
-        #    Draw_navi(chooseChars)
-        #    gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))   
-        #    Draw_navi(chooseChars)
-        #    small_glove(chooseChars[p%4].texture,(290,230))
-        #    gameDisplay.blit(pygame.image.load("images/fight.png"),(-5,170))
-        #    gameDisplay.blit(pygame.image.load(tempChar.texture),(30,180))
-        #    gameDisplay.blit(pygame.image.load("images/"+ roller1_img),(30,250)) 
-        #    gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))             
-        #    pygame.display.update()
-        #    if roller_reset == True:
-        #        defender, attacker = calculation(defender,attacker, damageA, damageD, totalattack)
-        #        print(str(defender.hitPoints)+ '  '+str(attacker.hitPoints) +' '+ str(defender.conditionPoints) + ' ' +str(attacker.conditionPoints))
-        #        time.sleep(2)
-        #        roller1 = False
-        #        roller2 = False
-        #        roller_reset = False      
-        #        letsFight = 0  
->>>>>>> origin/master
 #bij normale functie 
         elif nextturn == 1:
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
