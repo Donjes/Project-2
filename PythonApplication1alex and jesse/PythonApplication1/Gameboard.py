@@ -211,6 +211,7 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                            print(str(damageD)+' bla')
                         elif roll2[0] == 6:
                            damageD = defender.dice6
+
                 defender.conditionPoints -= 3
                 attacker.conditionPoints -= 3
 
