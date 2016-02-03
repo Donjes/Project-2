@@ -34,6 +34,51 @@ size = width, height = 750, 780
 gameDisplay = pygame.display.set_mode(size)
 
 roll = Trow_dice()
+def Draw_navi(chooseChars): 
+    cnt = 0
+    x = len(chooseChars)
+    small_glove(chooseChars[0].texture,(110,110))
+    small_glove(chooseChars[1].texture,(470,110))
+    small_glove(chooseChars[2].texture,(470,470))
+    small_glove(chooseChars[3].texture,(110,470))  
+    for i in range(x):
+      if cnt == 0:
+        if   chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40:
+            small_glove("images/zelfde_tile/roodVSblauw.png",navigate[chooseChars[0].savePosition%40])
+        elif   chooseChars[0].savePosition%40 == chooseChars[2].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSblauw.png",navigate[chooseChars[0].savePosition%40])
+        elif   chooseChars[0].savePosition%40 == chooseChars[3].savePosition%40:
+            small_glove("images/zelfde_tile/blauwVSgeel.png",navigate[chooseChars[0].savePosition%40])
+        else:
+            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40]) 
+      if cnt == 1:
+        if   chooseChars[1].savePosition%40 == chooseChars[0].savePosition%40:
+            small_glove("images/zelfde_tile/roodVSblauw.png",navigate[chooseChars[1].savePosition%40])
+        elif   chooseChars[1].savePosition%40 == chooseChars[2].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSrood.png",navigate[chooseChars[1].savePosition%40])
+        elif   chooseChars[1].savePosition%40 == chooseChars[3].savePosition%40:
+            small_glove("images/zelfde_tile/roodVSgeel.png",navigate[chooseChars[1].savePosition%40])
+        else:
+            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40]) 
+      if cnt == 2:
+        if   chooseChars[2].savePosition%40 == chooseChars[0].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSblauw.png",navigate[chooseChars[2].savePosition%40])
+        elif   chooseChars[2].savePosition%40 == chooseChars[1].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSrood.png",navigate[chooseChars[2].savePosition%40])
+        elif   chooseChars[2].savePosition%40 == chooseChars[3].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSgeel.png",navigate[chooseChars[2].savePosition%40])
+        else:
+            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40]) 
+      if cnt == 3:    
+        if   chooseChars[3].savePosition%40 == chooseChars[0].savePosition%40:
+            small_glove("images/zelfde_tile/blauwVSgeel.png",navigate[chooseChars[3].savePosition%40])
+        elif   chooseChars[3].savePosition%40 == chooseChars[1].savePosition%40:
+            small_glove("images/zelfde_tile/roodVSgeel.png",navigate[chooseChars[3].savePosition%40])
+        elif   chooseChars[3].savePosition%40 == chooseChars[2].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSgeel.png",navigate[chooseChars[3].savePosition%40])
+        else:
+            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40]) 
+      cnt += 1
 
 def small_glove(gloveSmall,navilist):                  #3Ruben handschoen over board functie    
         gameDisplay.blit(pygame.image.load(gloveSmall),navilist)
