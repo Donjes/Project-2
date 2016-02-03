@@ -160,13 +160,8 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             chooseChars[p%4].savePosition = tempTile
             prevPositie = chooseChars[p%4].savePosition%40
             if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
-<<<<<<< HEAD
-                chooseChars[p%4].passCorner
-                print('passed')
-=======
                 chooseChars[p%4].conditionPoints = 15
-                
->>>>>>> origin/master
+
             if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and prevPositie is not corner[p%4]:
                 letsSuperFight = 1#corner fight
                # attacker = tempChar

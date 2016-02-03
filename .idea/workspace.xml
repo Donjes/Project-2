@@ -2,7 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e43ba8d-5bf2-4a1a-b917-556e9f9c2dad" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py" afterPath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" afterPath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py" afterPath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py" />
     </list>
     <ignored path="Project-2.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -23,11 +25,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Character.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Character.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.23026316">
-              <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -55,14 +57,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gameboard.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Gameboard.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="-10.689655">
-              <caret line="168" column="21" selection-start-line="168" selection-start-column="21" selection-end-line="168" selection-end-column="21" />
+            <state vertical-scroll-proportion="0.18558282">
+              <caret line="161" column="80" selection-start-line="161" selection-start-column="80" selection-end-line="161" selection-end-column="80" />
               <folding>
-                <marker date="1454510861073" expanded="true" signature="0:124" placeholder="import ..." />
-                <marker date="1454510861073" expanded="true" signature="15623:15972" placeholder="..." />
+                <element signature="e#0#13#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -92,8 +93,8 @@
         <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Dice.py" />
         <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py" />
         <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py" />
-        <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" />
         <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py" />
+        <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" />
       </list>
     </option>
   </component>
@@ -395,7 +396,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3173484" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3173484" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -440,8 +441,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="229" column="55" selection-start-line="229" selection-start-column="55" selection-end-line="229" selection-end-column="55" />
           <folding>
-            <marker date="1454510861073" expanded="true" signature="0:124" placeholder="import ..." />
-            <marker date="1454510861073" expanded="true" signature="15623:15972" placeholder="..." />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -523,8 +523,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1454510861073" expanded="true" signature="0:124" placeholder="import ..." />
-            <marker date="1454510861073" expanded="true" signature="15623:15972" placeholder="..." />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -544,8 +543,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="21" column="81" selection-start-line="21" selection-start-column="81" selection-end-line="21" selection-end-column="81" />
           <folding>
-            <marker date="1454510861073" expanded="true" signature="0:124" placeholder="import ..." />
-            <marker date="1454510861073" expanded="true" signature="15623:15972" placeholder="..." />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -583,8 +581,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="93" column="28" selection-start-line="93" selection-start-column="28" selection-end-line="93" selection-end-column="28" />
           <folding>
-            <marker date="1454510861073" expanded="true" signature="0:124" placeholder="import ..." />
-            <marker date="1454510861073" expanded="true" signature="15623:15972" placeholder="..." />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -622,8 +619,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="91" column="43" selection-start-line="91" selection-start-column="43" selection-end-line="91" selection-end-column="43" />
           <folding>
-            <marker date="1454510861073" expanded="true" signature="0:124" placeholder="import ..." />
-            <marker date="1454510861073" expanded="true" signature="15623:15972" placeholder="..." />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -661,8 +657,7 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="46" column="40" selection-start-line="46" selection-start-column="40" selection-end-line="46" selection-end-column="40" />
           <folding>
-            <marker date="1454510861073" expanded="true" signature="0:124" placeholder="import ..." />
-            <marker date="1454510861073" expanded="true" signature="15623:15972" placeholder="..." />
+            <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -878,17 +873,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="-10.689655">
-          <caret line="168" column="21" selection-start-line="168" selection-start-column="21" selection-end-line="168" selection-end-column="21" />
-          <folding>
-            <marker date="1454510861073" expanded="true" signature="0:124" placeholder="import ..." />
-            <marker date="1454510861073" expanded="true" signature="15623:15972" placeholder="..." />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -901,9 +885,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.23026316">
-          <caret line="5" column="30" selection-start-line="5" selection-start-column="30" selection-end-line="5" selection-end-column="30" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="0" selection-start-line="22" selection-start-column="0" selection-end-line="22" selection-end-column="0" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.18558282">
+          <caret line="161" column="80" selection-start-line="161" selection-start-column="80" selection-end-line="161" selection-end-column="80" />
+          <folding>
+            <element signature="e#0#13#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
