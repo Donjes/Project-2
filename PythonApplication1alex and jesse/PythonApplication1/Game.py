@@ -269,7 +269,7 @@ while not crashed:
             gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))             
             pygame.display.update()
             if roller_reset == True:
-                defender, attacker = calculation(defender,attacker, damageA, damageD, totalattack)
+                defender, attacker = calculation(defender,attacker, damageA, damageD, totalattack, 3)
                 print(str(defender.hitPoints)+ '  '+str(attacker.hitPoints) +' '+ str(defender.conditionPoints) + ' ' +str(attacker.conditionPoints))
                 time.sleep(2)
                 roller1 = False
