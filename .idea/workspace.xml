@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e43ba8d-5bf2-4a1a-b917-556e9f9c2dad" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py" afterPath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" afterPath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" />
     </list>
     <ignored path="Project-2.iws" />
@@ -24,12 +23,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="Character.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
+      <file leaf-file-name="character.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
           <provider selected="true" editor-type-id="text-editor">
             <state vertical-scroll-proportion="0.0">
-              <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-              <folding />
+              <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+              <folding>
+                <marker date="1454509389658" expanded="true" signature="53:939" placeholder="..." />
+                <marker date="1454509389658" expanded="true" signature="145:690" placeholder="..." />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -56,11 +58,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gameboard.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Gameboard.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="297" column="75" selection-start-line="297" selection-start-column="75" selection-end-line="297" selection-end-column="75" />
+            <state vertical-scroll-proportion="0.6167401">
+              <caret line="205" column="52" selection-start-line="205" selection-start-column="52" selection-end-line="205" selection-end-column="52" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -68,14 +70,13 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.52607363">
-              <caret line="276" column="42" selection-start-line="276" selection-start-column="42" selection-end-line="276" selection-end-column="42" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="275" column="35" selection-start-line="275" selection-start-column="35" selection-end-line="275" selection-end-column="35" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
-                <element signature="e#4398#6306#0" expanded="false" />
               </folding>
             </state>
           </provider>
@@ -91,16 +92,16 @@
       <list>
         <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py" />
         <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Playerscreen.py" />
-        <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py" />
         <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Dice.py" />
-        <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" />
         <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py" />
+        <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py" />
+        <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" />
       </list>
     </option>
   </component>
   <component name="ProjectFrameBounds">
     <option name="x" value="-7" />
-    <option name="width" value="1612" />
+    <option name="width" value="1604" />
     <option name="height" value="867" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="false">
@@ -388,10 +389,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-7" y="0" width="1612" height="867" extended-state="0" />
+    <frame x="-7" y="0" width="1604" height="867" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13659467" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.13601533" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
@@ -452,7 +453,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -467,11 +467,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="23" column="62" selection-start-line="23" selection-start-column="62" selection-end-line="23" selection-end-column="62" />
-          <folding />
+          <folding>
+            <marker date="1454509389658" expanded="true" signature="53:939" placeholder="..." />
+            <marker date="1454509389658" expanded="true" signature="145:690" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -489,7 +492,6 @@
           <caret line="244" column="186" selection-start-line="244" selection-start-column="186" selection-end-line="244" selection-end-column="186" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -504,11 +506,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="22" column="71" selection-start-line="22" selection-start-column="71" selection-end-line="22" selection-end-column="71" />
-          <folding />
+          <folding>
+            <marker date="1454509389658" expanded="true" signature="53:939" placeholder="..." />
+            <marker date="1454509389658" expanded="true" signature="145:690" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -536,7 +541,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -575,7 +579,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -600,11 +603,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding />
+          <folding>
+            <marker date="1454509389658" expanded="true" signature="53:939" placeholder="..." />
+            <marker date="1454509389658" expanded="true" signature="145:690" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -614,7 +620,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -639,11 +644,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding />
+          <folding>
+            <marker date="1454509389658" expanded="true" signature="53:939" placeholder="..." />
+            <marker date="1454509389658" expanded="true" signature="145:690" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -653,7 +661,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -678,11 +685,14 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="4" column="30" selection-start-line="4" selection-start-column="30" selection-end-line="4" selection-end-column="30" />
-          <folding />
+          <folding>
+            <marker date="1454509389658" expanded="true" signature="53:939" placeholder="..." />
+            <marker date="1454509389658" expanded="true" signature="145:690" placeholder="..." />
+          </folding>
         </state>
       </provider>
     </entry>
@@ -692,7 +702,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -713,7 +722,6 @@
           <caret line="179" column="0" selection-start-line="179" selection-start-column="0" selection-end-line="179" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -734,7 +742,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -755,7 +762,6 @@
           <caret line="43" column="0" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -770,7 +776,7 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
           <caret line="16" column="0" selection-start-line="16" selection-start-column="0" selection-end-line="16" selection-end-column="0" />
@@ -783,7 +789,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -794,7 +799,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -805,7 +809,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -816,7 +819,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -827,7 +829,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -838,7 +839,6 @@
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
@@ -889,31 +889,33 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
-          <caret line="297" column="75" selection-start-line="297" selection-start-column="75" selection-end-line="297" selection-end-column="75" />
+          <caret line="7" column="7" selection-start-line="7" selection-start-column="7" selection-end-line="7" selection-end-column="7" />
+          <folding>
+            <marker date="1454509389658" expanded="true" signature="53:939" placeholder="..." />
+            <marker date="1454509389658" expanded="true" signature="145:690" placeholder="..." />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.0">
+          <caret line="275" column="35" selection-start-line="275" selection-start-column="35" selection-end-line="275" selection-end-column="35" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py">
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="23" column="25" selection-start-line="23" selection-start-column="25" selection-end-line="23" selection-end-column="25" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.52607363">
-          <caret line="276" column="42" selection-start-line="276" selection-start-column="42" selection-end-line="276" selection-end-column="42" />
+        <state vertical-scroll-proportion="0.6167401">
+          <caret line="205" column="52" selection-start-line="205" selection-start-column="52" selection-end-line="205" selection-end-column="52" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
-            <element signature="e#4398#6306#0" expanded="false" />
           </folding>
         </state>
       </provider>
