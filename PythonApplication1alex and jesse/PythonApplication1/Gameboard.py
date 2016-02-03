@@ -294,9 +294,8 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
 
         if roller1 == True and roller2 == True:
             roller_reset = True
-            return roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender
-        else:
-            return roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender
+
+        return roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender
 
 def calculation(defender,attacker, damageA, damageD, totalattack):
     defender.conditionPoints -= 3
