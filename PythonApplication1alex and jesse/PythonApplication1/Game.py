@@ -233,6 +233,7 @@ while not crashed:
 
     elif screen_index == 3:
 #normale functie
+        tempChar = chooseChars[p%4-1]
         if letsSuperFight == 0 and letsFight == 0:
             firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie = \
             BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie)
@@ -240,14 +241,32 @@ while not crashed:
             gameDisplay = pygame.display.set_mode(size)
 
 #fight functions      
+
         if letsSuperFight == 1:
             tempChar = chooseChars[p%4-1]
             roller1,roller2,roller_reset,roller1_img,roller2_img = superFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD)
+
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
-            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
-            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
-            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
-            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+            cnt = 0
+            for i in chooseChars:
+                if chooseChars[cnt].savePosition%40 == chooseChars[p%4].savePosition%40 and cnt is not p%4:
+                    if chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveRB),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[0].savePosition%40 == chooseChars[2].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrB),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[0].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveBG),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[1].savePosition%40 == chooseChars[2].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrR),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[1].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveRG),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[2].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrG),navigate[chooseChars[p%4].savePosition%40])
+             
+                else:
+                    gameDisplay.blit(pygame.image.load(gloveSmall[cnt]),navigate[chooseChars[cnt].savePosition%40])  
+                cnt += 1  
+                
             small_glove(chooseChars[p%4].texture,(290,230))
             small_glove(chooseChars[0].texture,(110,110))
             small_glove(chooseChars[1].texture,(470,110))
@@ -267,12 +286,29 @@ while not crashed:
                          
         elif letsFight == 1:
             tempChar = chooseChars[p%4-1]
+
             roller1,roller2,roller_reset,roller1_img,roller2_img = spotFight(tempChar,chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img)
-            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
-            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
-            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
-            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
-            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect())) 
+            cnt = 0
+            for i in chooseChars:
+                if chooseChars[cnt].savePosition%40 == chooseChars[p%4].savePosition%40 and cnt is not p%4:
+                    if chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveRB),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[0].savePosition%40 == chooseChars[2].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrB),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[0].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveBG),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[1].savePosition%40 == chooseChars[2].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrR),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[1].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveRG),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[2].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrG),navigate[chooseChars[p%4].savePosition%40])
+             
+                else:
+                    gameDisplay.blit(pygame.image.load(gloveSmall[cnt]),navigate[chooseChars[cnt].savePosition%40])  
+                cnt += 1    
+               
             small_glove(chooseChars[p%4].texture,(290,230))
             small_glove(chooseChars[0].texture,(110,110))
             small_glove(chooseChars[1].texture,(470,110))
@@ -292,10 +328,26 @@ while not crashed:
 #bij normale functie 
         elif nextturn == 1:
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
-            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
-            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
-            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
-            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+            cnt = 0
+            for i in chooseChars:
+                if chooseChars[cnt].savePosition%40 == chooseChars[p%4].savePosition%40 and cnt is not p%4:
+                    if chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveRB),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[0].savePosition%40 == chooseChars[2].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrB),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[0].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveBG),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[1].savePosition%40 == chooseChars[2].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrR),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[1].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveRG),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[2].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrG),navigate[chooseChars[p%4].savePosition%40])
+             
+                else:
+                    gameDisplay.blit(pygame.image.load(gloveSmall[cnt]),navigate[chooseChars[cnt].savePosition%40])  
+                cnt += 1  
+                
             small_glove(chooseChars[p%4].texture,(290,230))
             small_glove(chooseChars[0].texture,(110,110))
             small_glove(chooseChars[1].texture,(470,110))
@@ -306,10 +358,26 @@ while not crashed:
             pygame.display.update()
             time.sleep(0.1)#1 doen
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))
-            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
-            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
-            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
-            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+            cnt = 0
+            for i in chooseChars:
+                if chooseChars[cnt].savePosition%40 == chooseChars[p%4].savePosition%40 and cnt is not p%4:
+                    if chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveRB),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[0].savePosition%40 == chooseChars[2].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrB),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[0].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveBG),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[1].savePosition%40 == chooseChars[2].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrR),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[1].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveRG),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[2].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrG),navigate[chooseChars[p%4].savePosition%40])
+             
+                else:
+                    gameDisplay.blit(pygame.image.load(gloveSmall[cnt]),navigate[chooseChars[cnt].savePosition%40])  
+                cnt += 1  
+                
             small_glove(chooseChars[p%4].texture,(290,230))
             small_glove(chooseChars[0].texture,(110,110))
             small_glove(chooseChars[1].texture,(470,110))
@@ -319,10 +387,26 @@ while not crashed:
             nextturn = 0
         else:
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
-            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40])
-            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40])
-            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40])
-            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40])
+            cnt = 0
+            for i in chooseChars:
+                if chooseChars[cnt].savePosition%40 == chooseChars[p%4].savePosition%40 and cnt is not p%4:
+                    if chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveRB),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[0].savePosition%40 == chooseChars[2].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrB),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[0].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveBG),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[1].savePosition%40 == chooseChars[2].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrR),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[1].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveRG),navigate[chooseChars[p%4].savePosition%40])
+                    if chooseChars[2].savePosition%40 == chooseChars[3].savePosition%40:
+                        gameDisplay.blit(pygame.image.load(gloveGrG),navigate[chooseChars[p%4].savePosition%40])
+             
+                else:
+                    gameDisplay.blit(pygame.image.load(gloveSmall[cnt]),navigate[chooseChars[cnt].savePosition%40])  
+                cnt += 1  
+                
             small_glove(chooseChars[p%4].texture,(290,230))
             small_glove(chooseChars[0].texture,(110,110))
             small_glove(chooseChars[1].texture,(470,110))
