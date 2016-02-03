@@ -216,7 +216,7 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                            print(str(damageD)+' bla')
                         elif roll2[0] == 6:
                            damageD = defender.dice6
-
+                           
                     if roller1 == True and roller2 == True:
                         #
                         # hier komt de zelfde logica als bij superfight (alle visuele cijfers worden in Game.py getekend)
