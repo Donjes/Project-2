@@ -3,7 +3,7 @@ name = None
 corner = None
 class Player:
     def __init__(self,name,corner,texture,attack1,attack2,attack3,attack4,attack5,attack6):
-        self.playername = name
+        self.playerName = name
 
         self.texture = texture
         self.hitPoints = 100 #  change the hitpoints and conditionpoints !!!

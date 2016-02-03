@@ -191,7 +191,7 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
             if prevPositie == chooseChars[i%4].savePosition and not chooseChars[p%-1] == chooseChars[i%4]:#player is de index
                 defender = chooseChars[i%4]
                 attacker = tempChar
-
+                print(str(attacker.playerName) + ' asd' + str(defender.playerName))
                 event = pygame.event.poll()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:#attacker
