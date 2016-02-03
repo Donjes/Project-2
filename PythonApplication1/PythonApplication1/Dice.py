@@ -15,8 +15,7 @@ for i in range(6):
     print (dice)
     print (diceImg)
     
-##functie Trow_dice() opnieuw uitvoeren voor player B 
-# DIT IS VOOR DE SPOTFIGHT !!! 
+
 #attack_b= 0
 
 #if dice == 1:
