@@ -35,22 +35,23 @@ gameDisplay = pygame.display.set_mode(size)
 fonttype = pygame.font.SysFont('system', 50)
 roll = Trow_dice()
 
+# ======================================== DRAW FUNCTIE VOOR SPELER OP BOARD EN HANDSCHOENEN NAVI
 def Draw_navi(chooseChars): 
     cnt = 0
     x = len(chooseChars)
     fonttype = pygame.font.SysFont('system', 30)
-    text_pop(fonttype,"HP:"+ str(chooseChars[0].hitPoints), white,[160, 170])
-    text_pop(fonttype,"Contition:"+ str(chooseChars[0].conditionPoints), white,[160, 190])
-    small_glove(chooseChars[0].texture,(110,110))
-    text_pop(fonttype,"HP:"+ str(chooseChars[1].hitPoints), white,[400, 170])
-    text_pop(fonttype,"Contition:"+ str(chooseChars[1].conditionPoints), white,[400, 190])
-    small_glove(chooseChars[1].texture,(470,110))
-    text_pop(fonttype,"HP:"+ str(chooseChars[2].hitPoints), white,[400, 400])
-    text_pop(fonttype,"Contition:"+ str(chooseChars[2].conditionPoints), white,[400, 420])
-    small_glove(chooseChars[2].texture,(470,470))
-    text_pop(fonttype,"HP:"+ str(chooseChars[3].hitPoints), white,[160, 400])
-    text_pop(fonttype,"Contition:"+ str(chooseChars[3].conditionPoints), white,[160, 420])
-    small_glove(chooseChars[3].texture,(110,470))  
+    text_pop(fonttype,"HP:"+ str(chooseChars[0].hitPoints), white,[160, 170]) #hitpoints speler 1
+    text_pop(fonttype,"Contition:"+ str(chooseChars[0].conditionPoints), white,[160, 190]) #condition speler 1
+    small_glove(chooseChars[0].texture,(110,110)) #mugshot player 1
+    text_pop(fonttype,"HP:"+ str(chooseChars[1].hitPoints), white,[400, 170]) #hitpoints speler 2
+    text_pop(fonttype,"Contition:"+ str(chooseChars[1].conditionPoints), white,[400, 190]) #condition speler 2
+    small_glove(chooseChars[1].texture,(470,110)) #mugshot player 2
+    text_pop(fonttype,"HP:"+ str(chooseChars[2].hitPoints), white,[400, 400]) #hitpoints speler 3
+    text_pop(fonttype,"Contition:"+ str(chooseChars[2].conditionPoints), white,[400, 420]) #condition speler 3
+    small_glove(chooseChars[2].texture,(470,470)) #mugshot player 3
+    text_pop(fonttype,"HP:"+ str(chooseChars[3].hitPoints), white,[160, 400]) #hitpoints speler 4
+    text_pop(fonttype,"Contition:"+ str(chooseChars[3].conditionPoints), white,[160, 420]) #condition speler 4
+    small_glove(chooseChars[3].texture,(110,470))  #mugshot player 4
     for i in range(x):
       if cnt == 0:
         if   chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40:
@@ -89,6 +90,7 @@ def Draw_navi(chooseChars):
         else:
             small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40]) 
       cnt += 1
+
 
 def small_glove(gloveSmall,navilist):                  #3Ruben handschoen over board functie    
         gameDisplay.blit(pygame.image.load(gloveSmall),navilist)
@@ -153,12 +155,12 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 print("plus")  
             tempTile = tile
             newLocation = True
-# =========================================== Navigatie van de handschoenen bij enter kies je je lokatie en worden alle variable returned
+# =========================================== Navigatie van de handschoenen bij space kies je je lokatie en worden alle variable returned
         if event.key == pygame.K_SPACE and tempTile != chooseChars[p%4].savePosition and newLocation == True:
             chooseChars[p%4].savePosition = tempTile
             prevPositie = chooseChars[p%4].savePosition%40
             if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
-                chooseChars[p%4].passCorner
+                chooseChars[p%4].conditionPoints = 15
                 
             if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and prevPositie is not corner[p%4]:
                 letsSuperFight = 1#corner fight
@@ -189,6 +191,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
 
 
 def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2,damageA, damageD, attacker, defender,p):
+
         for i in range(4):
             if prevPositie == chooseChars[i%4].savePosition and not chooseChars[p%-1] == chooseChars[i%4]:#player is de index
                 defender = chooseChars[i%4]
@@ -199,8 +202,11 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
                     if event.key == pygame.K_SPACE:#attacker
                         roll = Trow_dice()
                         roller1_img = roll[1]
-                        roller1 = True                     
+                        roller1 = True     
+                        
+                                     
                         if roll[0] == 1:
+                            
                            damageA = attacker.dice1 
                         elif roll[0] == 2:
                            damageA = attacker.dice2 
@@ -262,7 +268,6 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                            damageA = attacker.dice4 + extra
                         elif roll[0] == 5:
                            damageA = attacker.dice5 + extra
-                           print(str(damageA)+' foo')
                         elif roll[0] == 6:
                            damageA = attacker.dice6 + extra
 
@@ -280,7 +285,6 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                            damageD = defender.dice4
                         elif roll2[0] == 5:
                            damageD = defender.dice5
-                           print(str(damageD)+' bla')
                         elif roll2[0] == 6:
                            damageD = defender.dice6
         if roller1 == True and roller2 == True:
@@ -294,10 +298,8 @@ def calculation(defender,attacker, damageA, damageD, totalattack, x):
     if defender.conditionPoints > -1 and attacker.conditionPoints > -1:#hoger dan 0
        if damageD >= damageA:
            totalattack = damageD - damageA
-           print(str(totalattack)+' pwn')
            attacker.getDamage(totalattack) 
-           print (str(attacker.hitPoints) +'att')
-           print (str(defender.hitPoints) +'def')
+
        else:
            totalattack = damageA - damageD
            defender.getDamage(totalattack) 

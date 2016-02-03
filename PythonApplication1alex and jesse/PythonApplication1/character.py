@@ -3,7 +3,7 @@ name = None
 corner = None
 class Player:
     def __init__(self,name,corner,texture,attack1,attack2,attack3,attack4,attack5,attack6):
-        self.Playername = name
+        self.playerName = name
 
         self.texture = texture
         self.hitPoints = 100 #  change the hitpoints and conditionpoints !!!
@@ -21,8 +21,6 @@ class Player:
         self.hitPoints = self.hitPoints - dmgdone
     def doDamage(self,conditionLost):
         self.conditionPoints = self.conditionPoints - conditionLost
-    def passCorner(self):
-        self.conditionPoints = 15
 
 TerryCrews = Player(name,corner,"images/TerryCrews.png",10,15,25,30,20,10)
 JasonStatham = Player(name,corner,"images/JasonStatham.png",10,11,19,21,23,26)
