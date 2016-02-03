@@ -292,7 +292,8 @@ while not crashed:
         elif letsFight == 1:
             tempChar = chooseChars[p%4-1]
 
-            roller1,roller2,roller_reset,roller1_img,roller2_img = spotFight(tempChar,chooseChars,roller1,roller2,roller_reset,roller1_img,roller2_img)
+            roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= spotFight(tempChar,chooseChars, prevPositie,navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
+
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect())) 
             cnt = 0
             for i in chooseChars:
