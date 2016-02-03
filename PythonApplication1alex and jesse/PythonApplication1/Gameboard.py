@@ -150,6 +150,11 @@ def spotFight(tempChar, chooseChars,roller1,roller2,roller_reset,roller1_img,rol
         
 # Corner fight
 def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2):
+
+        damageA = 0
+        damageD = 0
+        defender = None
+        attacker = None
         for player in range(len(corner)):
             if prevPositie == corner[player]:#player is de index
                 defender = chooseChars[player]
@@ -167,18 +172,18 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                         #
                         #########test damageA = attacker.dice(roll[0])
                         extra = 2
-                        if roll == 1:
+                        if roll[0] == 1:
                            damageA = attacker.dice1 + extra
-                        elif roll == 2:
+                        elif roll[0] == 2:
                            damageA = attacker.dice1 + extra
-                        elif roll == 3:
+                        elif roll[0] == 3:
                            damageA = attacker.dice1 + extra
-                        elif roll == 4:
+                        elif roll[0] == 4:
                            damageA = attacker.dice1 + extra
-                        elif roll == 5:
+                        elif roll[0] == 5:
                            damageA = attacker.dice1 + extra
-                           print('foo')
-                        elif roll == 6:
+                           print(str(damageA)+' foo')
+                        elif roll[0] == 6:
                            damageA = attacker.dice1 + extra
 
                     if event.key == pygame.K_RETURN:#defender
@@ -188,18 +193,18 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                         #
                         # hier komt de logica van hoeveel dmg2
                         #
-                        if roll2 == 1:
+                        if roll2[0] == 1:
                            damageD = defender.dice1
-                        elif roll2 == 2:
+                        elif roll2[0] == 2:
                            damageD = defender.dice2
-                        elif roll2 == 3:
+                        elif roll2[0] == 3:
                            damageD = defender.dice3
-                        elif roll2 == 4:
+                        elif roll2[0] == 4:
                            damageD = defender.dice4
-                        elif roll2 == 5:
+                        elif roll2[0] == 5:
                            damageD = defender.dice5
-                           print('bla')
-                        elif roll2 == 6:
+                           print(str(damageD)+' bla')
+                        elif roll2[0] == 6:
                            damageD = defender.dice6
 
                     if roller1 == True and roller2 == True:
@@ -208,12 +213,15 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
 
                         defender.conditionPoints -= 3
                         attacker.conditionPoints -= 3
-                        totalattack = 0
+
 
                         if defender.conditionPoints > -1 and attacker.conditionPoints > -1:
                            if damageD >= damageA:
                                totalattack = damageD - damageA
+                               print(str(totalattack)+' pwn')
                                attacker.hitPoints -= totalattack
+                               print (str(attacker.hitPoints) +'att')
+                               print (str(defender.hitPoints) +'def')
                            else:
                                totalattack = damageA - damageD
                                defender.hitPoints -= totalattack
@@ -223,8 +231,7 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                            defender.hitPoints -= damageD
                         roller_reset = True
 
-                        print (str(attacker.hitPoints) +'att')
-                        print (str(defender.hitPoints) +'def')
+
                     return roller1,roller2,roller_reset,roller1_img,roller2_img
                 else:
                     return roller1,roller2,roller_reset,roller1_img,roller2_img
