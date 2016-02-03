@@ -40,12 +40,16 @@ def Draw_navi(chooseChars):
     x = len(chooseChars)
     fonttype = pygame.font.SysFont('system', 30)
     text_pop(fonttype,"HP:"+ str(chooseChars[0].hitPoints), white,[160, 170])
-    text_pop(fonttype,"Contition:"+ str(chooseChars[0].conditionPoints), white,[160, 200])
+    text_pop(fonttype,"Contition:"+ str(chooseChars[0].conditionPoints), white,[160, 190])
     small_glove(chooseChars[0].texture,(110,110))
-    text_pop(fonttype,"HP:"+ str(chooseChars[1].hitPoints), white,[300, 170])
-    text_pop(fonttype,"Contition:"+ str(chooseChars[1].conditionPoints), white,[300, 200])
+    text_pop(fonttype,"HP:"+ str(chooseChars[1].hitPoints), white,[400, 170])
+    text_pop(fonttype,"Contition:"+ str(chooseChars[1].conditionPoints), white,[400, 190])
     small_glove(chooseChars[1].texture,(470,110))
+    text_pop(fonttype,"HP:"+ str(chooseChars[2].hitPoints), white,[400, 400])
+    text_pop(fonttype,"Contition:"+ str(chooseChars[2].conditionPoints), white,[400, 420])
     small_glove(chooseChars[2].texture,(470,470))
+    text_pop(fonttype,"HP:"+ str(chooseChars[3].hitPoints), white,[160, 400])
+    text_pop(fonttype,"Contition:"+ str(chooseChars[3].conditionPoints), white,[160, 420])
     small_glove(chooseChars[3].texture,(110,470))  
     for i in range(x):
       if cnt == 0:
@@ -155,7 +159,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             prevPositie = chooseChars[p%4].savePosition%40
             if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
                 chooseChars[p%4].passCorner
-
+                
             if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and prevPositie is not corner[p%4]:
                 letsSuperFight = 1#corner fight
                # attacker = tempChar
@@ -190,8 +194,8 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
         for i in range(4):
             if prevPositie == chooseChars[i%4].savePosition and not chooseChars[p%-1] == chooseChars[i%4]:#player is de index
                 defender = chooseChars[i%4]
-                attacker = tempChar
-
+                attacker = chooseChars[p%-1]
+                
                 event = pygame.event.poll()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:#attacker
