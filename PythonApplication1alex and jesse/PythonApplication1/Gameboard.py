@@ -95,10 +95,10 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
     save_game = False
     load_old_game = False
     if firstround:
-        chooseChars[0].savePosition = 0
-        chooseChars[1].savePosition = 10
-        chooseChars[2].savePosition = 20
-        chooseChars[3].savePosition = 30
+        chooseChars[0].savePosition = chooseChars[0].startCorner
+        chooseChars[1].savePosition = chooseChars[1].startCorner
+        chooseChars[2].savePosition = chooseChars[2].startCorner
+        chooseChars[3].savePosition = chooseChars[3].startCorner
         firstround = False
     corner = [0,10,20,30]
     player = chooseChars[p%4]
@@ -145,7 +145,8 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
         if event.key == pygame.K_SPACE and tempTile != chooseChars[p%4].savePosition and newLocation == True:
             chooseChars[p%4].savePosition = tempTile
             prevPositie = chooseChars[p%4].savePosition%40
-
+            if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
+                chooseChars[p%4].passCorner
 
             if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and prevPositie is not corner[p%4]:
                 letsSuperFight = 1#corner fight
