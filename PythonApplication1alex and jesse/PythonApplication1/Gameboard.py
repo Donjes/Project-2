@@ -212,36 +212,29 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                         elif roll2[0] == 6:
                            damageD = defender.dice6
 
-                defender.conditionPoints -= 3
-                attacker.conditionPoints -= 3
-
         if roller1 == True and roller2 == True:
             roller_reset = True
             return roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender
         else:
             return roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender
 
-# def calculation():
-#
-#
-#
-#         if defender.conditionPoints > -1 and attacker.conditionPoints > -1:
-#            if damageD >= damageA:
-#                totalattack = damageD - damageA
-#                print(str(totalattack)+' pwn')
-#                attacker.hitPoints -= totalattack
-#                print (str(attacker.hitPoints) +'att')
-#                print (str(defender.hitPoints) +'def')
-#            else:
-#                totalattack = damageA - damageD
-#                defender.hitPoints -= totalattack
-#         elif defender.conditionPoints > -1 and attacker.conditionPoints < 0:
-#            attacker.hitPoints -= damageD
-#         elif defender.conditionPoints < 0 and attacker.conditionPoints > -1:
-#            defender.hitPoints -= damageD
-#
-#
-#
-#     return roller1,roller2,roller_reset,roller1_img,roller2_img
-# else:
-#     return roller1,roller2,roller_reset,roller1_img,roller2_img
+def calculation(defender,attacker, damageA, damageD, totalattack):
+    defender.conditionPoints -= 3
+    attacker.conditionPoints -= 3
+    if defender.conditionPoints > -1 and attacker.conditionPoints > -1:#hoger dan 0
+       if damageD >= damageA:
+           totalattack = damageD - damageA
+           print(str(totalattack)+' pwn')
+           attacker.hitPoints -= totalattack
+           print (str(attacker.hitPoints) +'att')
+           print (str(defender.hitPoints) +'def')
+       else:
+           totalattack = damageA - damageD
+           defender.hitPoints -= totalattack
+    elif defender.conditionPoints > -1 and attacker.conditionPoints < 0:
+       attacker.hitPoints -= damageD
+    elif defender.conditionPoints < 0 and attacker.conditionPoints > -1:
+       defender.hitPoints -= damageD
+
+    return defender, attacker
+
