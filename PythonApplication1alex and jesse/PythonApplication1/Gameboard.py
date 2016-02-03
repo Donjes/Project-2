@@ -183,6 +183,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
 #===================================================== FIGHT FUNCTIES! =============================================================================#
 # 1v1 fight
 
+<<<<<<< HEAD
 def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2,damageA, damageD, attacker, defender,p):
                 for i in range(4):
                     if prevPositie == chooseChars[i%4].savePosition and not chooseChars[p%-1] == chooseChars[i%4]:#player is de index
@@ -240,6 +241,68 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
                     roller_reset = True
                 return roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender
    
+=======
+#def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2,damageA, damageD, attacker, defender):
+#        for player in range(len(navigate)):
+#            if prevPositie == navigate[player]:#player is de index
+#                defender = chooseChars[player]
+#                attacker = tempChar
+
+
+#                event = pygame.event.poll()
+#                if event.type == pygame.KEYDOWN:
+#                    if event.key == pygame.K_SPACE:#attacker
+#                        roll = Trow_dice()
+#                        roller1_img = roll[1]
+#                        roller1 = True
+#                        #
+#                        # hier komt de logica van hoeveel dmg1
+#                        #
+#                        #########test damageA = attacker.dice(roll[0])
+                    
+#                        if roll[0] == 1:
+#                           damageA = attacker.dice1 
+#                        elif roll[0] == 2:
+#                           damageA = attacker.dice2 
+#                        elif roll[0] == 3:
+#                           damageA = attacker.dice3 
+#                        elif roll[0] == 4:
+#                           damageA = attacker.dice4 
+#                        elif roll[0] == 5:
+#                           damageA = attacker.dice5 
+#                           print(str(damageA)+' foo')
+#                        elif roll[0] == 6:
+#                           damageA = attacker.dice6 
+
+#                    if event.key == pygame.K_RETURN:#defender
+#                        roll2 = Trow_dice()
+#                        roller2_img = roll2[1]
+#                        roller2 = True
+#                        #
+#                        # hier komt de logica van hoeveel dmg2
+#                        #
+#                        if roll2[0] == 1:
+#                           damageD = defender.dice1
+#                        elif roll2[0] == 2:
+#                           damageD = defender.dice2
+#                        elif roll2[0] == 3:
+#                           damageD = defender.dice3
+#                        elif roll2[0] == 4:
+#                           damageD = defender.dice4
+#                        elif roll2[0] == 5:
+#                           damageD = defender.dice5
+#                           print(str(damageD)+' bla')
+#                        elif roll2[0] == 6:
+#                           damageD = defender.dice6
+
+#                defender.conditionPoints -= 5
+#                attacker.conditionPoints -= 5
+
+#        if roller1 == True and roller2 == True:
+#            roller_reset = True
+
+#        return roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender  
+>>>>>>> origin/master
         
 # Corner fight
 def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2,damageA, damageD, attacker, defender):
@@ -300,9 +363,9 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
 
         return roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender
 
-def calculation(defender,attacker, damageA, damageD, totalattack):
-    defender.conditionPoints -= 3
-    attacker.conditionPoints -= 3
+def calculation(defender,attacker, damageA, damageD, totalattack, x):
+    defender.conditionPoints -= x
+    attacker.conditionPoints -= x
     if defender.conditionPoints > -1 and attacker.conditionPoints > -1:#hoger dan 0
        if damageD >= damageA:
            totalattack = damageD - damageA
