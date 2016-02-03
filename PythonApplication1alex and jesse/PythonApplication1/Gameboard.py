@@ -159,8 +159,6 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and prevPositie is not corner[p%4]:
                 letsSuperFight = 1#corner fight
                # attacker = tempChar
-
-
             for i in range(4):
               #  print(chooseChars[p%4])
                 if prevPositie == chooseChars[i].savePosition and not chooseChars[p%4] == chooseChars[i]:
@@ -197,12 +195,7 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
                     if event.key == pygame.K_SPACE:#attacker
                         roll = Trow_dice()
                         roller1_img = roll[1]
-                        roller1 = True
-                        #
-                        # hier komt de logica van hoeveel dmg1
-                        #
-                        #########test damageA = attacker.dice(roll[0])
-                        
+                        roller1 = True                     
                         if roll[0] == 1:
                            damageA = attacker.dice1 
                         elif roll[0] == 2:
@@ -221,9 +214,6 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
                         roll2 = Trow_dice()
                         roller2_img = roll2[1]
                         roller2 = True
-                        #
-                        # hier komt de logica van hoeveel dmg2
-                        #
                         if roll2[0] == 1:
                            damageD = defender.dice1
                         elif roll2[0] == 2:
@@ -257,11 +247,7 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                         roll = Trow_dice()
                         roller1_img = roll[1]
                         roller1 = True
-                        #
-                        # hier komt de logica van hoeveel dmg1
-                        #
-                        #########test damageA = attacker.dice(roll[0])
-                        extra = 2
+                        extra = 2#2 extra dmg voor de attacker 
                         if roll[0] == 1:
                            damageA = attacker.dice1 + extra
                         elif roll[0] == 2:
@@ -280,9 +266,6 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                         roll2 = Trow_dice()
                         roller2_img = roll2[1]
                         roller2 = True
-                        #
-                        # hier komt de logica van hoeveel dmg2
-                        #
                         if roll2[0] == 1:
                            damageD = defender.dice1
                         elif roll2[0] == 2:
@@ -296,7 +279,6 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                            print(str(damageD)+' bla')
                         elif roll2[0] == 6:
                            damageD = defender.dice6
-
         if roller1 == True and roller2 == True:
             roller_reset = True
 
