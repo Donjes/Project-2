@@ -165,6 +165,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and prevPositie is not corner[p%4]:
                 letsSuperFight = 1#corner fight
                # attacker = tempChar
+      
             for i in range(4):
               #  print(chooseChars[p%4])
                 if prevPositie == chooseChars[i].savePosition and not chooseChars[p%4] == chooseChars[i]:
