@@ -1,6 +1,6 @@
 #from Game import *
 import pygame
-from character import *
+from Character import *
 pygame.mixer.init()
 
 punchsound = pygame.mixer.Sound("sounds/punch.ogg")
@@ -145,6 +145,7 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
                         StevenSeagal = Player(name,corner,"images/StevenSeagal.png",27,15,12,11,25,20)
                         chooseChars.append(StevenSeagal)
                         Charlist.append(Steven)
+                        nextplayer += 1
                     elif event.key == pygame.K_RETURN and char_button == characterlist[6] and Wesley not in Charlist:
                         name = playerNames[nextplayer]
                         corner = start_corner[nextplayer]

@@ -2,7 +2,7 @@
 import time
 from Dice import *
 import os
-from character import *
+from Character import *
 from Playerscreen import *
 
 #======================================= Variable die vanuit player screen moeten komen
@@ -161,16 +161,13 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
                 chooseChars[p%4].conditionPoints = 15
 
-            if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and prevPositie is not corner[p%4]:
-                letsSuperFight = 1#corner fight
-               # attacker = tempChar
-      
-            for i in range(4):
-              #  print(chooseChars[p%4])
-                if prevPositie == chooseChars[i].savePosition and not chooseChars[p%4] == chooseChars[i]:
+            if chooseChars[p%4].alive == True and (prevPositie == chooseChars[p%4-1].savePosition or prevPositie == chooseChars[p%4-2].savePosition or prevPositie == chooseChars[p%4-3].savePosition) and letsSuperFight == 0:
                     letsFight = 1#spot fight
 
-            if letsSuperFight == 0 and letsFight == 0:
+            elif chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and not prevPositie == corner[p%4] and letsFight == 0:
+                letsSuperFight = 1#corner fight
+
+            elif letsSuperFight == 0 and letsFight == 0:
                 nextturn = 1
             p += 1
             newLocation = False
