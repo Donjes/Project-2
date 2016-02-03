@@ -26,19 +26,19 @@ class Sounds:
     def Introping():
         pygame.mixer.Sound.play(introping)
 
-Charlist = [JetRi,SuperMario,ChackNorris,JackieChan,JasonStatham,StevenSeagal,WesleySniper,TerryCrews]
+Charlist = []
 
 
 
 
-def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, screen_index,character_index,last_page):
-    JetRi,SuperMario,ChackNorris,JackieChan,JasonStatham,StevenSeagal,WesleySniper,TerryCrews = Charlist
+def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, screen_index,character_index,last_page,nextplayer):
+    #JetRi,SuperMario,ChackNorris,JackieChan,JasonStatham,StevenSeagal,WesleySniper,TerryCrews = Charlist
     start = x, y = 0, 650
     rules = x, y = 225, 650
     exit = x, y = 450, 650
     size = width, height = 750, 780
     gameDisplay = pygame.display.set_mode(size)
-
+    start_corner = [0,10,20,30]
     Jet = x,y = 450, 145
     Mario = x,y = 450, 235
     Chack = x,y = 450, 325
@@ -94,61 +94,77 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
                 if character_index < 0:
                     character_index = 7
 
-
-            i = 0
+            
+            
             if len(chooseChars) < 4:
 
-                    if event.key == pygame.K_RETURN and char_button == characterlist[0] and JetRi not in chooseChars:
-                        name = playerNames[i]
+                    if event.key == pygame.K_RETURN and char_button == characterlist[0] and Jet not in Charlist:
+                        name = playerNames[nextplayer]
+                        corner = start_corner[nextplayer]
                         Sounds.Mario()   
-                        JetRi = Player(name,"images/JetRi.png",10,30,12,25,10,23)                   
+                        JetRi = Player(name,corner,"images/JetRi.png",10,30,12,25,10,23)                   
                         chooseChars.append(JetRi)
-    
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[1] and SuperMario not in chooseChars:
-                        name = playerNames[i]
+                        Charlist.append(Jet)
+                        nextplayer += 1
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[1] and Mario not in Charlist:
+                        name = playerNames[nextplayer]
+                        corner = start_corner[nextplayer]
                         Sounds.Mario()
-                        SuperMario = Player(name,"images/SuperMario.png",10,10,30,30,15,15)                        
+                        SuperMario = Player(name,corner,"images/SuperMario.png",10,10,30,30,15,15)                        
                         chooseChars.append(SuperMario)
-
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[2] and ChackNorris not in chooseChars:
-                        name = playerNames[i]
+                        Charlist.append(Mario)
+                        nextplayer += 1
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[2] and Chack not in Charlist:
+                        name = playerNames[nextplayer]
+                        corner = start_corner[nextplayer]
                         Sounds.Mario()
-                        ChackNorris = Player(name,"images/ChackNorris.png",10,26,25,24,24,1)
+                        ChackNorris = Player(name,corner,"images/ChackNorris.png",10,26,25,24,24,1)
                         chooseChars.append(ChackNorris)
-
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[3] and JackieChan not in chooseChars:
-                        name = playerNames[i]
+                        Charlist.append(Chack)
+                        nextplayer += 1
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[3] and Jackie not in Charlist:
+                        name = playerNames[nextplayer]
+                        corner = start_corner[nextplayer]
                         Sounds.Mario()
-                        JackieChan = Player(name,"images/JackieChan.png",20,25,5,25,20,15)
+                        JackieChan = Player(name,corner,"images/JackieChan.png",20,25,5,25,20,15)
                         chooseChars.append(JackieChan)
-
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[4] and JasonStatham not in chooseChars:
-                        name = playerNames[i]
+                        Charlist.append(Jackie)
+                        nextplayer += 1
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[4] and Jason not in Charlist:
+                        name = playerNames[nextplayer]
+                        corner = start_corner[nextplayer]
                         Sounds.Mario()
-                        JasonStatham = Player(name,"images/JasonStatham.png",10,11,19,21,23,26)
+                        JasonStatham = Player(name,corner,"images/JasonStatham.png",10,11,19,21,23,26)
                         chooseChars.append(JasonStatham)
-
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[5] and StevenSeagal not in chooseChars:
-                        name = playerNames[i]
+                        Charlist.append(Jason)
+                        nextplayer += 1
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[5] and Steven not in Charlist:
+                        name = playerNames[nextplayer]
+                        corner = start_corner[nextplayer]
                         Sounds.Mario()
-                        StevenSeagal = Player(name,"images/StevenSeagal.png",27,15,12,11,25,20)
+                        StevenSeagal = Player(name,corner,"images/StevenSeagal.png",27,15,12,11,25,20)
                         chooseChars.append(StevenSeagal)
-
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[6] and WesleySniper not in chooseChars:
-                        name = playerNames[i]
+                        Charlist.append(Steven)
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[6] and Wesley not in Charlist:
+                        name = playerNames[nextplayer]
+                        corner = start_corner[nextplayer]
                         Sounds.Mario()
-                        WesleySniper = Player(name,"images/WesleySniper.png",30,14,14,20,18,14)
+                        WesleySniper = Player(name,corner,"images/WesleySniper.png",30,14,14,20,18,14)
                         chooseChars.append(WesleySniper)
-
-                    elif event.key == pygame.K_RETURN and char_button == characterlist[7] and TerryCrews not in chooseChars:
-                        name = playerNames[i]
+                        Charlist.append(Wesley)
+                        nextplayer += 1
+                    elif event.key == pygame.K_RETURN and char_button == characterlist[7] and Terry not in Charlist:
+                        name = playerNames[nextplayer]
+                        corner = start_corner[nextplayer]
                         Sounds.Mario()
-                        TerryCrews = Player(name,"images/TerryCrews.png",10,15,25,30,20,10)
+                        TerryCrews = Player(name,corner,"images/TerryCrews.png",10,15,25,30,20,10)
                         chooseChars.append(TerryCrews)
-                    i += 1
+                        Charlist.append(Terry)
+                        nextplayer += 1
+                  
     
-
+                    
     b = 2
 
 
-    return screen, rect, crashed, button, menu_index, screen_index, b, char_button, character_index,chooseChars,last_page,Charlist
+    return screen, rect, crashed, button, menu_index, screen_index, b, char_button, character_index,chooseChars,last_page,Charlist,nextplayer

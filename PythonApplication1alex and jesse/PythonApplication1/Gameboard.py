@@ -34,6 +34,51 @@ size = width, height = 750, 780
 gameDisplay = pygame.display.set_mode(size)
 
 roll = Trow_dice()
+def Draw_navi(chooseChars): 
+    cnt = 0
+    x = len(chooseChars)
+    small_glove(chooseChars[0].texture,(110,110))
+    small_glove(chooseChars[1].texture,(470,110))
+    small_glove(chooseChars[2].texture,(470,470))
+    small_glove(chooseChars[3].texture,(110,470))  
+    for i in range(x):
+      if cnt == 0:
+        if   chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40:
+            small_glove("images/zelfde_tile/roodVSblauw.png",navigate[chooseChars[0].savePosition%40])
+        elif   chooseChars[0].savePosition%40 == chooseChars[2].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSblauw.png",navigate[chooseChars[0].savePosition%40])
+        elif   chooseChars[0].savePosition%40 == chooseChars[3].savePosition%40:
+            small_glove("images/zelfde_tile/blauwVSgeel.png",navigate[chooseChars[0].savePosition%40])
+        else:
+            small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40]) 
+      if cnt == 1:
+        if   chooseChars[1].savePosition%40 == chooseChars[0].savePosition%40:
+            small_glove("images/zelfde_tile/roodVSblauw.png",navigate[chooseChars[1].savePosition%40])
+        elif   chooseChars[1].savePosition%40 == chooseChars[2].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSrood.png",navigate[chooseChars[1].savePosition%40])
+        elif   chooseChars[1].savePosition%40 == chooseChars[3].savePosition%40:
+            small_glove("images/zelfde_tile/roodVSgeel.png",navigate[chooseChars[1].savePosition%40])
+        else:
+            small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40]) 
+      if cnt == 2:
+        if   chooseChars[2].savePosition%40 == chooseChars[0].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSblauw.png",navigate[chooseChars[2].savePosition%40])
+        elif   chooseChars[2].savePosition%40 == chooseChars[1].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSrood.png",navigate[chooseChars[2].savePosition%40])
+        elif   chooseChars[2].savePosition%40 == chooseChars[3].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSgeel.png",navigate[chooseChars[2].savePosition%40])
+        else:
+            small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40]) 
+      if cnt == 3:    
+        if   chooseChars[3].savePosition%40 == chooseChars[0].savePosition%40:
+            small_glove("images/zelfde_tile/blauwVSgeel.png",navigate[chooseChars[3].savePosition%40])
+        elif   chooseChars[3].savePosition%40 == chooseChars[1].savePosition%40:
+            small_glove("images/zelfde_tile/roodVSgeel.png",navigate[chooseChars[3].savePosition%40])
+        elif   chooseChars[3].savePosition%40 == chooseChars[2].savePosition%40:
+            small_glove("images/zelfde_tile/groenVSgeel.png",navigate[chooseChars[3].savePosition%40])
+        else:
+            small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40]) 
+      cnt += 1
 
 def small_glove(gloveSmall,navilist):                  #3Ruben handschoen over board functie    
         gameDisplay.blit(pygame.image.load(gloveSmall),navilist)
@@ -50,10 +95,10 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
     save_game = False
     load_old_game = False
     if firstround:
-        chooseChars[0].savePosition = 0
-        chooseChars[1].savePosition = 10
-        chooseChars[2].savePosition = 20
-        chooseChars[3].savePosition = 30
+        chooseChars[0].savePosition = chooseChars[0].startCorner
+        chooseChars[1].savePosition = chooseChars[1].startCorner
+        chooseChars[2].savePosition = chooseChars[2].startCorner
+        chooseChars[3].savePosition = chooseChars[3].startCorner
         firstround = False
     corner = [0,10,20,30]
     player = chooseChars[p%4]
@@ -100,7 +145,8 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
         if event.key == pygame.K_SPACE and tempTile != chooseChars[p%4].savePosition and newLocation == True:
             chooseChars[p%4].savePosition = tempTile
             prevPositie = chooseChars[p%4].savePosition%40
-
+            if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
+                chooseChars[p%4].passCorner
 
             if chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and prevPositie is not corner[p%4]:
                 letsSuperFight = 1#corner fight
