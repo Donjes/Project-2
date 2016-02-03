@@ -1,6 +1,6 @@
 ﻿import random
 
-def Trow_dice():
+def Throw_dice():
     diceList = [1,2,3,4,5,6]
     dice = random.choice(diceList)
     dice = 5 #testing for corner
@@ -11,13 +11,13 @@ def Trow_dice():
 
 
 #for i in range(6):
-#    dice = Trow_dice()
+#    dice = Throw_dice()
 #    diceImg = dice[1]
 #    dice = dice[0]
 #    print (dice)
 #    print (diceImg)
     
-##functie Trow_dice() opnieuw uitvoeren voor player B 
+##functie Throw_dice() opnieuw uitvoeren voor player B 
 # DIT IS VOOR DE SPOTFIGHT !!! 
 #attack_b= 0
 
@@ -235,7 +235,7 @@ def Trow_dice():
 #                event = pygame.event.poll()
 #                if event.type == pygame.KEYDOWN:
 #                    if event.key == pygame.K_SPACE:#attacker
-#                        roll = Trow_dice()
+#                        roll = Throw_dice()
 #                        roller1_img = roll[1]
 #                        roller1 = True
 #                        #
@@ -258,7 +258,7 @@ def Trow_dice():
 #                           damageA = attacker.dice1 + extra
 
 #                    if event.key == pygame.K_RETURN:#defender
-#                        roll2 = Trow_dice()
+#                        roll2 = Throw_dice()
 #                        roller2_img = roll2[1]
 #                        roller2 = True
 #                        #

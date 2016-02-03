@@ -1,6 +1,6 @@
 #from Game import *
 import pygame
-from Character import *
+from character import *
 pygame.mixer.init()
 
 punchsound = pygame.mixer.Sound("sounds/punch.ogg")

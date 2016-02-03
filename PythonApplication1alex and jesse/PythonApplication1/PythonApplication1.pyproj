@@ -27,15 +27,14 @@
     <Compile Include="Game.py" />
     <Compile Include="Gameboard.py" />
     <Compile Include="Gametile.py" />
-    <Compile Include="Node.py" />
     <Compile Include="Options.py" />
     <Compile Include="Playerscreen.py" />
-    <Compile Include="Rulesscreen.py" />
     <Compile Include="SaveGame.py" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include=".idea\" />
     <Folder Include="images\" />
+    <Folder Include="Koffielogo\" />
     <Folder Include="sounds\" />
   </ItemGroup>
   <ItemGroup>
@@ -67,6 +66,17 @@
     <Content Include="images\TerryCrews.png" />
     <Content Include="images\WesleySniper.png" />
     <Content Include="images\yellow_handschoen.png" />
+    <Content Include="Koffielogo\koffie.psd" />
+    <Content Include="Koffielogo\Koffie0.png" />
+    <Content Include="Koffielogo\Koffie1.png" />
+    <Content Include="Koffielogo\Koffie2.png" />
+    <Content Include="Koffielogo\Koffie3.png" />
+    <Content Include="Koffielogo\Koffie4.png" />
+    <Content Include="Koffielogo\Koffie5.png" />
+    <Content Include="Koffielogo\Koffie6.png" />
+    <Content Include="Koffielogo\Koffie7.png" />
+    <Content Include="Koffielogo\Koffie8.png" />
+    <Content Include="savedgame.txt" />
     <Content Include="sounds\punch_sound.mp3" />
   </ItemGroup>
   <PropertyGroup>

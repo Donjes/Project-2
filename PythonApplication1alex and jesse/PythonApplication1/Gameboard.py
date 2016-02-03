@@ -2,8 +2,7 @@
 import time
 from Dice import *
 import os
-from Character import *
-from Node import *
+from character import *
 from Playerscreen import *
 
 #======================================= Variable die vanuit player screen moeten komen
@@ -33,7 +32,7 @@ pygame.font.init()
 size = width, height = 750, 780
 gameDisplay = pygame.display.set_mode(size)
 fonttype = pygame.font.SysFont('system', 50)
-roll = Trow_dice()
+roll = Throw_dice()
 
 # ======================================== DRAW FUNCTIE VOOR SPELER OP BOARD EN HANDSCHOENEN NAVI
 def Draw_navi(chooseChars): 
@@ -41,16 +40,16 @@ def Draw_navi(chooseChars):
     x = len(chooseChars)
     fonttype = pygame.font.SysFont('system', 30)
     text_pop(fonttype,"HP:"+ str(chooseChars[0].hitPoints), white,[160, 170]) #hitpoints speler 1
-    text_pop(fonttype,"Contition:"+ str(chooseChars[0].conditionPoints), white,[160, 190]) #condition speler 1
+    text_pop(fonttype,"Condition:"+ str(chooseChars[0].conditionPoints), white,[160, 190]) #condition speler 1
     small_glove(chooseChars[0].texture,(110,110)) #mugshot player 1
     text_pop(fonttype,"HP:"+ str(chooseChars[1].hitPoints), white,[400, 170]) #hitpoints speler 2
-    text_pop(fonttype,"Contition:"+ str(chooseChars[1].conditionPoints), white,[400, 190]) #condition speler 2
+    text_pop(fonttype,"Condition:"+ str(chooseChars[1].conditionPoints), white,[400, 190]) #condition speler 2
     small_glove(chooseChars[1].texture,(470,110)) #mugshot player 2
     text_pop(fonttype,"HP:"+ str(chooseChars[2].hitPoints), white,[400, 400]) #hitpoints speler 3
-    text_pop(fonttype,"Contition:"+ str(chooseChars[2].conditionPoints), white,[400, 420]) #condition speler 3
+    text_pop(fonttype,"Condition:"+ str(chooseChars[2].conditionPoints), white,[400, 420]) #condition speler 3
     small_glove(chooseChars[2].texture,(470,470)) #mugshot player 3
     text_pop(fonttype,"HP:"+ str(chooseChars[3].hitPoints), white,[160, 400]) #hitpoints speler 4
-    text_pop(fonttype,"Contition:"+ str(chooseChars[3].conditionPoints), white,[160, 420]) #condition speler 4
+    text_pop(fonttype,"Condition:"+ str(chooseChars[3].conditionPoints), white,[160, 420]) #condition speler 4
     small_glove(chooseChars[3].texture,(110,470))  #mugshot player 4
     for i in range(x):
       if cnt == 0:
@@ -118,13 +117,13 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
     player = chooseChars[p%4]
     tile = player.savePosition
 # =========================================== Navigatie van de handschoenen bij elke dice throw optie om kant te kiezen
-    event = pygame.event.poll()         
+    event = pygame.event.poll()     
     if event.type == pygame.KEYDOWN: 
         if event.key == pygame.K_SPACE and newLocation == False and dice_rolled == False: 
             Sounds.Dice()
-            roll = Trow_dice() 
+            roll = Throw_dice() 
             for i in range(1):#15 doen
-                rolling = Trow_dice()
+                rolling = Throw_dice()
                 dice_img(rolling) 
                 small_glove("images/DiceRolling.png",(300,300)) 
                 pygame.display.update()
@@ -203,7 +202,7 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
                 event = pygame.event.poll()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:#attacker
-                        roll = Trow_dice()
+                        roll = Throw_dice()
                         roller1_img = roll[1]
                         roller1 = True     
                         
@@ -224,7 +223,7 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
                            damageA = attacker.dice6 
 
                     if event.key == pygame.K_RETURN:#defender
-                        roll2 = Trow_dice()
+                        roll2 = Throw_dice()
                         roller2_img = roll2[1]
                         roller2 = True
                         if roll2[0] == 1:
@@ -257,7 +256,7 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                 event = pygame.event.poll()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:#attacker
-                        roll = Trow_dice()
+                        roll = Throw_dice()
                         roller1_img = roll[1]
                         roller1 = True
                         extra = 2#2 extra dmg voor de attacker 
@@ -275,7 +274,7 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
                            damageA = attacker.dice6 + extra
 
                     if event.key == pygame.K_RETURN:#defender
-                        roll2 = Trow_dice()
+                        roll2 = Throw_dice()
                         roller2_img = roll2[1]
                         roller2 = True
                         if roll2[0] == 1:

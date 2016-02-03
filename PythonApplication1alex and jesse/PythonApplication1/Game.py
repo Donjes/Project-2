@@ -160,9 +160,6 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_pag
         if event.type == pygame.QUIT:
             crashed = True                  #programma sluit af met rode X
 
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_SPACE:
-                Sounds.Punch()
         if screen_index == 0:      #start
             screen = screenlist[screen_index]
             rect = rectlist[screen_index]
@@ -176,18 +173,16 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_pag
                     menu_index -= 1                      #index - 1
                     if menu_index < 0:
                         menu_index = 2                   #na start button = exit
-                
-                if menu_index == 2 and event.key == pygame.K_SPACE:
+                if event.key == pygame.K_SPACE:
                     Sounds.Punch()
-                    crashed = True
-                elif menu_index == 1 and event.key == pygame.K_SPACE:
-                    Sounds.Punch()
-                    screen_index = 4
-                    menu_index = 0
-                    last_page = 0
-                elif menu_index == 0 and event.key == pygame.K_SPACE:
-                    Sounds.Punch()
-                    screen_index = 2
+                    if menu_index == 2:
+                        crashed = True
+                    elif menu_index == 1:
+                        screen_index = 4
+                        menu_index = 0
+                        last_page = 0
+                    elif menu_index == 0:
+                        screen_index = 2
     b = 0
     return screen, rect, button, screen_index, menu_index, crashed, b,last_page
 
