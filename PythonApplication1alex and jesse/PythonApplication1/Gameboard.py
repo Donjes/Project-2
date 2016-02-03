@@ -297,9 +297,9 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
 
         return roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender
 
-def calculation(defender,attacker, damageA, damageD, totalattack):
-    defender.conditionPoints -= 3
-    attacker.conditionPoints -= 3
+def calculation(defender,attacker, damageA, damageD, totalattack, x):
+    defender.conditionPoints -= x
+    attacker.conditionPoints -= x
     if defender.conditionPoints > -1 and attacker.conditionPoints > -1:#hoger dan 0
        if damageD >= damageA:
            totalattack = damageD - damageA
