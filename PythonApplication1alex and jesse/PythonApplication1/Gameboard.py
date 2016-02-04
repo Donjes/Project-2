@@ -178,7 +178,10 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             screen_index = 4
             last_page = 3
         elif event.key == pygame.K_TAB:
-            screen_index = 2
+            firstround = True
+            for i in range(4):
+                chooseChars[i].hitPoints = 100
+                chooseChars[i].conditionPoints= 15
 
 
     return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie
