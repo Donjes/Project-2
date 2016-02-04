@@ -7,7 +7,7 @@ from SaveGame import *
 pygame.init()
 
 
-
+#================================================ LIJST VARIABLE ===================================#
 size = width, height = 650, 650
 tile = 0
 white = (255, 255, 255)
@@ -63,14 +63,6 @@ blue_glove = pygame.image.load("images/blue_handschoen.png")
 board_screen = pygame.image.load("images/speelveld.png")
 options_screen = pygame.image.load("images/Options.png")
 winning_screen = pygame.image.load("images/winningscreen.png")
-# imgTerry = pygame.image.load("images/TerryCrews.png")
-# imgJason = pygame.image.load("images/JasonStatham.png")
-# imgWesley = pygame.image.load("images/WesleySniper.png")
-# imgJet = pygame.image.load("images/JetRi.png")
-# imgSteven = pygame.image.load("images/StevenSeagal.png")
-# imgMario = pygame.image.load("images/SuperMario.png")
-# imgJackie = pygame.image.load("images/JackieChan.png")
-# imgChack = pygame.image.load("images/ChackNorris.png")
 
 options_screen_rect = options_screen.get_rect()
 board_screen_rect = board_screen.get_rect()
@@ -93,7 +85,6 @@ remove = x, y = -100, - 100
 start = x, y = 70, 150 #coordinates glove --> start
 rules = x, y = 70, 250 #coordinates glove --> rules
 exit = x, y = 350, 520 #coordinates glove --> exit
-#navi = (-100,-100) #1Ruben speler kleine handschoen word buiten beeld neer gezet
 character_index = 0
 crashed = False
 
@@ -108,6 +99,7 @@ vectorlist = [v1, v2, v3, v4]
 
 font = pygame.font.SysFont("System", 50)
 
+#========================================================= Kleine FUNCTIES ================================================#
 #koffie logo bij het opstarten van het spel
 #def Koffielogo():
 #    size = width, height = 650, 650
@@ -138,15 +130,13 @@ def glove_update(button, screen_index):                   #geeft handschoen.png 
     elif screen_index == 4:
         gameDisplay.blit(big_glove,(button))
 
-
-
-def character_glove(char_button):
-    gameDisplay.blit(red_glove,(char_button))
+def character_glove(char_button,nextplayer):
+    gameDisplay.blit(pygame.image.load(gloveSmall[nextplayer%4]),(char_button))
 
 def screen_update(screen,rect):
     gameDisplay.blit(screen,(rect))
 
-
+#========================================================== START SCHERM ========================================================#
 def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_page):
 
     start = x, y = 70, 150 #coordinates glove --> start
@@ -190,8 +180,6 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_pag
 pygame.mixer.music.play(-1)
 while not crashed:
     
-
-
     if screen_index == 0:#start
         size = width, height = 650, 650
         gameDisplay = pygame.display.set_mode(size)
@@ -221,7 +209,7 @@ while not crashed:
         PlayerScreen(Charlist,chooseChars,screenlist, rectlist, crashed, menu_index, screen_index,character_index,last_page,nextplayer)
         screen_update(screen, rect)
         glove_update(button, screen_index)
-        character_glove(char_button)
+        character_glove(char_button,nextplayer)
         if len(chooseChars) > 0:
             small_glove(chooseChars[0].texture,(100,85))
         if len(chooseChars) > 1:
@@ -235,6 +223,7 @@ while not crashed:
 
 
     elif screen_index == 3:
+
 #normale functie
         tempChar = chooseChars[p%4-1]
         if letsCornerFight == 0 and letsFight == 0:
@@ -378,24 +367,6 @@ while not crashed:
             firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index = loadGame()
             print(chooseChars[1])
             screen_index = 3
-
-    # for x in range(len(chooseChars)):          #   remove player if he is dead
-    #     if chooseChars[x].hitPoints <= 0:
-    #         chooseChars[x].alive = False
-    #         dead+=1
-
-    # if dead == 3: #change
-    #     for x in range(len(chooseChars)):
-    #         if chooseChars[x].alive = True
-    #             screen_update(winning_screen, winning_screen_rect)
-    #             winning_pic(chooseChars[0].texture)
-    #             text_pop('The winner is ' + chooseChars[0].name , black)
-    #             for event in pygame.event.get():
-    #                 if event.key == pygame.K_ESCAPE:
-    #                     crashed = True
-    #                 elif event.key == pygame.K_TAB:
-    #                     screen_index = 2
-
 
     pygame.display.update()
     dead = 0        #reset dead until u get 3 dead in a row
