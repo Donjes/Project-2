@@ -279,7 +279,7 @@ while not crashed:
             elif chooseChars[(p-1)%4].alive:
                 small_glove(chooseChars[(p-1)%4].texture,(150,250))   
             pygame.display.update()
-            time.sleep(0.1)#1 doen
+            time.sleep(1)
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))
             Draw_navi(chooseChars)             
             small_glove(chooseChars[p%4].texture,(290,230))

@@ -126,13 +126,13 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
         if event.key == pygame.K_SPACE and newLocation == False and dice_rolled == False: 
             Sounds.Dice()
             roll = Throw_dice() 
-            for i in range(1):#15 doen
+            for i in range(15):
                 rolling = Throw_dice()
                 dice_img(rolling) 
                 small_glove("images/DiceRolling.png",(300,300)) 
                 pygame.display.update()
                 time.sleep(0.1)
-                if i == 0:#14 doen
+                if i == 14:
                     dice_img(roll)
             time.sleep(0.5)
             pygame.display.update()
@@ -167,14 +167,14 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             # bij corner fight van een tegenstander word the spotfight tussen 2 mensen negeert. Dit is bug
            # if chooseChars[p%4].alive and (prevPositie == chooseChars[(p-1)%4].savePosition or prevPositie == chooseChars[(p-2)%4].savePosition or prevPositie == chooseChars[(p-3)%4].savePosition) and letsCornerFight == 0:
             for i in range(0,4): 
-                if (prevPositie == chooseChars[i%4].savePosition%40 )and chooseChars[p%4] != chooseChars[i%4] and chooseChars[i%4].alive and letsCornerFight == 0:#player is de index
+                if (chooseChars[p%4].savePosition%40 == chooseChars[i%4].savePosition%40 )and not chooseChars[p%4] == chooseChars[i%4] and chooseChars[i%4].alive and letsCornerFight == 0:#player is de index
                     Sounds.Fightsound()
                     letsFight = 1#spot fight
                 
          #   if chooseChars[p%4].alive and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and not prevPositie == chooseChars[p%4].startCorner and letsFight == 0:
             for i in range(0,4): 
-                if chooseChars[i%4].alive and chooseChars[p%4] != chooseChars[i%4] and letsFight == 0:
-                  if chooseChars[p%4].savePosition%40 == chooseChars[i%4].startCorner:
+                if chooseChars[i%4].alive and not chooseChars[p%4] == chooseChars[i%4] and letsFight == 0:
+                  if chooseChars[p%4].savePosition%40 == chooseChars[i%4].startCorner or chooseChars[p%4].savePosition%40 == chooseChars[i%4].startCorner + 1 or chooseChars[p%4].savePosition%40 == chooseChars[i%4].startCorner - 1 or chooseChars[p%4].savePosition%40 == 39:
                     Sounds.Fightsound() 
                     letsCornerFight = 1#corner fight
 
@@ -266,9 +266,10 @@ def cornerFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roll
         
         for player in range(len(corner)):
             
-            if prevPositie == corner[player]:#player is de index
+         #   if prevPositie == corner[player] or prevPositie == corner[player]:#player is de index
+            if prevPositie == chooseChars[player%4].startCorner + 1 or prevPositie == chooseChars[player%4].startCorner - 1 or prevPositie == chooseChars[player%4].startCorner or prevPositie == 39:
                 defender = chooseChars[player]
-                attacker = tempChar
+                attacker = tempChar 
 
                 
                 event = pygame.event.poll()
