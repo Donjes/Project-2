@@ -160,11 +160,11 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             prevPositie = chooseChars[p%4].savePosition%40
             if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
                 chooseChars[p%4].conditionPoints = 15
-
+            # bij corner fight van een tegenstander word the spotfight tussen 2 mensen negeert. Dit is bug
             if chooseChars[p%4].alive == True and (prevPositie == chooseChars[(p%4)-1].savePosition or prevPositie == chooseChars[(p%4)-2].savePosition or prevPositie == chooseChars[(p%4)-3].savePosition) and letsSuperFight == 0:
-                    letsFight = 1#spot fight
+                letsFight = 1#spot fight
 
-            elif chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and not prevPositie == corner[p%4] and letsFight == 0:
+            elif chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and not prevPositie == chooseChars[p%4].startCorner and letsFight == 0:
                 letsSuperFight = 1#corner fight
 
             elif letsSuperFight == 0 and letsFight == 0:
@@ -182,14 +182,16 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             for i in range(4):
                 chooseChars[i].hitPoints = 100
                 chooseChars[i].conditionPoints= 15
+                chooseChars[i].alive = True
+                p = 0
 
 
     return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie
 
 #===================================================== FIGHT FUNCTIES! =============================================================================#
-# 1v1 fight
 
 
+#spot fight
 def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2,damageA, damageD, attacker, defender,p):
 
         for i in range(4):
@@ -303,7 +305,7 @@ def calculation(defender,attacker, damageA, damageD, totalattack, x):
     if defender.conditionPoints < 0:
         defender.conditionPoints = 0
 
-    if defender.conditionPoints > -1 and attacker.conditionPoints > -1:#hoger dan 0
+    if defender.conditionPoints > 0 and attacker.conditionPoints > 0:#hoger dan 0
        if damageD > damageA:
            totalattack = damageD - damageA
            attacker.getDamage(totalattack)
@@ -313,9 +315,9 @@ def calculation(defender,attacker, damageA, damageD, totalattack, x):
        else:
            attacker.getDamage(15)
            defender.getDamage(15)
-    elif defender.conditionPoints > -1 and attacker.conditionPoints == 0:
+    elif defender.conditionPoints > 0 and attacker.conditionPoints == 0:
        attacker.getDamage(damageD)
-    elif defender.conditionPoints == 0 and attacker.conditionPoints > -1:
+    elif defender.conditionPoints == 0 and attacker.conditionPoints > 0:
        defender.getDamage(damageA) 
     elif defender.conditionPoints == 0 and attacker.conditionPoints == 0:
         if damageD > damageA:
