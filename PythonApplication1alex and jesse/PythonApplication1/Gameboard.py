@@ -52,39 +52,39 @@ def Draw_navi(chooseChars):
     text_pop(fonttype,"Condition:"+ str(chooseChars[3].conditionPoints), white,[345, 479]) #condition speler 4
     small_glove(chooseChars[3].texture,(110,470))  #mugshot player 4
     for i in range(x): #hier word de img bepaald of spelers op zelfde tile staan of dat ze alleen staan
-      if cnt == 0:
-        if   chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40:
+      if cnt == 0 and chooseChars[0].alive:
+        if   chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40 and chooseChars[1].alive:
             small_glove("images/zelfde_tile/roodVSblauw.png",navigate[chooseChars[0].savePosition%40])
-        elif   chooseChars[0].savePosition%40 == chooseChars[2].savePosition%40:
+        elif   chooseChars[0].savePosition%40 == chooseChars[2].savePosition%40 and chooseChars[2].alive:
             small_glove("images/zelfde_tile/groenVSblauw.png",navigate[chooseChars[0].savePosition%40])
-        elif   chooseChars[0].savePosition%40 == chooseChars[3].savePosition%40:
+        elif   chooseChars[0].savePosition%40 == chooseChars[3].savePosition%40 and chooseChars[3].alive:
             small_glove("images/zelfde_tile/blauwVSgeel.png",navigate[chooseChars[0].savePosition%40])
         else:
             small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40]) 
-      if cnt == 1:
-        if   chooseChars[1].savePosition%40 == chooseChars[0].savePosition%40:
+      if cnt == 1 and chooseChars[1].alive:
+        if   chooseChars[1].savePosition%40 == chooseChars[0].savePosition%40 and chooseChars[0].alive:
             small_glove("images/zelfde_tile/roodVSblauw.png",navigate[chooseChars[1].savePosition%40])
-        elif   chooseChars[1].savePosition%40 == chooseChars[2].savePosition%40:
+        elif   chooseChars[1].savePosition%40 == chooseChars[2].savePosition%40 and chooseChars[2].alive:
             small_glove("images/zelfde_tile/groenVSrood.png",navigate[chooseChars[1].savePosition%40])
-        elif   chooseChars[1].savePosition%40 == chooseChars[3].savePosition%40:
+        elif   chooseChars[1].savePosition%40 == chooseChars[3].savePosition%40 and chooseChars[3].alive:
             small_glove("images/zelfde_tile/roodVSgeel.png",navigate[chooseChars[1].savePosition%40])
         else:
             small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40]) 
-      if cnt == 2:
-        if   chooseChars[2].savePosition%40 == chooseChars[0].savePosition%40:
+      if cnt == 2 and chooseChars[2].alive:
+        if   chooseChars[2].savePosition%40 == chooseChars[0].savePosition%40 and chooseChars[0].alive:
             small_glove("images/zelfde_tile/groenVSblauw.png",navigate[chooseChars[2].savePosition%40])
-        elif   chooseChars[2].savePosition%40 == chooseChars[1].savePosition%40:
+        elif   chooseChars[2].savePosition%40 == chooseChars[1].savePosition%40 and chooseChars[1].alive:
             small_glove("images/zelfde_tile/groenVSrood.png",navigate[chooseChars[2].savePosition%40])
-        elif   chooseChars[2].savePosition%40 == chooseChars[3].savePosition%40:
+        elif   chooseChars[2].savePosition%40 == chooseChars[3].savePosition%40 and chooseChars[3].alive:
             small_glove("images/zelfde_tile/groenVSgeel.png",navigate[chooseChars[2].savePosition%40])
         else:
             small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40]) 
-      if cnt == 3:    
-        if   chooseChars[3].savePosition%40 == chooseChars[0].savePosition%40:
+      if cnt == 3 and chooseChars[3].alive:    
+        if   chooseChars[3].savePosition%40 == chooseChars[0].savePosition%40 and chooseChars[0].alive:
             small_glove("images/zelfde_tile/blauwVSgeel.png",navigate[chooseChars[3].savePosition%40])
-        elif   chooseChars[3].savePosition%40 == chooseChars[1].savePosition%40:
+        elif   chooseChars[3].savePosition%40 == chooseChars[1].savePosition%40 and chooseChars[1].alive:
             small_glove("images/zelfde_tile/roodVSgeel.png",navigate[chooseChars[3].savePosition%40])
-        elif   chooseChars[3].savePosition%40 == chooseChars[2].savePosition%40:
+        elif   chooseChars[3].savePosition%40 == chooseChars[2].savePosition%40 and chooseChars[2].alive:
             small_glove("images/zelfde_tile/groenVSgeel.png",navigate[chooseChars[3].savePosition%40])
         else:
             small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40]) 
@@ -117,6 +117,10 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
     player = chooseChars[p%4] #player vertegenwordigt de current speler
     tile = player.savePosition
 # =========================================== Navigatie van de handschoenen bij elke dice throw optie om kant te kiezen
+    if player.alive == False:
+        p = p + 1
+        player = chooseChars[p%4]
+
     event = pygame.event.poll()     
     if event.type == pygame.KEYDOWN: 
         if event.key == pygame.K_SPACE and newLocation == False and dice_rolled == False: 
@@ -161,13 +165,17 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
                 chooseChars[p%4].conditionPoints = 15
             # bij corner fight van een tegenstander word the spotfight tussen 2 mensen negeert. Dit is bug
-            if chooseChars[p%4].alive == True and (prevPositie == chooseChars[(p%4)-1].savePosition or prevPositie == chooseChars[(p%4)-2].savePosition or prevPositie == chooseChars[(p%4)-3].savePosition) and letsSuperFight == 0:
-                Sounds.Fightsound()
-                letsFight = 1#spot fight
+            if chooseChars[p%4].alive == True and (prevPositie == chooseChars[(p-1)%4].savePosition or prevPositie == chooseChars[(p-2)%4].savePosition or prevPositie == chooseChars[(p-3)%4].savePosition) and letsSuperFight == 0:
+                for i in range(4): 
+                  if prevPositie == chooseChars[i%4].savePosition and not chooseChars[p%4] == chooseChars[i%4] and chooseChars[i%4].alive:#player is de index
+                    Sounds.Fightsound()
+                    letsFight = 1#spot fight
 
             elif chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and not prevPositie == chooseChars[p%4].startCorner and letsFight == 0:
-                Sounds.Fightsound()
-                letsSuperFight = 1#corner fight
+                 for i in range(4): 
+                  if chooseChars[p%4].savePosition == chooseChars[i%4].startCorner and not chooseChars[p%4] == chooseChars[i%4] and chooseChars[i%4].alive:
+                    Sounds.Fightsound() 
+                    letsSuperFight = 1#corner fight
 
             elif letsSuperFight == 0 and letsFight == 0:
                 nextturn = 1
@@ -198,10 +206,10 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
         
         for i in range(4):
             
-            if prevPositie == chooseChars[i%4].savePosition and not chooseChars[(p%4)-1] == chooseChars[i%4]:#player is de index
+            if prevPositie == chooseChars[i%4].savePosition and not chooseChars[(p-1)%4] == chooseChars[i%4]:#player is de index
                 defender = chooseChars[i%4]
 
-                attacker = chooseChars[(p%4)-1]
+                attacker = chooseChars[(p-1)%4]
                 print(str(attacker.playerName) + ' asd' + str(defender.playerName))
                 
                 event = pygame.event.poll()

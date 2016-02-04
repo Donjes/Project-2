@@ -119,9 +119,6 @@ font = pygame.font.SysFont("System", 50)
 
 
 
-def winning_pic(texture):
-    gameDisplay.blit(texture(350, 325))
-
 def glove_update(button, screen_index):                   #geeft handschoen.png weer
     if screen_index == 0:           #standard vector
         gameDisplay.blit(big_glove,(button))
@@ -219,7 +216,7 @@ while not crashed:
     elif screen_index == 3:
 
 #normale functie
-        tempChar = chooseChars[p%4-1]
+        tempChar = chooseChars[(p-1)%4]
         if letsCornerFight == 0 and letsFight == 0:
             firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsCornerFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie = \
             BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsCornerFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie)
@@ -228,7 +225,7 @@ while not crashed:
 
 #fight functions      
         if letsCornerFight == 1:
-            tempChar = chooseChars[p%4-1]
+            tempChar = chooseChars[(p-1)%4]
             roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender = cornerFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
             print(str(damageA) + str( damageD) +' klm')
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))   
@@ -276,7 +273,7 @@ while not crashed:
                 playerLoses = 0
 
         elif letsFight == 1:
-            tempChar = chooseChars[p%4-1]
+            tempChar = chooseChars[(p-1)%4]
             roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= spotFight(tempChar,chooseChars, prevPositie,navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender,p)
             print(str(damageA) + str( damageD) +' klm')
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect())) 
@@ -328,9 +325,16 @@ while not crashed:
         elif nextturn == 1:
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
             Draw_navi(chooseChars)           
-            small_glove(chooseChars[p%4].texture,(290,230))
-            gameDisplay.blit(pygame.image.load("images/nextturn.png"),(88,225))
-            small_glove(chooseChars[p%4].texture,(150,250))
+            small_glove(chooseChars[p%4].texture,(290,230))    
+            gameDisplay.blit(pygame.image.load("images/nextturn.png"),(88,225))       
+            if chooseChars[p%4].alive:
+                small_glove(chooseChars[p%4].texture,(150,250))                
+            elif chooseChars[(p-3)%4].alive:
+                small_glove(chooseChars[(p-3)%4].texture,(150,250))   
+            elif chooseChars[(p-2)%4].alive:
+                small_glove(chooseChars[(p-2)%4].texture,(150,250))   
+            elif chooseChars[(p-1)%4].alive:
+                small_glove(chooseChars[(p-1)%4].texture,(150,250))   
             pygame.display.update()
             time.sleep(0.1)#1 doen
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))
@@ -343,6 +347,13 @@ while not crashed:
             Draw_navi(chooseChars)                 
             small_glove(chooseChars[p%4].texture,(290,230))
             dice_img(roll)
+        for x in range(len(chooseChars)):          #   remove player if he is dead
+            if chooseChars[x].hitPoints < 0:
+                chooseChars[x].alive = False
+            
+                dead+=1
+            if dead == 3:
+                screen_index = 6
      
     elif screen_index == 5:
         if save_game == True:
@@ -352,9 +363,28 @@ while not crashed:
             firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index = loadGame()
             print(chooseChars[1])
             screen_index = 3
+    elif screen_index == 6:
+       
+        for x in range(len(chooseChars)):
+            if chooseChars[x].alive == True:
+                gameDisplay.blit(pygame.image.load("images/winningscreen.png"),pygame.image.load("images/winningscreen.png").get_rect()) 
+                small_glove(chooseChars[x].texture,(290,290)) 
+                text_pop(fonttype,chooseChars[x].playerName, white, (290,240))
+                event = pygame.event.poll()  
+        if event.type == pygame.KEYDOWN: 
+            if event.key == pygame.K_ESCAPE:
+                crashed = True
+            if event.key == pygame.K_TAB:
+                screen_index = 2
+                firstround = True
+                del Charlist[:]
+                del chooseChars[:]
+                del pics[:]
+                nextplayer = 0
+                p = 0
 
     pygame.display.update()
-    dead = 0        #reset dead until u get 3 dead in a row
+    dead = 0
     clock.tick(60)
 pygame.quit()
 quit()
