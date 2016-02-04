@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="7e43ba8d-5bf2-4a1a-b917-556e9f9c2dad" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py" afterPath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" afterPath="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" />
     </list>
     <ignored path="Project-2.iws" />
@@ -63,21 +62,21 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Gameboard.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Gameboard.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="0.0">
-              <caret line="246" column="5" selection-start-line="246" selection-start-column="5" selection-end-line="246" selection-end-column="5" />
+            <state vertical-scroll-proportion="0.569869">
+              <caret line="308" column="73" selection-start-line="308" selection-start-column="73" selection-end-line="308" selection-end-column="73" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Game.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="Game.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state vertical-scroll-proportion="8.129222">
-              <caret line="270" column="31" selection-start-line="270" selection-start-column="31" selection-end-line="270" selection-end-column="31" />
+            <state vertical-scroll-proportion="0.0">
+              <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
               <folding>
                 <element signature="e#0#13#0" expanded="true" />
               </folding>
@@ -98,8 +97,8 @@
         <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/character.py" />
         <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Character.py" />
         <option value="D:/python py/test1.py" />
-        <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" />
         <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py" />
+        <option value="$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py" />
       </list>
     </option>
   </component>
@@ -430,7 +429,7 @@
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Python Console" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3145275" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3145275" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="7" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
@@ -972,14 +971,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="0.0">
-          <caret line="246" column="5" selection-start-line="246" selection-start-column="5" selection-end-line="246" selection-end-column="5" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://D:/pythonprogramming/Lib/site-packages/pygame/__init__.py">
       <provider selected="true" editor-type-id="text-editor">
         <state vertical-scroll-proportion="0.0">
@@ -990,11 +981,19 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Game.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state vertical-scroll-proportion="8.129222">
-          <caret line="270" column="31" selection-start-line="270" selection-start-column="31" selection-end-line="270" selection-end-column="31" />
+        <state vertical-scroll-proportion="0.0">
+          <caret line="22" column="5" selection-start-line="22" selection-start-column="5" selection-end-line="22" selection-end-column="5" />
           <folding>
             <element signature="e#0#13#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/PythonApplication1alex and jesse/PythonApplication1/Gameboard.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state vertical-scroll-proportion="0.569869">
+          <caret line="308" column="73" selection-start-line="308" selection-start-column="73" selection-end-line="308" selection-end-column="73" />
+          <folding />
         </state>
       </provider>
     </entry>

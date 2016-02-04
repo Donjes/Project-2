@@ -295,17 +295,28 @@ def calculation(defender,attacker, damageA, damageD, totalattack, x):
     defender.conditionPoints -= x
     attacker.conditionPoints -= x
     if defender.conditionPoints > -1 and attacker.conditionPoints > -1:#hoger dan 0
-       if damageD >= damageA:
+       if damageD > damageA:
            totalattack = damageD - damageA
            attacker.getDamage(totalattack) 
 
-       else:
+       elif damageA > damageD:
            totalattack = damageA - damageD
            defender.getDamage(totalattack) 
     elif defender.conditionPoints > -1 and attacker.conditionPoints < 0:
        defender.getDamage(damageD) 
     elif defender.conditionPoints < 0 and attacker.conditionPoints > -1:
        defender.getDamage(damageD) 
+    elif defender.conditionPoints == 0 and attacker.conditionPoints == 0:
+        if damageD > damageA:
+            attacker.getDamage(damageD)
+        elif damageA > damageD:
+            defender.getDamage(damageA)
+
+
+    if attacker.conditionPoints < 0:
+        attacker.conditionPoints = 0
+    if defender.conditionPoints < 0:
+        defender.conditionPoints = 0
 
     return defender, attacker
 
