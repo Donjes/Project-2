@@ -104,7 +104,7 @@ navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20
 
 
 #=================================================== NAVIGATIE FUNCTIE! ===========================================================================#
-def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie):
+def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsCornerFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie):
     save_game = False
     load_old_game = False
     if firstround: #eerst ronde en restart creert start lokatie spelers
@@ -165,7 +165,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
                 chooseChars[p%4].conditionPoints = 15
             # bij corner fight van een tegenstander word the spotfight tussen 2 mensen negeert. Dit is bug
-            if chooseChars[p%4].alive == True and (prevPositie == chooseChars[(p-1)%4].savePosition or prevPositie == chooseChars[(p-2)%4].savePosition or prevPositie == chooseChars[(p-3)%4].savePosition) and letsSuperFight == 0:
+            if chooseChars[p%4].alive == True and (prevPositie == chooseChars[(p-1)%4].savePosition or prevPositie == chooseChars[(p-2)%4].savePosition or prevPositie == chooseChars[(p-3)%4].savePosition) and letsCornerFight == 0:
                 for i in range(4): 
                   if prevPositie == chooseChars[i%4].savePosition and not chooseChars[p%4] == chooseChars[i%4] and chooseChars[i%4].alive:#player is de index
                     Sounds.Fightsound()
@@ -175,9 +175,9 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                  for i in range(4): 
                   if chooseChars[p%4].savePosition == chooseChars[i%4].startCorner and not chooseChars[p%4] == chooseChars[i%4] and chooseChars[i%4].alive:
                     Sounds.Fightsound() 
-                    letsSuperFight = 1#corner fight
+                    letsCornerFight = 1#corner fight
 
-            elif letsSuperFight == 0 and letsFight == 0:
+            elif letsCornerFight == 0 and letsFight == 0:
                 nextturn = 1
             p += 1
             newLocation = False
@@ -196,7 +196,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 p = 0
 
 
-    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie
+    return firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsCornerFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie
 
 #===================================================== FIGHT FUNCTIES! =============================================================================#
 

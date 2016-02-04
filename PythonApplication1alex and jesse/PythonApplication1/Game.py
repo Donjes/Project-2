@@ -21,22 +21,16 @@ letsCornerFight = 0
 letsFight = 0
 nextturn = 0
 p = 0
-
 playerLoses = 0
 totalattack = 0
 dead = 0
 nextplayer = 0
-
-
 defender = None
 attacker = None
 damageA = 0
 damageD = 0
 rollA = None
 rollD = None
-
-
-
 prevPositie = None
 corner = [0,10,20,30]
 roller1 = False
@@ -51,15 +45,11 @@ dice_rolled = False
 gameDisplay = pygame.display.set_mode((width,height))
 pygame.display.set_caption('Survivor')
 clock = pygame.time.Clock()
-
+#====================================== IMAGES WINDOWS ==================================#
 startup_screen = pygame.image.load("images/startscherm2.png")
 rules_screen = pygame.image.load("images/rules.png")
 character_screen = pygame.image.load("images/playermenu.png")
 big_glove = pygame.image.load("images/handschoen.png")
-red_glove = pygame.image.load("images/red_handschoen.png")
-green_glove = pygame.image.load("images/green_handschoen.png")
-yellow_glove = pygame.image.load("images/yellow_handschoen.png")
-blue_glove = pygame.image.load("images/blue_handschoen.png")
 board_screen = pygame.image.load("images/speelveld.png")
 options_screen = pygame.image.load("images/Options.png")
 winning_screen = pygame.image.load("images/winningscreen.png")
@@ -71,7 +61,7 @@ rules_screen_rect = startup_screen.get_rect()
 character_screen_rect = character_screen.get_rect()
 winning_screen_rect = winning_screen.get_rect()
 
-screenlist = [startup_screen, rules_screen, character_screen, board_screen, options_screen]
+screenlist = [startup_screen, rules_screen, character_screen, board_screen, options_screen] #lijst images
 screen_index = 0
 
 s_rect = startup_screen_rect
@@ -79,7 +69,7 @@ r_rect = rules_screen_rect
 p_rect = character_screen_rect
 b_rect = board_screen_rect
 o_rect = options_screen_rect
-rectlist = [s_rect, r_rect, p_rect,b_rect,o_rect]
+rectlist = [s_rect, r_rect, p_rect,b_rect,o_rect] #lijst rect
 
 remove = x, y = -100, - 100
 start = x, y = 70, 150 #coordinates glove --> start
@@ -120,12 +110,7 @@ font = pygame.font.SysFont("System", 50)
 
 
 def glove_update(button, screen_index):                   #geeft handschoen.png weer
-    if screen_index == 0:           #standard vector
-        gameDisplay.blit(big_glove,(button))
-    elif screen_index == 2:
-        gameDisplay.blit(big_glove,(button))
-    elif screen_index == 4:
-        gameDisplay.blit(big_glove,(button))
+    gameDisplay.blit(big_glove,(button))
 
 def character_glove(char_button,nextplayer):
     gameDisplay.blit(pygame.image.load(gloveSmall[nextplayer%4]),(char_button))
@@ -191,13 +176,13 @@ while not crashed:
         screen_update(screen, rect)
         glove_update(button, screen_index)
 
-    elif screen_index == 4:
+    elif screen_index == 4: #options scherm
         screen, rect, crashed, button, menu_index, screen_index, b,save_game,load_old_game,last_page = \
         Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,b,save_game,load_old_game,last_page)
         screen_update(screen, rect)
         glove_update(button, screen_index)
 
-    elif screen_index == 2:#character
+    elif screen_index == 2:#Character keuze scherm
         screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index,chooseChars,last_page,Charlist,nextplayer = \
         PlayerScreen(Charlist,chooseChars,screenlist, rectlist, crashed, menu_index, screen_index,character_index,last_page,nextplayer)
         screen_update(screen, rect)
@@ -213,7 +198,7 @@ while not crashed:
         if len(chooseChars) > 3:
             small_glove(chooseChars[3].texture,(100,435))
 
-    elif screen_index == 3:
+    elif screen_index == 3: #Boardspel scherm
 
 #normale functie
         tempChar = chooseChars[(p-1)%4]
@@ -224,10 +209,12 @@ while not crashed:
             gameDisplay = pygame.display.set_mode(size)
 
 #fight functions      
-        if letsCornerFight == 1:
+        if letsCornerFight == 1 or letsFight == 1:
             tempChar = chooseChars[(p-1)%4]
-            roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender = cornerFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
-            print(str(damageA) + str( damageD) +' klm')
+            if letsCornerFight == 1:
+                roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender = cornerFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
+            elif letsFight == 1:
+                roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= spotFight(tempChar,chooseChars, prevPositie,navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender,p)           
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))   
             Draw_navi(chooseChars)
             small_glove(chooseChars[p%4].texture,(290,230))
@@ -258,7 +245,10 @@ while not crashed:
                 text_pop(fonttype,"Defender Damage:"+ str(damageD), white,[380, 325])        
             pygame.display.update()
             if roller_reset == True:
-                defender, attacker,playerLoses,totalattack = calculation(defender,attacker, damageA, damageD, totalattack, 3,playerLoses)
+                if letsFight == 1:                 
+                    defender, attacker,playerLoses,totalattack = calculation(defender,attacker, damageA, damageD, totalattack, 5,playerLoses)
+                elif letsCornerFight == 1:            
+                    defender, attacker,playerLoses,totalattack = calculation(defender,attacker, damageA, damageD, totalattack, 3,playerLoses)
                 fonttype = pygame.font.SysFont('system', 55)
                 if playerLoses == 1:
                     text_pop(fonttype,"- "+str(totalattack), white,[60, 200])
@@ -270,56 +260,9 @@ while not crashed:
                 roller2 = False
                 roller_reset = False      
                 letsCornerFight = 0 
+                letsFight = 0
                 playerLoses = 0
 
-        elif letsFight == 1:
-            tempChar = chooseChars[(p-1)%4]
-            roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= spotFight(tempChar,chooseChars, prevPositie,navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender,p)
-            print(str(damageA) + str( damageD) +' klm')
-            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect())) 
-            Draw_navi(chooseChars)               
-            small_glove(chooseChars[p%4].texture,(290,230))
-            gameDisplay.blit(pygame.image.load("images/fight.png"),(pygame.image.load("images/speelveld.png").get_rect()))   
-            gameDisplay.blit(pygame.image.load(attacker.texture),(110,183))
-            gameDisplay.blit(pygame.image.load(defender.texture),(430,183))        
-            fonttype = pygame.font.SysFont('system', 23)
-            text_pop(fonttype,str(attacker.dice1)+ " damage", white,[110, 418])
-            text_pop(fonttype,str(attacker.dice2)+ " damage", white,[110, 452])
-            text_pop(fonttype,str(attacker.dice3)+ " damage", white,[110, 488])
-            text_pop(fonttype,str(attacker.dice4)+ " damage", white,[110, 523])
-            text_pop(fonttype,str(attacker.dice5)+ " damage", white,[110, 558])
-            text_pop(fonttype,str(attacker.dice6)+ " damage", white,[110, 593])
-            text_pop(fonttype,str(defender.dice1)+ " damage", white,[470, 418])
-            text_pop(fonttype,str(defender.dice2)+ " damage", white,[470, 452])
-            text_pop(fonttype,str(defender.dice3)+ " damage", white,[470, 488])
-            text_pop(fonttype,str(defender.dice4)+ " damage", white,[470, 523])
-            text_pop(fonttype,str(defender.dice5)+ " damage", white,[470, 558])
-            text_pop(fonttype,str(defender.dice6)+ " damage", white,[470, 593])
-            fonttype = pygame.font.SysFont('system', 25)
-
-            if roller1:
-                gameDisplay.blit(pygame.image.load("images/"+ roller1_img),(120,260)) 
-                text_pop(fonttype,"Attack Damage:"+ str(damageA), white,[80, 325])
-
-            if roller2:
-                gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(440,260))  
-                text_pop(fonttype,"Defender Damage:"+ str(damageD), white,[380, 325])  
-            pygame.display.update()
-
-            if roller_reset == True:  
-                defender, attacker,playerLoses,totalattack = calculation(defender,attacker, damageA, damageD, totalattack,5,playerLoses)
-                fonttype = pygame.font.SysFont('system', 55)
-                if playerLoses == 1:
-                    text_pop(fonttype,"- "+str(totalattack), white,[60, 200])
-                if playerLoses == 2:
-                    text_pop(fonttype,"- "+str(totalattack), white,[520, 200])
-                pygame.display.update()
-                time.sleep(2) 
-                roller1 = False
-                roller2 = False
-                roller_reset = False    
-                letsFight = 0   
-                playerLoses = 0
 
 #bij normale functie 
         elif nextturn == 1:
