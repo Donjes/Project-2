@@ -38,7 +38,7 @@ roll = Throw_dice()
 def Draw_navi(chooseChars): 
     cnt = 0
     x = len(chooseChars)
-    fonttype = pygame.font.SysFont('system', 30)
+    fonttype = pygame.font.SysFont('system', 30) #font grote en type
     text_pop(fonttype,"HP:"+ str(chooseChars[0].hitPoints), white,[198, 135]) #hitpoints speler 1
     text_pop(fonttype,"Condition:"+ str(chooseChars[0].conditionPoints), white,[173, 165]) #condition speler 1
     small_glove(chooseChars[0].texture,(110,110)) #mugshot player 1
@@ -51,7 +51,7 @@ def Draw_navi(chooseChars):
     text_pop(fonttype,"HP:"+ str(chooseChars[3].hitPoints), white,[198, 448]) #hitpoints speler 4
     text_pop(fonttype,"Condition:"+ str(chooseChars[3].conditionPoints), white,[345, 479]) #condition speler 4
     small_glove(chooseChars[3].texture,(110,470))  #mugshot player 4
-    for i in range(x):
+    for i in range(x): #hier word de img bepaald of spelers op zelfde tile staan of dat ze alleen staan
       if cnt == 0:
         if   chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40:
             small_glove("images/zelfde_tile/roodVSblauw.png",navigate[chooseChars[0].savePosition%40])
@@ -91,30 +91,30 @@ def Draw_navi(chooseChars):
       cnt += 1
 
 
-def small_glove(gloveSmall,navilist):                  #3Ruben handschoen over board functie    
+def small_glove(gloveSmall,navilist):                  # handschoen DRAW functie    
         gameDisplay.blit(pygame.image.load(gloveSmall),navilist)
-def dice_img(roll):
+def dice_img(roll):                                    # the dice DRAW functie
         gameDisplay.blit(pygame.image.load("images/" + roll[1]),(300,300))
-def text_pop(fonttype,msg, color,location):
+def text_pop(fonttype,msg, color,location):            # text DRAW functie
     screen_text = fonttype.render(msg, True, color)
     gameDisplay.blit(screen_text, location)
 # list van Tile lokaties
 navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20),(472,20),(520,20),(575,20),(575,85),(575,130),(575,180),(575,230),(575,300),(575,373),(575,425),(575,475),(575,525),(575,590),(520,590),(472,590),(425,590),(375,590),(300,590),(230,590),(180,590),(130,590),(80,590),(20,590),(20,525),(20,475),(20,425),(20,373),(20,300),(20,230),(20,180),(20,130),(20,85)]
-# playerList 
+
 
 
 #=================================================== NAVIGATIE FUNCTIE! ===========================================================================#
 def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie):
     save_game = False
     load_old_game = False
-    if firstround:
+    if firstround: #eerst ronde en restart creert start lokatie spelers
         chooseChars[0].savePosition = chooseChars[0].startCorner
         chooseChars[1].savePosition = chooseChars[1].startCorner
         chooseChars[2].savePosition = chooseChars[2].startCorner
         chooseChars[3].savePosition = chooseChars[3].startCorner
         firstround = False
-    corner = [0,10,20,30]
-    player = chooseChars[p%4]
+    corner = [0,10,20,30] #lijst(van hoeken) komt van pas om te kijken of iemand in een corner staat
+    player = chooseChars[p%4] #player vertegenwordigt de current speler
     tile = player.savePosition
 # =========================================== Navigatie van de handschoenen bij elke dice throw optie om kant te kiezen
     event = pygame.event.poll()     
@@ -134,7 +134,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             pygame.display.update()
             time.sleep(0.5)      
             dice_rolled = True
-        if event.key == pygame.K_UP and dice_rolled == True:
+        if event.key == pygame.K_UP and dice_rolled == True: #laat zien waar je heen loopt bij UP
             for i in range(roll[0]):                   
                 tile += 1 
                 small_glove(smallGlovemove[p%4],navigate[tile%40])    
@@ -144,7 +144,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 print("plus")  
             tempTile = tile
             newLocation = True
-        if event.key == pygame.K_DOWN and dice_rolled == True:
+        if event.key == pygame.K_DOWN and dice_rolled == True: #laat zien waar je heen loopt bij DOWN
             for i in range(roll[0]):                   
                 tile -= 1 
                 small_glove(smallGlovemove[p%4],navigate[tile%40])    
