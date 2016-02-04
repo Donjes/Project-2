@@ -39,17 +39,17 @@ def Draw_navi(chooseChars):
     cnt = 0
     x = len(chooseChars)
     fonttype = pygame.font.SysFont('system', 30)
-    text_pop(fonttype,"HP:"+ str(chooseChars[0].hitPoints), white,[160, 170]) #hitpoints speler 1
-    text_pop(fonttype,"Condition:"+ str(chooseChars[0].conditionPoints), white,[160, 190]) #condition speler 1
+    text_pop(fonttype,"HP:"+ str(chooseChars[0].hitPoints), white,[198, 135]) #hitpoints speler 1
+    text_pop(fonttype,"Condition:"+ str(chooseChars[0].conditionPoints), white,[173, 165]) #condition speler 1
     small_glove(chooseChars[0].texture,(110,110)) #mugshot player 1
-    text_pop(fonttype,"HP:"+ str(chooseChars[1].hitPoints), white,[400, 170]) #hitpoints speler 2
-    text_pop(fonttype,"Condition:"+ str(chooseChars[1].conditionPoints), white,[400, 190]) #condition speler 2
+    text_pop(fonttype,"HP:"+ str(chooseChars[1].hitPoints), white,[370, 135]) #hitpoints speler 2
+    text_pop(fonttype,"Condition:"+ str(chooseChars[1].conditionPoints), white,[345, 165]) #condition speler 2
     small_glove(chooseChars[1].texture,(470,110)) #mugshot player 2
-    text_pop(fonttype,"HP:"+ str(chooseChars[2].hitPoints), white,[400, 400]) #hitpoints speler 3
-    text_pop(fonttype,"Condition:"+ str(chooseChars[2].conditionPoints), white,[400, 420]) #condition speler 3
+    text_pop(fonttype,"HP:"+ str(chooseChars[2].hitPoints), white,[370, 448]) #hitpoints speler 3
+    text_pop(fonttype,"Condition:"+ str(chooseChars[2].conditionPoints), white,[173, 479]) #condition speler 3
     small_glove(chooseChars[2].texture,(470,470)) #mugshot player 3
-    text_pop(fonttype,"HP:"+ str(chooseChars[3].hitPoints), white,[160, 400]) #hitpoints speler 4
-    text_pop(fonttype,"Condition:"+ str(chooseChars[3].conditionPoints), white,[160, 420]) #condition speler 4
+    text_pop(fonttype,"HP:"+ str(chooseChars[3].hitPoints), white,[198, 448]) #hitpoints speler 4
+    text_pop(fonttype,"Condition:"+ str(chooseChars[3].conditionPoints), white,[345, 479]) #condition speler 4
     small_glove(chooseChars[3].texture,(110,470))  #mugshot player 4
     for i in range(x):
       if cnt == 0:

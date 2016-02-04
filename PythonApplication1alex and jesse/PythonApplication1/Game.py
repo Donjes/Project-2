@@ -109,21 +109,21 @@ vectorlist = [v1, v2, v3, v4]
 font = pygame.font.SysFont("System", 50)
 
 #koffie logo bij het opstarten van het spel
-def Koffielogo():
-    size = width, height = 650, 650
-    gameDisplay = pygame.display.set_mode(size)
+#def Koffielogo():
+#    size = width, height = 650, 650
+#    gameDisplay = pygame.display.set_mode(size)
     
-    for i in range (9):
-        gameDisplay.blit(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png"),(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png").get_rect()))  
-        pygame.display.update()
-        if i == 0:
-            time.sleep(1)
-        elif i == 6:
-            Sounds.Introping()
-        time.sleep(0.08)
-    time.sleep(2)
+#    for i in range (9):
+#        gameDisplay.blit(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png"),(pygame.image.load("Koffielogo/Koffie"+ str(i) +".png").get_rect()))  
+#        pygame.display.update()
+#        if i == 0:
+#            time.sleep(1)
+#        elif i == 6:
+#            Sounds.Introping()
+#        time.sleep(0.08)
+#    time.sleep(2)
     
-Koffielogo()
+#Koffielogo()
 
 
 
@@ -281,8 +281,10 @@ while not crashed:
             small_glove(chooseChars[p%4].texture,(290,230))
             gameDisplay.blit(pygame.image.load("images/fight.png"),(-5,170))
             gameDisplay.blit(pygame.image.load(tempChar.texture),(30,180))
-            gameDisplay.blit(pygame.image.load("images/"+ roller1_img),(30,250)) 
-            gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))  
+            if roller1:
+                gameDisplay.blit(pygame.image.load("images/"+ roller1_img),(30,250)) 
+            if roller2:
+                gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))  
             pygame.display.update()
             if roller_reset == True:  
                 calculation(defender,attacker, damageA, damageD, totalattack,5)
