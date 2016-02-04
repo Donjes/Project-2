@@ -69,9 +69,9 @@ def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_ind
                 if menu_index == 4:
                     crashed = True
             if event.key == pygame.K_m:
-                    Mute()
+                Mute()
             if event.key == pygame.K_u:
-                    Unmute()
+                Unmute()
 
 
     b = 3
