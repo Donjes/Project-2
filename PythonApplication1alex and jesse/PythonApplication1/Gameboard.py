@@ -243,7 +243,7 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
         return roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender
  
 # Corner fight
-def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2,damageA, damageD, attacker, defender):
+def cornerFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2,damageA, damageD, attacker, defender):
         for player in range(len(corner)):
             if prevPositie == corner[player]:#player is de index
                 defender = chooseChars[player]
@@ -294,18 +294,34 @@ def superFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,rolle
 def calculation(defender,attacker, damageA, damageD, totalattack, x):
     defender.conditionPoints -= x
     attacker.conditionPoints -= x
-    if defender.conditionPoints > -1 and attacker.conditionPoints > -1:#hoger dan 0
-       if damageD >= damageA:
-           totalattack = damageD - damageA
-           attacker.getDamage(totalattack) 
 
-       else:
+    if attacker.conditionPoints < 0:
+        attacker.conditionPoints = 0
+    if defender.conditionPoints < 0:
+        defender.conditionPoints = 0
+
+    if defender.conditionPoints > -1 and attacker.conditionPoints > -1:#hoger dan 0
+       if damageD > damageA:
+           totalattack = damageD - damageA
+           attacker.getDamage(totalattack)
+       elif damageA > damageD:
            totalattack = damageA - damageD
-           defender.getDamage(totalattack) 
-    elif defender.conditionPoints > -1 and attacker.conditionPoints < 0:
-       defender.getDamage(damageD) 
-    elif defender.conditionPoints < 0 and attacker.conditionPoints > -1:
-       defender.getDamage(damageD) 
+           defender.getDamage(totalattack)
+       else:
+           attacker.getDamage(15)
+           defender.getDamage(15)
+    elif defender.conditionPoints > -1 and attacker.conditionPoints == 0:
+       attacker.getDamage(damageD)
+    elif defender.conditionPoints == 0 and attacker.conditionPoints > -1:
+       defender.getDamage(damageA) 
+    elif defender.conditionPoints == 0 and attacker.conditionPoints == 0:
+        if damageD > damageA:
+            attacker.getDamage(damageD)
+        elif damageA > damageD:
+            defender.getDamage(damageA)
+        else:
+           attacker.getDamage(10)
+           defender.getDamage(10)
 
     return defender, attacker
 
