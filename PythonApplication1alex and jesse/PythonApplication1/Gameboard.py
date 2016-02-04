@@ -161,7 +161,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
                 chooseChars[p%4].conditionPoints = 15
 
-            if chooseChars[p%4].alive == True and (prevPositie == chooseChars[p%4-1].savePosition or prevPositie == chooseChars[p%4-2].savePosition or prevPositie == chooseChars[p%4-3].savePosition) and letsSuperFight == 0:
+            if chooseChars[p%4].alive == True and (prevPositie == chooseChars[(p%4)-1].savePosition or prevPositie == chooseChars[(p%4)-2].savePosition or prevPositie == chooseChars[(p%4)-3].savePosition) and letsSuperFight == 0:
                     letsFight = 1#spot fight
 
             elif chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and not prevPositie == corner[p%4] and letsFight == 0:
@@ -190,10 +190,10 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
 def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2,damageA, damageD, attacker, defender,p):
 
         for i in range(4):
-            if prevPositie == chooseChars[i%4].savePosition and not chooseChars[p%-1] == chooseChars[i%4]:#player is de index
+            if prevPositie == chooseChars[i%4].savePosition and not chooseChars[(p%4)-1] == chooseChars[i%4]:#player is de index
                 defender = chooseChars[i%4]
 
-                attacker = chooseChars[p%-1]
+                attacker = chooseChars[(p%4)-1]
                 print(str(attacker.playerName) + ' asd' + str(defender.playerName))
 
                 event = pygame.event.poll()

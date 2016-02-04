@@ -257,8 +257,12 @@ while not crashed:
             small_glove(chooseChars[p%4].texture,(290,230))
             gameDisplay.blit(pygame.image.load("images/fight.png"),(-5,170))
             gameDisplay.blit(pygame.image.load(tempChar.texture),(30,180))
-            gameDisplay.blit(pygame.image.load("images/"+ roller1_img),(30,250)) 
-            gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))             
+            if roller1:
+                gameDisplay.blit(pygame.image.load("images/"+ roller1_img),(30,250)) 
+                text_pop(fonttype,"Attack Damage:"+ str(damageA), white,[30, 280])
+            if roller2:
+                gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))  
+                text_pop(fonttype,"Defender Damage:"+ str(damageD), white,[170, 280])          
             pygame.display.update()
             if roller_reset == True:
                 calculation(defender,attacker, damageA, damageD, totalattack, 3)
@@ -283,8 +287,10 @@ while not crashed:
             gameDisplay.blit(pygame.image.load(tempChar.texture),(30,180))
             if roller1:
                 gameDisplay.blit(pygame.image.load("images/"+ roller1_img),(30,250)) 
+                text_pop(fonttype,"Attack Damage:"+ str(damageA), white,[30, 280])
             if roller2:
                 gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(170,250))  
+                text_pop(fonttype,"Defender Damage:"+ str(damageD), white,[170, 280])  
             pygame.display.update()
             if roller_reset == True:  
                 calculation(defender,attacker, damageA, damageD, totalattack,5)
