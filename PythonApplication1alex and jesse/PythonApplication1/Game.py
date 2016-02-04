@@ -202,7 +202,7 @@ while not crashed:
 
 #normale functie
         tempChar = chooseChars[(p-1)%4]
-        if letsCornerFight == 0 and letsFight == 0:
+        if letsCornerFight == 0 and letsFight == 0 and nextturn == 0:
             firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsCornerFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie = \
             BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsCornerFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie)
             size = width, height = 650, 746
