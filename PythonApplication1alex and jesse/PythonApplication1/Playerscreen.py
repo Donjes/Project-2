@@ -42,7 +42,7 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
     exit = x, y = 450, 650
     size = width, height = 750, 780
     gameDisplay = pygame.display.set_mode(size)
-    start_corner = [0,10,20,30]
+    start_corner = [1,11,21,31]
     Jet = x,y = 450, 145
     Mario = x,y = 450, 235
     Chack = x,y = 450, 325

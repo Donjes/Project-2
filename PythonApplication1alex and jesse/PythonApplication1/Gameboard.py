@@ -41,16 +41,32 @@ def Draw_navi(chooseChars):
     fonttype = pygame.font.SysFont('system', 30) #font grote en type
     text_pop(fonttype,"HP:"+ str(chooseChars[0].hitPoints), white,[198, 135]) #hitpoints speler 1
     text_pop(fonttype,"Condition:"+ str(chooseChars[0].conditionPoints), white,[173, 165]) #condition speler 1
-    small_glove(chooseChars[0].texture,(110,110)) #mugshot player 1
+    if chooseChars[0].alive:
+        small_glove(chooseChars[0].texture,(110,110)) #mugshot player 1
+    else:
+        small_glove(chooseChars[0].texture,(110,110)) #mugshot player 1
+        small_glove("images/dead.png",(110,110)) #mugshot player 1
     text_pop(fonttype,"HP:"+ str(chooseChars[1].hitPoints), white,[370, 135]) #hitpoints speler 2
     text_pop(fonttype,"Condition:"+ str(chooseChars[1].conditionPoints), white,[345, 165]) #condition speler 2
-    small_glove(chooseChars[1].texture,(470,110)) #mugshot player 2
+    if chooseChars[1].alive:
+        small_glove(chooseChars[1].texture,(470,110)) #mugshot player 2
+    else:
+        small_glove(chooseChars[1].texture,(470,110)) #mugshot player 2
+        small_glove("images/dead.png",(470,110)) #mugshot player 2    
     text_pop(fonttype,"HP:"+ str(chooseChars[2].hitPoints), white,[370, 448]) #hitpoints speler 3
-    text_pop(fonttype,"Condition:"+ str(chooseChars[2].conditionPoints), white,[173, 479]) #condition speler 3
-    small_glove(chooseChars[2].texture,(470,470)) #mugshot player 3
+    text_pop(fonttype,"Condition:"+ str(chooseChars[2].conditionPoints), white,[173, 479]) #condition speler 3  
+    if chooseChars[2].alive:
+        small_glove(chooseChars[2].texture,(470,470)) #mugshot player 3
+    else:
+        small_glove(chooseChars[2].texture,(470,470)) #mugshot player 3
+        small_glove("images/dead.png",(470,470)) #mugshot player 3   
     text_pop(fonttype,"HP:"+ str(chooseChars[3].hitPoints), white,[198, 448]) #hitpoints speler 4
     text_pop(fonttype,"Condition:"+ str(chooseChars[3].conditionPoints), white,[345, 479]) #condition speler 4
-    small_glove(chooseChars[3].texture,(110,470))  #mugshot player 4
+    if chooseChars[3].alive:
+        small_glove(chooseChars[3].texture,(110,470))  #mugshot player 4
+    else:
+        small_glove(chooseChars[3].texture,(110,470))  #mugshot player 4
+        small_glove("images/dead.png",(110,470)) #mugshot player 4    
     for i in range(x): #hier word de img bepaald of spelers op zelfde tile staan of dat ze alleen staan
       if cnt == 0 and chooseChars[0].alive:
         if   chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40 and chooseChars[1].alive:
@@ -99,7 +115,7 @@ def text_pop(fonttype,msg, color,location):            # text DRAW functie
     screen_text = fonttype.render(msg, True, color)
     gameDisplay.blit(screen_text, location)
 # list van Tile lokaties
-navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20),(472,20),(520,20),(575,20),(575,85),(575,130),(575,180),(575,230),(575,300),(575,373),(575,425),(575,475),(575,525),(575,590),(520,590),(472,590),(425,590),(375,590),(300,590),(230,590),(180,590),(130,590),(80,590),(20,590),(20,525),(20,475),(20,425),(20,373),(20,300),(20,230),(20,180),(20,130),(20,85)]
+navigate = [(20,85),(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20),(472,20),(520,20),(575,20),(575,85),(575,130),(575,180),(575,230),(575,300),(575,373),(575,425),(575,475),(575,525),(575,590),(520,590),(472,590),(425,590),(375,590),(300,590),(230,590),(180,590),(130,590),(80,590),(20,590),(20,525),(20,475),(20,425),(20,373),(20,300),(20,230),(20,180),(20,130)]
 #              0       1        2       3       4           5       6       7        8         9        10      11       12         13      14          15        16        17        18        19        20        21        22       23         24        25         26       27        28       29       30        31      32        33      34      35         36      37       38      39
 
 
@@ -113,7 +129,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
         chooseChars[2].savePosition = chooseChars[2].startCorner
         chooseChars[3].savePosition = chooseChars[3].startCorner
         firstround = False
-    corner = [0,10,20,30] #lijst(van hoeken) komt van pas om te kijken of iemand in een corner staat
+    corner = [1,11,21,31] #lijst(van hoeken) komt van pas om te kijken of iemand in een corner staat
     player = chooseChars[p%4] #player vertegenwordigt de current speler
     tile = player.savePosition
 # =========================================== Navigatie van de handschoenen bij elke dice throw optie om kant te kiezen
@@ -162,19 +178,18 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
         if event.key == pygame.K_SPACE and tempTile != chooseChars[p%4].savePosition and newLocation == True:
             chooseChars[p%4].savePosition = tempTile
             prevPositie = chooseChars[p%4].savePosition%40
-            if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
+            if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner or chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner + 1 or chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner - 1:
                 chooseChars[p%4].conditionPoints = 15
             # bij corner fight van een tegenstander word the spotfight tussen 2 mensen negeert. Dit is bug
            # if chooseChars[p%4].alive and (prevPositie == chooseChars[(p-1)%4].savePosition or prevPositie == chooseChars[(p-2)%4].savePosition or prevPositie == chooseChars[(p-3)%4].savePosition) and letsCornerFight == 0:
             for i in range(0,4): 
-                if (chooseChars[p%4].savePosition%40 == chooseChars[i%4].savePosition%40 )and not chooseChars[p%4] == chooseChars[i%4] and chooseChars[i%4].alive and letsCornerFight == 0:#player is de index
+                if chooseChars[p%4].savePosition%40 == chooseChars[i%4].savePosition%40 and chooseChars[p%4] != chooseChars[i%4] and chooseChars[i%4].alive and letsCornerFight == 0:#player is de index
                     Sounds.Fightsound()
                     letsFight = 1#spot fight
                 
          #   if chooseChars[p%4].alive and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and not prevPositie == chooseChars[p%4].startCorner and letsFight == 0:
             for i in range(0,4): 
-                if chooseChars[i%4].alive and not chooseChars[p%4] == chooseChars[i%4] and letsFight == 0:
-                  if chooseChars[p%4].savePosition%40 == chooseChars[i%4].startCorner or chooseChars[p%4].savePosition%40 == chooseChars[i%4].startCorner + 1 or chooseChars[p%4].savePosition%40 == chooseChars[i%4].startCorner - 1 or chooseChars[p%4].savePosition%40 == 39:
+                if chooseChars[i%4].alive and chooseChars[p%4] != chooseChars[i%4] and letsFight == 0 and( chooseChars[p%4].savePosition%40 == chooseChars[i%4].startCorner or chooseChars[p%4].savePosition%40 == chooseChars[i%4].startCorner + 1 or chooseChars[p%4].savePosition%40 == chooseChars[i%4].startCorner - 1):
                     Sounds.Fightsound() 
                     letsCornerFight = 1#corner fight
 
@@ -207,11 +222,9 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
         
         for i in range(4):
             
-            if prevPositie == chooseChars[i%4].savePosition and not chooseChars[(p-1)%4] == chooseChars[i%4]:#player is de index
+            if prevPositie == chooseChars[i%4].savePosition%40 and not tempChar == chooseChars[i%4]:#player is de index
                 defender = chooseChars[i%4]
-
-                attacker = chooseChars[(p-1)%4]
-                print(str(attacker.playerName) + ' asd' + str(defender.playerName))
+                attacker = tempChar
                 
                 event = pygame.event.poll()
                 if event.type == pygame.KEYDOWN:
@@ -264,13 +277,12 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
 # Corner fight
 def cornerFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2,damageA, damageD, attacker, defender):
         
-        for player in range(len(corner)):
+        for player in range(4):
             
          #   if prevPositie == corner[player] or prevPositie == corner[player]:#player is de index
-            if prevPositie == chooseChars[player%4].startCorner + 1 or prevPositie == chooseChars[player%4].startCorner - 1 or prevPositie == chooseChars[player%4].startCorner or prevPositie == 39:
+            if prevPositie == chooseChars[player].startCorner + 1 or prevPositie == chooseChars[player].startCorner - 1 or prevPositie == chooseChars[player].startCorner:
                 defender = chooseChars[player]
                 attacker = tempChar 
-
                 
                 event = pygame.event.poll()
                 if event.type == pygame.KEYDOWN:

@@ -201,7 +201,7 @@ while not crashed:
     elif screen_index == 3: #Boardspel scherm
 
 #normale functie
-        tempChar = chooseChars[(p-1)%4]
+        
         if letsCornerFight == 0 and letsFight == 0 and nextturn == 0:
             firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsCornerFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie = \
             BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsCornerFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie)
@@ -267,8 +267,7 @@ while not crashed:
 #bij normale functie 
         elif nextturn == 1:
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
-            Draw_navi(chooseChars)           
-            small_glove(chooseChars[p%4].texture,(290,230))    
+            Draw_navi(chooseChars)               
             gameDisplay.blit(pygame.image.load("images/nextturn.png"),(88,225))       
             if chooseChars[p%4].alive:
                 small_glove(chooseChars[p%4].texture,(150,250))                
@@ -281,8 +280,9 @@ while not crashed:
             pygame.display.update()
             time.sleep(1)
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))
-            Draw_navi(chooseChars)             
-            small_glove(chooseChars[p%4].texture,(290,230))
+            Draw_navi(chooseChars)      
+            if chooseChars[p%4].alive:      
+                small_glove(chooseChars[p%4].texture,(290,230))
             dice_img(roll)          
             nextturn = 0
         else:
