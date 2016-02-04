@@ -174,7 +174,7 @@ while not crashed:
         screen, rect,screen_index, menu_index, crashed = \
         RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b)
         screen_update(screen, rect)
-        glove_update(button, screen_index)
+        
 
     elif screen_index == 4: #options scherm
         screen, rect, crashed, button, menu_index, screen_index, b,save_game,load_old_game,last_page = \
