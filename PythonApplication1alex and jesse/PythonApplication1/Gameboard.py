@@ -165,19 +165,20 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             if chooseChars[p%4].savePosition%40 == chooseChars[p%4].startCorner:
                 chooseChars[p%4].conditionPoints = 15
             # bij corner fight van een tegenstander word the spotfight tussen 2 mensen negeert. Dit is bug
-            if chooseChars[p%4].alive == True and (prevPositie == chooseChars[(p-1)%4].savePosition or prevPositie == chooseChars[(p-2)%4].savePosition or prevPositie == chooseChars[(p-3)%4].savePosition) and letsCornerFight == 0:
-                for i in range(4): 
-                  if prevPositie == chooseChars[i%4].savePosition and not chooseChars[p%4] == chooseChars[i%4] and chooseChars[i%4].alive:#player is de index
+           # if chooseChars[p%4].alive and (prevPositie == chooseChars[(p-1)%4].savePosition or prevPositie == chooseChars[(p-2)%4].savePosition or prevPositie == chooseChars[(p-3)%4].savePosition) and letsCornerFight == 0:
+            for i in range(4): 
+                if prevPositie == chooseChars[i%4].savePosition and not chooseChars[p%4] == chooseChars[i%4] and chooseChars[i%4].alive and letsCornerFight == 0:#player is de index
                     Sounds.Fightsound()
                     letsFight = 1#spot fight
 
-            elif chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and not prevPositie == chooseChars[p%4].startCorner and letsFight == 0:
-                 for i in range(4): 
-                  if chooseChars[p%4].savePosition == chooseChars[i%4].startCorner and not chooseChars[p%4] == chooseChars[i%4] and chooseChars[i%4].alive:
+         #   if chooseChars[p%4].alive and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and not prevPositie == chooseChars[p%4].startCorner and letsFight == 0:
+            for i in range(4): 
+                if chooseChars[p%4].savePosition == chooseChars[i%4].startCorner and chooseChars[i%4].alive and letsFight == 0:
+                 # if not chooseChars[p%4] == chooseChars[i%4]:
                     Sounds.Fightsound() 
                     letsCornerFight = 1#corner fight
 
-            elif letsCornerFight == 0 and letsFight == 0:
+            if letsCornerFight == 0 and letsFight == 0:
                 nextturn = 1
             p += 1
             newLocation = False
