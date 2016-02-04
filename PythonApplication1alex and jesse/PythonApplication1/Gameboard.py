@@ -162,9 +162,11 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 chooseChars[p%4].conditionPoints = 15
             # bij corner fight van een tegenstander word the spotfight tussen 2 mensen negeert. Dit is bug
             if chooseChars[p%4].alive == True and (prevPositie == chooseChars[(p%4)-1].savePosition or prevPositie == chooseChars[(p%4)-2].savePosition or prevPositie == chooseChars[(p%4)-3].savePosition) and letsSuperFight == 0:
+                Sounds.Fightsound()
                 letsFight = 1#spot fight
 
             elif chooseChars[p%4].alive == True and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and not prevPositie == chooseChars[p%4].startCorner and letsFight == 0:
+                Sounds.Fightsound()
                 letsSuperFight = 1#corner fight
 
             elif letsSuperFight == 0 and letsFight == 0:
@@ -193,17 +195,19 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
 
 #spot fight
 def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2,damageA, damageD, attacker, defender,p):
-
+        
         for i in range(4):
+            
             if prevPositie == chooseChars[i%4].savePosition and not chooseChars[(p%4)-1] == chooseChars[i%4]:#player is de index
                 defender = chooseChars[i%4]
 
                 attacker = chooseChars[(p%4)-1]
                 print(str(attacker.playerName) + ' asd' + str(defender.playerName))
-
+                
                 event = pygame.event.poll()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:#attacker
+                        Sounds.Dice()
                         roll = Throw_dice()
                         roller1_img = roll[1]
                         roller1 = True     
@@ -225,6 +229,7 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
                            damageA = attacker.dice6 
 
                     if event.key == pygame.K_RETURN:#defender
+                        Sounds.Dice()
                         roll2 = Throw_dice()
                         roller2_img = roll2[1]
                         roller2 = True
@@ -241,7 +246,7 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
                            print(str(damageD)+' bla')
                         elif roll2[0] == 6:
                            damageD = defender.dice6
-
+        
         if roller1 == True and roller2 == True:
             roller_reset = True
 
@@ -249,15 +254,18 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
  
 # Corner fight
 def cornerFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roller_reset,roller1_img,roller2_img, roll, roll2,damageA, damageD, attacker, defender):
+        
         for player in range(len(corner)):
+            
             if prevPositie == corner[player]:#player is de index
                 defender = chooseChars[player]
                 attacker = tempChar
 
-
+                
                 event = pygame.event.poll()
                 if event.type == pygame.KEYDOWN:
                     if event.key == pygame.K_SPACE:#attacker
+                        Sounds.Dice()
                         roll = Throw_dice()
                         roller1_img = roll[1]
                         roller1 = True
@@ -276,6 +284,7 @@ def cornerFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roll
                            damageA = attacker.dice6 + extra
 
                     if event.key == pygame.K_RETURN:#defender
+                        Sounds.Dice()
                         roll2 = Throw_dice()
                         roller2_img = roll2[1]
                         roller2 = True
@@ -291,6 +300,7 @@ def cornerFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roll
                            damageD = defender.dice5
                         elif roll2[0] == 6:
                            damageD = defender.dice6
+        
         if roller1 == True and roller2 == True:
             roller_reset = True
 

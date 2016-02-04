@@ -10,6 +10,7 @@ mariosound = pygame.mixer.Sound("sounds/mario.ogg")
 tilesound = pygame.mixer.Sound("sounds/tileshift.ogg")
 tapsound = pygame.mixer.Sound("sounds/tapsound.ogg")
 introping = pygame.mixer.Sound("sounds/introping.ogg")
+fightsound = pygame.mixer.Sound("sounds/fight.wav")
 
 soundtrack = pygame.mixer.music.load("sounds/soundtrack.wav")
 class Sounds:
@@ -25,6 +26,9 @@ class Sounds:
         pygame.mixer.Sound.play(tapsound)
     def Introping():
         pygame.mixer.Sound.play(introping)
+    def Fightsound():
+        pygame.mixer.Sound.play(fightsound)
+
 
 Charlist = []
 

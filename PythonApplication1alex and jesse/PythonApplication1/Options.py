@@ -92,7 +92,7 @@ def RulesScreen(screenlist, rectlist, screen_index, menu_index, crashed, b):#b =
             if event.type == pygame.KEYDOWN:
                 if event.key == pygame.K_BACKSPACE:
                     screen_index = 0
-                    button = menulist[1]     
+                    button = menulist[1]
         if b == 2:   #rules
             start = x, y = 0, 650
             rules = x, y = 225, 650
