@@ -254,6 +254,9 @@ while not crashed:
                     text_pop(fonttype,"- "+str(totalattack), white,[60, 200])
                 if playerLoses == 2:
                     text_pop(fonttype,"- "+str(totalattack), white,[520, 200])
+                if playerLoses == 3:
+                    text_pop(fonttype,"- "+str(totalattack), white,[520, 200])
+                    text_pop(fonttype,"- "+str(totalattack), white,[60, 200])
                 pygame.display.update()
                 time.sleep(2)
                 roller1 = False
@@ -310,6 +313,7 @@ while not crashed:
        
         for x in range(len(chooseChars)):
             if chooseChars[x].alive == True:
+                gameDisplay.blit(pygame.image.load("images/speelveld.png"),pygame.image.load("images/speelveld.png").get_rect()) 
                 gameDisplay.blit(pygame.image.load("images/winningscreen.png"),pygame.image.load("images/winningscreen.png").get_rect()) 
                 small_glove(chooseChars[x].texture,(290,290)) 
                 text_pop(fonttype,chooseChars[x].playerName, white, (290,240))
