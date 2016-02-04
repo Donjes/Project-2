@@ -100,7 +100,7 @@ def text_pop(fonttype,msg, color,location):            # text DRAW functie
     gameDisplay.blit(screen_text, location)
 # list van Tile lokaties
 navigate = [(20,20),(80,20),(130,20),(180,20),(230,20),(300,20),(375,20),(425,20),(472,20),(520,20),(575,20),(575,85),(575,130),(575,180),(575,230),(575,300),(575,373),(575,425),(575,475),(575,525),(575,590),(520,590),(472,590),(425,590),(375,590),(300,590),(230,590),(180,590),(130,590),(80,590),(20,590),(20,525),(20,475),(20,425),(20,373),(20,300),(20,230),(20,180),(20,130),(20,85)]
-
+#              0       1        2       3       4           5       6       7        8         9        10      11       12         13      14          15        16        17        18        19        20        21        22       23         24        25         26       27        28       29       30        31      32        33      34      35         36      37       38      39
 
 
 #=================================================== NAVIGATIE FUNCTIE! ===========================================================================#
@@ -166,15 +166,16 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 chooseChars[p%4].conditionPoints = 15
             # bij corner fight van een tegenstander word the spotfight tussen 2 mensen negeert. Dit is bug
            # if chooseChars[p%4].alive and (prevPositie == chooseChars[(p-1)%4].savePosition or prevPositie == chooseChars[(p-2)%4].savePosition or prevPositie == chooseChars[(p-3)%4].savePosition) and letsCornerFight == 0:
-            for i in range(4): 
-                if prevPositie == chooseChars[i%4].savePosition and not chooseChars[p%4] == chooseChars[i%4] and chooseChars[i%4].alive and letsCornerFight == 0:#player is de index
+            for i in range(0,4): 
+                if (prevPositie == chooseChars[i%4].savePosition )and chooseChars[p%4] != chooseChars[i%4] and chooseChars[i%4].alive and letsCornerFight == 0:#player is de index
                     Sounds.Fightsound()
                     letsFight = 1#spot fight
-
+                    
+                
          #   if chooseChars[p%4].alive and ( prevPositie == 0 or prevPositie == 10 or prevPositie == 20 or prevPositie == 30 )and not prevPositie == chooseChars[p%4].startCorner and letsFight == 0:
-            for i in range(4): 
-                if chooseChars[p%4].savePosition == chooseChars[i%4].startCorner and chooseChars[i%4].alive and letsFight == 0:
-                 # if not chooseChars[p%4] == chooseChars[i%4]:
+            for i in range(0,4): 
+                if chooseChars[i%4].alive and chooseChars[p%4] != chooseChars[i%4] and letsFight == 0:
+                  if chooseChars[p%4].savePosition == chooseChars[i%4].startCorner:
                     Sounds.Fightsound() 
                     letsCornerFight = 1#corner fight
 
