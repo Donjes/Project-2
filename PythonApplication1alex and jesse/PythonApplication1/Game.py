@@ -24,7 +24,7 @@ p = 0
 
 
 totalattack = 0
-
+dead = 0
 nextplayer = 0
 
 
@@ -327,23 +327,25 @@ while not crashed:
             print(chooseChars[1])
             screen_index = 3
 
-    # for x in chooseChars:          #   remove player if he is dead
-    #     if x.hitPoints <= 0:
-    #         chooseChars.alive = False
-    #if list met dead == 3: change
-    # if player alive == true   change    #   only 1 player so print win
-    #     screen_update(winning_screen, winning_screen_rect)
-    #     winning_pic(chooseChars[0].texture)
-    #     text_pop('The winner is ' + chooseChars[0].name , black)
-    #     for event in pygame.event.get():
-    #         if event.key == pygame.K_ESCAPE:
-    #             crashed = True
-    #         elif event.key == pygame.K_TAB:
-    #             screen_index = 2
+    # for x in range(len(chooseChars)):          #   remove player if he is dead
+    #     if chooseChars[x].hitPoints <= 0:
+    #         chooseChars[x].alive = False
+    #         dead+=1
+    # if dead == 3: #change
+    #     for x in range(len(chooseChars)):
+    #         if chooseChars[x].alive = True
+    #             screen_update(winning_screen, winning_screen_rect)
+    #             winning_pic(chooseChars[0].texture)
+    #             text_pop('The winner is ' + chooseChars[0].name , black)
+    #             for event in pygame.event.get():
+    #                 if event.key == pygame.K_ESCAPE:
+    #                     crashed = True
+    #                 elif event.key == pygame.K_TAB:
+    #                     screen_index = 2
 
 
     pygame.display.update()
-
+    dead = 0        #reset dead until u get 3 dead in a row
     clock.tick(60)
 
 pygame.quit()
