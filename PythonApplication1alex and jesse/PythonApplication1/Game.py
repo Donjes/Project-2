@@ -177,10 +177,7 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_pag
 
 pygame.mixer.music.play(-1)
 while not crashed:
-<<<<<<< HEAD
-    
-=======
->>>>>>> origin/master
+
     if screen_index == 0:#start
         size = width, height = 650, 650
         gameDisplay = pygame.display.set_mode(size)
@@ -209,6 +206,7 @@ while not crashed:
         screen_update(screen, rect)
         glove_update(button, screen_index)
         character_glove(char_button,nextplayer)
+        character_glove((367,20),nextplayer)
         if len(chooseChars) > 0:
             small_glove(chooseChars[0].texture,(100,85))
         if len(chooseChars) > 1:
