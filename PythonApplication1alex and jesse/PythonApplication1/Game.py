@@ -91,10 +91,10 @@ crashed = False
 menu_index = 0                           #startwaarde = start
 pics = []
 
-v1 = (100, 85)
-v2 = (100, 215)
-v3 = (100, 345)
-v4 = (100, 475)
+v1 = (100, 85) 
+v2 = (100, 215) 
+v3 = (100, 345) 
+v4 = (100, 475) 
 vectorlist = [v1, v2, v3, v4]
 
 font = pygame.font.SysFont("System", 50)
