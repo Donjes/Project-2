@@ -8,12 +8,12 @@ class Player:
         self.hitPoints = 100 #  change the hitpoints and conditionpoints !!!
         self.conditionPoints = 15
         self.savePosition = None #Optional for a saving option
-        self.dice1 = attack1
-        self.dice2 = attack2
-        self.dice3 = attack3
-        self.dice4 = attack4
-        self.dice5 = attack5
-        self.dice6 = attack6
+        self.dice1 = attack1 
+        self.dice2 = attack2 
+        self.dice3 = attack3 
+        self.dice4 = attack4 
+        self.dice5 = attack5 
+        self.dice6 = attack6 
         self.alive = True
         self.startCorner = corner
     def getDamage(self,dmgdone):
