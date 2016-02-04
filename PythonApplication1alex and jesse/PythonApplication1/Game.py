@@ -17,7 +17,7 @@ firstround = True
 save_game = False
 load_old_game = False
 last_page = 0
-letsSuperFight = 0
+letsCornerFight = 0
 letsFight = 0
 nextturn = 0
 p = 0
@@ -237,18 +237,18 @@ while not crashed:
     elif screen_index == 3:
 #normale functie
         tempChar = chooseChars[p%4-1]
-        if letsSuperFight == 0 and letsFight == 0:
-            firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie = \
-            BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsSuperFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie)
+        if letsCornerFight == 0 and letsFight == 0:
+            firstround,chooseChars,roll,p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsCornerFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie = \
+            BoardScreen(firstround,chooseChars,roll, p,screenlist, rectlist, crashed, menu_index, screen_index,last_page,letsCornerFight,letsFight,nextturn,tempTile,newLocation,dice_rolled, prevPositie)
             size = width, height = 650, 746
             gameDisplay = pygame.display.set_mode(size)
 
 #fight functions      
 
-        if letsSuperFight == 1:
+        if letsCornerFight == 1:
             tempChar = chooseChars[p%4-1]
 
-            roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender = superFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
+            roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender = cornerFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
             print(str(damageA) + str( damageD) +' klm')
 
 
@@ -268,7 +268,7 @@ while not crashed:
                 roller1 = False
                 roller2 = False
                 roller_reset = False      
-                letsSuperFight = 0 
+                letsCornerFight = 0 
 
 
         elif letsFight == 1:
@@ -331,6 +331,7 @@ while not crashed:
     #     if chooseChars[x].hitPoints <= 0:
     #         chooseChars[x].alive = False
     #         dead+=1
+
     # if dead == 3: #change
     #     for x in range(len(chooseChars)):
     #         if chooseChars[x].alive = True
