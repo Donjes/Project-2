@@ -159,7 +159,6 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_pag
     for event in pygame.event.get():
         if event.type == pygame.QUIT:
             crashed = True                  #programma sluit af met rode X
-
         if screen_index == 0:      #start
             screen = screenlist[screen_index]
             rect = rectlist[screen_index]
@@ -168,7 +167,6 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_pag
                     menu_index += 1                      #index + 1
                     if menu_index > 2:
                         menu_index = 0                   #na exit button = start
-
                 if event.key == pygame.K_UP:    #key = up arrow
                     menu_index -= 1                      #index - 1
                     if menu_index < 0:
@@ -189,9 +187,6 @@ def StartScreen(screenlist, rectlist, screen_index, menu_index, crashed,last_pag
 
 pygame.mixer.music.play(-1)
 while not crashed:
-    
-
-
     if screen_index == 0:#start
         size = width, height = 650, 650
         gameDisplay = pygame.display.set_mode(size)
@@ -209,14 +204,12 @@ while not crashed:
         glove_update(button, screen_index)
 
     elif screen_index == 4:
-
         screen, rect, crashed, button, menu_index, screen_index, b,save_game,load_old_game,last_page = \
         Options(screenlist, rectlist,crashed, menu_index, screen_index,character_index,b,save_game,load_old_game,last_page)
         screen_update(screen, rect)
         glove_update(button, screen_index)
 
     elif screen_index == 2:#character
-
         screen, rect ,crashed, button, menu_index, screen_index, b, char_button,character_index,chooseChars,last_page,Charlist,nextplayer = \
         PlayerScreen(Charlist,chooseChars,screenlist, rectlist, crashed, menu_index, screen_index,character_index,last_page,nextplayer)
         screen_update(screen, rect)
@@ -231,9 +224,6 @@ while not crashed:
         if len(chooseChars) > 3:
             small_glove(chooseChars[3].texture,(100,435))
 
-
-
-
     elif screen_index == 3:
 #normale functie
         tempChar = chooseChars[p%4-1]
@@ -244,15 +234,10 @@ while not crashed:
             gameDisplay = pygame.display.set_mode(size)
 
 #fight functions      
-
         if letsCornerFight == 1:
-            
             tempChar = chooseChars[p%4-1]
-
             roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender = cornerFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
             print(str(damageA) + str( damageD) +' klm')
-
-
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))   
             Draw_navi(chooseChars)
             small_glove(chooseChars[p%4].texture,(290,230))
@@ -272,8 +257,8 @@ while not crashed:
             text_pop(fonttype,str(defender.dice4)+ " damage", white,[470, 523])
             text_pop(fonttype,str(defender.dice5)+ " damage", white,[470, 558])
             text_pop(fonttype,str(defender.dice6)+ " damage", white,[470, 593])
-                
             fonttype = pygame.font.SysFont('system', 25)
+
             if roller1:
                 gameDisplay.blit(pygame.image.load("images/"+ roller1_img),(120,260)) 
                 text_pop(fonttype,"Attack Damage:"+ str(damageA), white,[80, 325])
@@ -299,8 +284,6 @@ while not crashed:
 
         elif letsFight == 1:
             tempChar = chooseChars[p%4-1]
-            
-
             roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= spotFight(tempChar,chooseChars, prevPositie,navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender,p)
             print(str(damageA) + str( damageD) +' klm')
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect())) 
@@ -322,8 +305,8 @@ while not crashed:
             text_pop(fonttype,str(defender.dice4)+ " damage", white,[470, 523])
             text_pop(fonttype,str(defender.dice5)+ " damage", white,[470, 558])
             text_pop(fonttype,str(defender.dice6)+ " damage", white,[470, 593])
-                
             fonttype = pygame.font.SysFont('system', 25)
+
             if roller1:
                 gameDisplay.blit(pygame.image.load("images/"+ roller1_img),(120,260)) 
                 text_pop(fonttype,"Attack Damage:"+ str(damageA), white,[80, 325])
@@ -332,6 +315,7 @@ while not crashed:
                 gameDisplay.blit(pygame.image.load("images/"+ roller2_img),(440,260))  
                 text_pop(fonttype,"Defender Damage:"+ str(damageD), white,[380, 325])  
             pygame.display.update()
+
             if roller_reset == True:  
                 defender, attacker,playerLoses,totalattack = calculation(defender,attacker, damageA, damageD, totalattack,5,playerLoses)
                 fonttype = pygame.font.SysFont('system', 55)
@@ -350,27 +334,22 @@ while not crashed:
 #bij normale functie 
         elif nextturn == 1:
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
-
             Draw_navi(chooseChars)           
             small_glove(chooseChars[p%4].texture,(290,230))
- 
             gameDisplay.blit(pygame.image.load("images/nextturn.png"),(88,225))
             small_glove(chooseChars[p%4].texture,(150,250))
             pygame.display.update()
             time.sleep(0.1)#1 doen
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))
-
             Draw_navi(chooseChars)             
             small_glove(chooseChars[p%4].texture,(290,230))
             dice_img(roll)          
             nextturn = 0
         else:
             gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
-
             Draw_navi(chooseChars)                 
             small_glove(chooseChars[p%4].texture,(290,230))
             dice_img(roll)
-
      
     elif screen_index == 5:
         if save_game == True:
@@ -402,6 +381,5 @@ while not crashed:
     pygame.display.update()
     dead = 0        #reset dead until u get 3 dead in a row
     clock.tick(60)
-
 pygame.quit()
 quit()
