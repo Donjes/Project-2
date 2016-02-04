@@ -313,7 +313,7 @@ def calculation(defender,attacker, damageA, damageD, totalattack, x):
     elif defender.conditionPoints > -1 and attacker.conditionPoints == 0:
        attacker.getDamage(damageD)
     elif defender.conditionPoints == 0 and attacker.conditionPoints > -1:
-       defender.getDamage(damageD) 
+       defender.getDamage(damageA) 
     elif defender.conditionPoints == 0 and attacker.conditionPoints == 0:
         if damageD > damageA:
             attacker.getDamage(damageD)
