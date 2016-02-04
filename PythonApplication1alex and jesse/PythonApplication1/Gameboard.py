@@ -296,7 +296,7 @@ def cornerFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roll
 
         return roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender
 
-def calculation(defender,attacker, damageA, damageD, totalattack, x):
+def calculation(defender,attacker, damageA, damageD, totalattack, x,playerLoses):
     defender.conditionPoints -= x
     attacker.conditionPoints -= x
 
@@ -309,9 +309,11 @@ def calculation(defender,attacker, damageA, damageD, totalattack, x):
        if damageD > damageA:
            totalattack = damageD - damageA
            attacker.getDamage(totalattack)
+           playerLoses = 1
        elif damageA > damageD:
            totalattack = damageA - damageD
            defender.getDamage(totalattack)
+           playerLoses = 2
        else:
            attacker.getDamage(15)
            defender.getDamage(15)
@@ -328,5 +330,5 @@ def calculation(defender,attacker, damageA, damageD, totalattack, x):
            attacker.getDamage(10)
            defender.getDamage(10)
 
-    return defender, attacker
+    return defender, attacker,playerLoses,totalattack
 

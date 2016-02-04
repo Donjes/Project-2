@@ -22,7 +22,7 @@ letsFight = 0
 nextturn = 0
 p = 0
 
-
+playerLoses = 0
 totalattack = 0
 dead = 0
 nextplayer = 0
@@ -282,15 +282,19 @@ while not crashed:
                 text_pop(fonttype,"Defender Damage:"+ str(damageD), white,[380, 325])        
             pygame.display.update()
             if roller_reset == True:
-                calculation(defender,attacker, damageA, damageD, totalattack, 3)
-
-               
+                defender, attacker,playerLoses,totalattack = calculation(defender,attacker, damageA, damageD, totalattack, 3,playerLoses)
+                fonttype = pygame.font.SysFont('system', 55)
+                if playerLoses == 1:
+                    text_pop(fonttype,"- "+str(totalattack), white,[60, 200])
+                if playerLoses == 2:
+                    text_pop(fonttype,"- "+str(totalattack), white,[520, 200])
+                pygame.display.update()
                 time.sleep(2)
                 roller1 = False
                 roller2 = False
                 roller_reset = False      
                 letsCornerFight = 0 
-
+                playerLoses = 0
 
         elif letsFight == 1:
             tempChar = chooseChars[p%4-1]
@@ -327,13 +331,19 @@ while not crashed:
                 text_pop(fonttype,"Defender Damage:"+ str(damageD), white,[380, 325])  
             pygame.display.update()
             if roller_reset == True:  
-                calculation(defender,attacker, damageA, damageD, totalattack,5)
-
+                defender, attacker,playerLoses,totalattack = calculation(defender,attacker, damageA, damageD, totalattack,5,playerLoses)
+                fonttype = pygame.font.SysFont('system', 55)
+                if playerLoses == 1:
+                    text_pop(fonttype,"- "+str(totalattack), white,[60, 200])
+                if playerLoses == 2:
+                    text_pop(fonttype,"- "+str(totalattack), white,[520, 200])
+                pygame.display.update()
                 time.sleep(2) 
                 roller1 = False
                 roller2 = False
                 roller_reset = False    
                 letsFight = 0   
+                playerLoses = 0
 
 #bij normale functie 
         elif nextturn == 1:
