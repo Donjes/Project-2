@@ -246,6 +246,7 @@ while not crashed:
 #fight functions      
 
         if letsCornerFight == 1:
+            
             tempChar = chooseChars[p%4-1]
 
             roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender = cornerFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
@@ -298,6 +299,7 @@ while not crashed:
 
         elif letsFight == 1:
             tempChar = chooseChars[p%4-1]
+            
 
             roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= spotFight(tempChar,chooseChars, prevPositie,navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender,p)
             print(str(damageA) + str( damageD) +' klm')
