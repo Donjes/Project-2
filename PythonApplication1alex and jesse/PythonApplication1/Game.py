@@ -293,8 +293,14 @@ while not crashed:
             time.sleep(1)
             gameDisplay.blit(board_screen,(board_screen.get_rect()))
             Draw_navi(chooseChars)      
-            if chooseChars[p%4].alive:      
-                small_glove(chooseChars[p%4].texture,(290,230))
+            if chooseChars[p%4].alive:
+                small_glove(chooseChars[p%4].texture,(290,230))                
+            elif chooseChars[(p-3)%4].alive:
+                small_glove(chooseChars[(p-3)%4].texture,(290,230))   
+            elif chooseChars[(p-2)%4].alive:
+                small_glove(chooseChars[(p-2)%4].texture,(290,230))   
+            elif chooseChars[(p-1)%4].alive:
+                small_glove(chooseChars[(p-1)%4].texture,(290,230))  
             dice_img(roll)          
             nextturn = 0
         else:
