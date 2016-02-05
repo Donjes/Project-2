@@ -53,6 +53,8 @@ big_glove = pygame.image.load("images/handschoen.png")
 board_screen = pygame.image.load("images/speelveld.png")
 options_screen = pygame.image.load("images/Options.png")
 winning_screen = pygame.image.load("images/winningscreen.png")
+fight_screen = pygame.image.load("images/fight.png")
+winning_screen = pygame.image.load("images/winningscreen.png")
 
 options_screen_rect = options_screen.get_rect()
 board_screen_rect = board_screen.get_rect()
@@ -215,10 +217,10 @@ while not crashed:
                 roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender = cornerFight(tempChar,chooseChars, prevPositie,corner, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender)
             elif letsFight == 1:
                 roller1,roller2,roller_reset,roller1_img,roller2_img, damageA, damageD, attacker, defender= spotFight(tempChar,chooseChars, prevPositie,navigate, roller1,roller2,roller_reset,roller1_img,roller2_img, rollA, rollD, damageA, damageD, attacker, defender,p)           
-            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))   
+            gameDisplay.blit(board_screen,(board_screen.get_rect()))   
             Draw_navi(chooseChars)
             small_glove(chooseChars[p%4].texture,(290,230))
-            gameDisplay.blit(pygame.image.load("images/fight.png"),(pygame.image.load("images/speelveld.png").get_rect()))   
+            gameDisplay.blit(fight_screen,(fight_screen.get_rect()))  
             gameDisplay.blit(pygame.image.load(attacker.texture),(110,183))
             gameDisplay.blit(pygame.image.load(defender.texture),(430,183))        
             fonttype = pygame.font.SysFont('system', 23)
@@ -269,7 +271,7 @@ while not crashed:
 
 #bij normale functie 
         elif nextturn == 1:
-            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
+            gameDisplay.blit(board_screen,(board_screen.get_rect()))     
             Draw_navi(chooseChars)               
             gameDisplay.blit(pygame.image.load("images/nextturn.png"),(88,225))       
             if chooseChars[p%4].alive:
@@ -282,14 +284,14 @@ while not crashed:
                 small_glove(chooseChars[(p-1)%4].texture,(150,250))   
             pygame.display.update()
             time.sleep(1)
-            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))
+            gameDisplay.blit(board_screen,(board_screen.get_rect()))
             Draw_navi(chooseChars)      
             if chooseChars[p%4].alive:      
                 small_glove(chooseChars[p%4].texture,(290,230))
             dice_img(roll)          
             nextturn = 0
         else:
-            gameDisplay.blit(pygame.image.load("images/speelveld.png"),(pygame.image.load("images/speelveld.png").get_rect()))     
+            gameDisplay.blit(board_screen,(board_screen.get_rect()))     
             Draw_navi(chooseChars)                 
             small_glove(chooseChars[p%4].texture,(290,230))
             dice_img(roll)
@@ -313,8 +315,8 @@ while not crashed:
        
         for x in range(len(chooseChars)):
             if chooseChars[x].alive == True:
-                gameDisplay.blit(pygame.image.load("images/speelveld.png"),pygame.image.load("images/speelveld.png").get_rect()) 
-                gameDisplay.blit(pygame.image.load("images/winningscreen.png"),pygame.image.load("images/winningscreen.png").get_rect()) 
+                gameDisplay.blit(board_screen,(board_screen.get_rect()))
+                gameDisplay.blit(winning_screen,(winning_screen.get_rect()))
                 small_glove(chooseChars[x].texture,(290,290)) 
                 text_pop(fonttype,chooseChars[x].playerName, white, (290,240))
                 event = pygame.event.poll()  
