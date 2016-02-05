@@ -31,8 +31,7 @@ def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_ind
     rect = rectlist[screen_index]
     screen = screenlist[screen_index]
     button = menulist[menu_index%5]
-    size = width, height = 650, 746
-    gameDisplay = pygame.display.set_mode(size)
+
 
     for event in pygame.event.get():
         
@@ -51,22 +50,22 @@ def Options(screenlist, rectlist,crashed, menu_index, screen_index,character_ind
             
             if event.key == pygame.K_SPACE:
                 Sounds.Punch()
-                if menu_index == 0:
+                if menu_index%5 == 0:
                     if last_page == 0:
                         screen_index = 0
                     if last_page == 2:
                         screen_index = 2
                     if last_page == 3:
                         screen_index = 3
-                if menu_index == 1:
+                if menu_index%5 == 1:
                     screen_index = 5
                     save_game = True
-                if menu_index == 2:
+                if menu_index%5 == 2:
                     screen_index = 5
                     load_old_game = True
-                if menu_index == 3:
+                if menu_index%5 == 3:
                     screen_index = 1
-                if menu_index == 4:
+                if menu_index%5 == 4:
                     crashed = True
             if event.key == pygame.K_m:
                 Mute()

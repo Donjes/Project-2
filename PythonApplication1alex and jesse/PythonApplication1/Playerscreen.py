@@ -1,4 +1,3 @@
-#from Game import *
 import pygame
 from Character import *
 pygame.mixer.init()
@@ -12,7 +11,9 @@ tapsound = pygame.mixer.Sound("sounds/tapsound.ogg")
 introping = pygame.mixer.Sound("sounds/introping.ogg")
 fightsound = pygame.mixer.Sound("sounds/fight.wav")
 
+
 soundtrack = pygame.mixer.music.load("sounds/soundtrack.wav")
+
 class Sounds:
     def Punch():
         pygame.mixer.Sound.play(punchsound)
@@ -40,8 +41,7 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
     start = x, y = 0, 650
     rules = x, y = 225, 650
     exit = x, y = 450, 650
-    size = width, height = 750, 780
-    gameDisplay = pygame.display.set_mode(size)
+
     start_corner = [1,11,21,31]
     Jet = x,y = 450, 145
     Mario = x,y = 450, 235
@@ -53,7 +53,7 @@ def PlayerScreen(Charlist,chooseChars,screenlist, rectlist,crashed, menu_index, 
     Terry = x,y = 560, 415
     characterlist = [ Jet, Mario, Chack,  Jackie,  Jason, Steven, Wesley, Terry]
     playerNames = ['P1','P2','P3','P4']
-    char_button = characterlist[character_index]
+    char_button = characterlist[character_index]   
     menulist = [start, rules, exit] #lijst van de buttons
     button = menulist[menu_index]
     rect = rectlist[screen_index]

@@ -4,7 +4,7 @@ corner = None
 class Player:
     def __init__(self,name,corner,texture,attack1,attack2,attack3,attack4,attack5,attack6):
         self.playerName = name
-        self.texture = texture
+        self.texture = pygame.image.load(texture)
         self.hitPoints = 100 #  change the hitpoints and conditionpoints !!!
         self.conditionPoints = 15
         self.savePosition = None #Optional for a saving option

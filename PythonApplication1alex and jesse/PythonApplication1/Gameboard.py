@@ -9,22 +9,24 @@ from Playerscreen import *
 
 size = width, height = 700, 650
 white = (255, 255, 255)
-gloveSmall2 = "images/red_handschoen.png"
-gloveSmall2move = "images/red_handschoen1.png"
-gloveSmall1 = "images/blue_handschoen.png"
-gloveSmall1move = "images/blue_handschoen1.png"
-gloveSmall3 = "images/green_handschoen.png"
-gloveSmall3move = "images/green_handschoen1.png"
-gloveSmall4 = "images/yellow_handschoen.png"
-gloveSmall4move = "images/yellow_handschoen1.png"
+gloveSmall2 = pygame.image.load("images/red_handschoen.png")
+gloveSmall2move = pygame.image.load("images/red_handschoen1.png")
+gloveSmall1 = pygame.image.load("images/blue_handschoen.png")
+gloveSmall1move = pygame.image.load("images/blue_handschoen1.png")
+gloveSmall3 = pygame.image.load("images/green_handschoen.png")
+gloveSmall3move = pygame.image.load("images/green_handschoen1.png")
+gloveSmall4 = pygame.image.load("images/yellow_handschoen.png")
+gloveSmall4move = pygame.image.load("images/yellow_handschoen1.png")
 gloveSmall = [gloveSmall1,gloveSmall2,gloveSmall3,gloveSmall4]
-
-gloveBG = "images/zelfde_tile/blauwVSgeel.png"
-gloveRB = "images/zelfde_tile/roodVSblauw.png"
-gloveRG = "images/zelfde_tile/roodVSgeel.png"
-gloveGrB = "images/zelfde_tile/groenVSblauw.png"
-gloveGrR = "images/zelfde_tile/groenVSrood.png"
-gloveGrG = "images/zelfde_tile/groenVSgeel.png"
+deadIMG = pygame.image.load("images/dead.png")
+next_turn = pygame.image.load("images/nextturn.png")
+dice_rolling_img = pygame.image.load("images/DiceRolling.png")
+gloveBG = pygame.image.load("images/zelfde_tile/blauwVSgeel.png")
+gloveRB = pygame.image.load("images/zelfde_tile/roodVSblauw.png")
+gloveRG = pygame.image.load("images/zelfde_tile/roodVSgeel.png")
+gloveGrB = pygame.image.load("images/zelfde_tile/groenVSblauw.png")
+gloveGrR = pygame.image.load("images/zelfde_tile/groenVSrood.png")
+gloveGrG = pygame.image.load("images/zelfde_tile/groenVSgeel.png")
 smallGlove = [gloveSmall1,gloveSmall2,gloveSmall3,gloveSmall4]
 smallGlovemove =[gloveSmall1move,gloveSmall2move,gloveSmall3move,gloveSmall4move]
 #=======================================================================================
@@ -45,72 +47,73 @@ def Draw_navi(chooseChars):
         small_glove(chooseChars[0].texture,(110,110)) #mugshot player 1
     else:
         small_glove(chooseChars[0].texture,(110,110)) #mugshot player 1
-        small_glove("images/dead.png",(110,110)) #mugshot player 1
+        small_glove(deadIMG,(110,110)) #mugshot player 1
     text_pop(fonttype,"HP:"+ str(chooseChars[1].hitPoints), white,[370, 135]) #hitpoints speler 2
     text_pop(fonttype,"Condition:"+ str(chooseChars[1].conditionPoints), white,[345, 165]) #condition speler 2
     if chooseChars[1].alive:
         small_glove(chooseChars[1].texture,(470,110)) #mugshot player 2
     else:
         small_glove(chooseChars[1].texture,(470,110)) #mugshot player 2
-        small_glove("images/dead.png",(470,110)) #mugshot player 2    
+        small_glove(deadIMG,(470,110)) #mugshot player 2    
     text_pop(fonttype,"HP:"+ str(chooseChars[2].hitPoints), white,[370, 448]) #hitpoints speler 3
     text_pop(fonttype,"Condition:"+ str(chooseChars[2].conditionPoints), white,[173, 479]) #condition speler 3  
     if chooseChars[2].alive:
         small_glove(chooseChars[2].texture,(470,470)) #mugshot player 3
     else:
         small_glove(chooseChars[2].texture,(470,470)) #mugshot player 3
-        small_glove("images/dead.png",(470,470)) #mugshot player 3   
+        small_glove(deadIMG,(470,470)) #mugshot player 3   
     text_pop(fonttype,"HP:"+ str(chooseChars[3].hitPoints), white,[198, 448]) #hitpoints speler 4
     text_pop(fonttype,"Condition:"+ str(chooseChars[3].conditionPoints), white,[345, 479]) #condition speler 4
     if chooseChars[3].alive:
         small_glove(chooseChars[3].texture,(110,470))  #mugshot player 4
     else:
         small_glove(chooseChars[3].texture,(110,470))  #mugshot player 4
-        small_glove("images/dead.png",(110,470)) #mugshot player 4    
+        small_glove(deadIMG,(110,470)) #mugshot player 4    
     for i in range(x): #hier word de img bepaald of spelers op zelfde tile staan of dat ze alleen staan
       if cnt == 0 and chooseChars[0].alive:
         if   chooseChars[0].savePosition%40 == chooseChars[1].savePosition%40 and chooseChars[1].alive:
-            small_glove("images/zelfde_tile/roodVSblauw.png",navigate[chooseChars[0].savePosition%40])
+            small_glove(gloveRB,navigate[chooseChars[0].savePosition%40])
         elif   chooseChars[0].savePosition%40 == chooseChars[2].savePosition%40 and chooseChars[2].alive:
-            small_glove("images/zelfde_tile/groenVSblauw.png",navigate[chooseChars[0].savePosition%40])
+            small_glove(gloveGrB,navigate[chooseChars[0].savePosition%40])
         elif   chooseChars[0].savePosition%40 == chooseChars[3].savePosition%40 and chooseChars[3].alive:
-            small_glove("images/zelfde_tile/blauwVSgeel.png",navigate[chooseChars[0].savePosition%40])
+            small_glove(gloveBG,navigate[chooseChars[0].savePosition%40])
         else:
             small_glove(gloveSmall1,navigate[chooseChars[0].savePosition%40]) 
       if cnt == 1 and chooseChars[1].alive:
         if   chooseChars[1].savePosition%40 == chooseChars[0].savePosition%40 and chooseChars[0].alive:
-            small_glove("images/zelfde_tile/roodVSblauw.png",navigate[chooseChars[1].savePosition%40])
+            small_glove(gloveRB,navigate[chooseChars[1].savePosition%40])
         elif   chooseChars[1].savePosition%40 == chooseChars[2].savePosition%40 and chooseChars[2].alive:
-            small_glove("images/zelfde_tile/groenVSrood.png",navigate[chooseChars[1].savePosition%40])
+            small_glove(gloveGrR,navigate[chooseChars[1].savePosition%40])
         elif   chooseChars[1].savePosition%40 == chooseChars[3].savePosition%40 and chooseChars[3].alive:
-            small_glove("images/zelfde_tile/roodVSgeel.png",navigate[chooseChars[1].savePosition%40])
+            small_glove(gloveRG,navigate[chooseChars[1].savePosition%40])
         else:
             small_glove(gloveSmall2,navigate[chooseChars[1].savePosition%40]) 
       if cnt == 2 and chooseChars[2].alive:
         if   chooseChars[2].savePosition%40 == chooseChars[0].savePosition%40 and chooseChars[0].alive:
-            small_glove("images/zelfde_tile/groenVSblauw.png",navigate[chooseChars[2].savePosition%40])
+            small_glove(gloveGrB,navigate[chooseChars[2].savePosition%40])
         elif   chooseChars[2].savePosition%40 == chooseChars[1].savePosition%40 and chooseChars[1].alive:
-            small_glove("images/zelfde_tile/groenVSrood.png",navigate[chooseChars[2].savePosition%40])
+            small_glove(gloveGrR,navigate[chooseChars[2].savePosition%40])
         elif   chooseChars[2].savePosition%40 == chooseChars[3].savePosition%40 and chooseChars[3].alive:
-            small_glove("images/zelfde_tile/groenVSgeel.png",navigate[chooseChars[2].savePosition%40])
+            small_glove(gloveGrG,navigate[chooseChars[2].savePosition%40])
         else:
             small_glove(gloveSmall3,navigate[chooseChars[2].savePosition%40]) 
       if cnt == 3 and chooseChars[3].alive:    
         if   chooseChars[3].savePosition%40 == chooseChars[0].savePosition%40 and chooseChars[0].alive:
-            small_glove("images/zelfde_tile/blauwVSgeel.png",navigate[chooseChars[3].savePosition%40])
+            small_glove(gloveBG,navigate[chooseChars[3].savePosition%40])
         elif   chooseChars[3].savePosition%40 == chooseChars[1].savePosition%40 and chooseChars[1].alive:
-            small_glove("images/zelfde_tile/roodVSgeel.png",navigate[chooseChars[3].savePosition%40])
+            small_glove(gloveRG,navigate[chooseChars[3].savePosition%40])
         elif   chooseChars[3].savePosition%40 == chooseChars[2].savePosition%40 and chooseChars[2].alive:
-            small_glove("images/zelfde_tile/groenVSgeel.png",navigate[chooseChars[3].savePosition%40])
+            small_glove(gloveGrG,navigate[chooseChars[3].savePosition%40])
         else:
             small_glove(gloveSmall4,navigate[chooseChars[3].savePosition%40]) 
       cnt += 1
 
 
 def small_glove(gloveSmall,navilist):                  # handschoen DRAW functie    
-        gameDisplay.blit(pygame.image.load(gloveSmall),navilist)
+        gameDisplay.blit(gloveSmall,navilist)
+
 def dice_img(roll):                                    # the dice DRAW functie
-        gameDisplay.blit(pygame.image.load("images/" + roll[1]),(300,300))
+        gameDisplay.blit(roll[1],(300,300))
 def text_pop(fonttype,msg, color,location):            # text DRAW functie
     screen_text = fonttype.render(msg, True, color)
     gameDisplay.blit(screen_text, location)
@@ -145,7 +148,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
             for i in range(15):
                 rolling = Throw_dice()
                 dice_img(rolling) 
-                small_glove("images/DiceRolling.png",(300,300)) 
+                small_glove(dice_rolling_img,(300,300)) 
                 pygame.display.update()
                 time.sleep(0.1)
                 if i == 14:
@@ -161,7 +164,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 Sounds.Tile()
                 pygame.display.update()
                 time.sleep(0.1)
-                print("plus")  
+                 
             tempTile = tile
             newLocation = True
         if event.key == pygame.K_DOWN and dice_rolled == True: #laat zien waar je heen loopt bij DOWN
@@ -171,7 +174,7 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
                 Sounds.Tile()
                 pygame.display.update()
                 time.sleep(0.1)
-                print("plus")  
+                 
             tempTile = tile
             newLocation = True
 # =========================================== Navigatie van de handschoenen bij space kies je je lokatie en worden alle variable returned
@@ -201,6 +204,13 @@ def BoardScreen(firstround, chooseChars,roll,p,screenlist, rectlist, crashed, me
         elif event.key == pygame.K_o:
             screen_index = 4
             last_page = 3
+        elif event.key == pygame.K_TAB:
+            firstround = True
+            for i in range(4):
+                chooseChars[i].hitPoints = 100
+                chooseChars[i].conditionPoints= 15
+                chooseChars[i].alive = True
+                p = 0
         elif event.key == pygame.K_TAB:
             firstround = True
             for i in range(4):
@@ -244,7 +254,6 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
                            damageA = attacker.dice4 
                         elif roll[0] == 5:
                            damageA = attacker.dice5 
-                           print(str(damageA)+' foo')
                         elif roll[0] == 6:
                            damageA = attacker.dice6 
 
@@ -263,7 +272,6 @@ def spotFight(tempChar, chooseChars, prevPositie, navigate, roller1,roller2,roll
                            damageD = defender.dice4
                         elif roll2[0] == 5:
                            damageD = defender.dice5
-                           print(str(damageD)+' bla')
                         elif roll2[0] == 6:
                            damageD = defender.dice6
         
@@ -277,7 +285,6 @@ def cornerFight(tempChar, chooseChars, prevPositie, corner, roller1,roller2,roll
         
         for player in range(4):
             
-         #   if prevPositie == corner[player] or prevPositie == corner[player]:#player is de index
             if prevPositie == chooseChars[player].startCorner + 1 or prevPositie == chooseChars[player].startCorner - 1 or prevPositie == chooseChars[player].startCorner:
                 defender = chooseChars[player]
                 attacker = tempChar 
